@@ -21,4 +21,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('rspec', '~> 2.12')
   gem.add_development_dependency('webmock', '~> 1.9.0')
   gem.add_development_dependency('rake', '~> 10.0.3')
+  gem.add_development_dependency('pry', '~> 0.9.12')
+  gem.add_runtime_dependency('faraday', '~> 0.8.5')
+  gem.add_runtime_dependency('faraday_middleware', '~> 0.9.0')
+  gem.add_runtime_dependency('hashie',  '~> 2.0.0')
 end
