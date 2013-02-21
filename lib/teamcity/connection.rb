@@ -9,7 +9,7 @@ module TeamCity
       options = {
         :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent},
         :ssl => {:verify => false},
-        :url => endpoint,
+        :url => endpoint
       }
 
       Faraday::Connection.new(options) do |connection|
