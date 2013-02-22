@@ -27,3 +27,7 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Debugging Tips
+
+* Enable debug-rest in TeamCity to see all the rest api requests come through in the `teamcity-rest.log`, you can find this on the Diagnostics page under Server Administration
