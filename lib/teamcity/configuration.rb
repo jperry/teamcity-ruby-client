@@ -14,7 +14,7 @@ module TeamCity
 
     DEFAULT_ADAPTER = Faraday.default_adapter
 
-    DEFAULT_ENDPOINT = 'http://teamcity:8111/app/rest/7.0/'.freeze
+    DEFAULT_ENDPOINT = 'http://teamcity:8111/guestAuth/app/rest/7.0/'.freeze
 
     DEFAULT_USER_AGENT = "TeamCity Ruby Client #{TeamCity::VERSION}".freeze
 
