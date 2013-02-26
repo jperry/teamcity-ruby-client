@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=50FD9FD8E635F29BD4981B31F2B3F81C; Path=/; HttpOnly
+      - JSESSIONID=5057656A6D66E122DBED5E13085F68F2; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,12 +35,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 22 Feb 2013 14:21:37 GMT
+      - Tue, 26 Feb 2013 03:04:07 GMT
     body:
       encoding: US-ASCII
       string: ! '{"project":[{"id":"project2","name":"Project A","href":"/guestAuth/app/rest/7.0/projects/id:project2"},{"id":"project3","name":"Project
         B","href":"/guestAuth/app/rest/7.0/projects/id:project3"},{"id":"project4","name":"Project
         C","href":"/guestAuth/app/rest/7.0/projects/id:project4"}]}'
     http_version: 
-  recorded_at: Fri, 22 Feb 2013 14:21:37 GMT
+  recorded_at: Tue, 26 Feb 2013 03:04:07 GMT
 recorded_with: VCR 2.4.0

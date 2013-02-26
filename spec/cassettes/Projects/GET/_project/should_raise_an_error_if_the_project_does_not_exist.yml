@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects/id:project2/buildTypes
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects/id:missing
     body:
       encoding: US-ASCII
       string: ''
@@ -15,13 +15,13 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=CDED34F8A3AEFF72A18A3733E4E38B68; Path=/; HttpOnly
+      - JSESSIONID=5ECB43734469F535EBC8424C048843D1; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -31,15 +31,20 @@ http_interactions:
       - no-cache
       - no-store
       Content-Type:
-      - application/json
+      - text/plain
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 26 Feb 2013 03:28:32 GMT
+      - Tue, 26 Feb 2013 03:08:47 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"buildType":[{"id":"bt2","name":"build A1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt2","projectName":"Project
-        A","projectId":"project2","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt2"}]}'
+      string: ! 'Error has occurred during request processing (Not Found).
+
+        Error: jetbrains.buildServer.server.rest.errors.NotFoundException: No project
+        found by locator ''id:missing. Project cannot be found by id ''missing''.
+
+        Could not find the entity requested. Check the reference is correct and the
+        user has permissions to access the entity.'
     http_version: 
-  recorded_at: Tue, 26 Feb 2013 03:28:32 GMT
+  recorded_at: Tue, 26 Feb 2013 03:08:47 GMT
 recorded_with: VCR 2.4.0

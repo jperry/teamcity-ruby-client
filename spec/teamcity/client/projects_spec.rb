@@ -19,10 +19,14 @@ describe 'Projects' do
   # Get requests
   describe 'GET' do
 
-    describe '.projects', :vcr do
+    describe '.projects' do
 
-      it 'should fetch projects' do
+      it 'should fetch projects', :vcr do
         @tc.projects.should_not be_nil
+      end
+
+      it 'should return nil if there are no projects', :vcr do
+        @tc.projects.should be_nil
       end
     end
 
@@ -32,16 +36,12 @@ describe 'Projects' do
         @tc.project(id: 'project2').should_not be_nil
       end
 
-      it 'should raise an error if no options are provided' do
+      it 'should raise an error if the project does not exist', :vcr do
+        expect { @tc.project(id: 'missing') }.to raise_error
+      end
+
+      it 'should raise an error if an id is not provided' do
         expect { @tc.project }.to raise_error
-      end
-
-      it 'should raise an error if the option key is not supported' do
-        expect { @tc.project(foo: 'bar') }
-      end
-
-      it 'should raise an error if the id provided is not of the correct format' do
-        expect { @tc.project(id: '123') }
       end
     end
 
@@ -52,6 +52,11 @@ describe 'Projects' do
         bts.each do |bt|
           bt.projectId.should eq('project2')
         end
+      end
+
+      it 'should return nil if the project does not have any build build types', :vcr do
+        bts = @tc.project_buildtypes(id: 'project5')
+        bts.should be_nil
       end
     end
 

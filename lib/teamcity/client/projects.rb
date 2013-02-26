@@ -7,7 +7,7 @@ module TeamCity
 
       # List of projects
       #
-      # @return [Array<Hashie::Mash>] of projects
+      # @return [Array<Hashie::Mash>, nil] of projects or nil if no projects exist
       def projects
         response = get('projects')
         response['project']
@@ -26,7 +26,7 @@ module TeamCity
       # List of Build Configurations of a project
       #
       # @param (see #project)
-      # @return [Array<Hashie::Mash>] of build types
+      # @return [Array<Hashie::Mash>, nil] of build types or nil if no build types exist
       def project_buildtypes(options={})
         !options[:id] and raise ArgumentError, "Must provide an id"
         locator = "id:#{options[:id]}"

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects/id:project2/buildTypes
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=CDED34F8A3AEFF72A18A3733E4E38B68; Path=/; HttpOnly
+      - JSESSIONID=D4F1893628C97DB58C370726929F7B67; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,11 +35,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 26 Feb 2013 03:28:32 GMT
+      - Tue, 26 Feb 2013 03:04:07 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"buildType":[{"id":"bt2","name":"build A1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt2","projectName":"Project
-        A","projectId":"project2","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt2"}]}'
+      string: 'null'
     http_version: 
-  recorded_at: Tue, 26 Feb 2013 03:28:32 GMT
+  recorded_at: Tue, 26 Feb 2013 03:04:07 GMT
 recorded_with: VCR 2.4.0
