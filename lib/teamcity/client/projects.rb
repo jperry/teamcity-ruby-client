@@ -33,6 +33,17 @@ module TeamCity
         response = get("projects/#{locator}/buildTypes")
         response['buildType']
       end
+
+      # List of parameters defined on a project
+      #
+      # @param (see #project)
+      # @return [Array<Hashie::Mash>, nil] of parameters or nil if no parameters are defined
+      def project_parameters(options={})
+        !options[:id] and raise ArgumentError, "Must provide an id"
+        locator = "id:#{options[:id]}"
+        response = get("projects/#{locator}/parameters")
+        response['property']
+      end
     end
   end
 end

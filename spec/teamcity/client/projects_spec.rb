@@ -60,5 +60,23 @@ describe 'Projects' do
       end
     end
 
+    describe '.project_parameters' do
+      it 'should fetch all the paramters for a given project', :vcr do
+        parameters = @tc.project_parameters(id: 'project2')
+        parameters.size.should eq(3)
+      end
+
+      it 'should return nil if there are no parameters defined for a project', :vcr do
+        parameters = @tc.project_parameters(id: 'project3')
+        parameters.should be_nil
+      end
+
+      it 'should raise an error if the project does not exist' do
+        expect { @tc.project_parameters(id: 'missing')}
+      end
+    end
+
+
+
   end
 end
