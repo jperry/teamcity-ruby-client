@@ -31,8 +31,18 @@ module TeamCity
       # Get build configuration settings
       #
       # @param (see #buildtype)
-      # @return [Hashie::Mash] of build configuration settings
+      # @return [Array<Hashie::Mash>] of build configuration settings
       def buildtype_settings(options={})
+        assert_options(options)
+        response = get("buildTypes/#{buildtype_locator(options)}/settings")
+        response['property']
+      end
+
+      # Get build configuration parameters
+      #
+      # @param (see #buildtype)
+      # @return [Array<Hashie::Mash>] of build configuration parameters
+      def buildtype_parameters(options={})
         assert_options(options)
         response = get("buildTypes/#{buildtype_locator(options)}/settings")
         response['property']

@@ -58,5 +58,21 @@ describe 'Projects' do
         @tc.buildtype_settings(id: 'bt2').should be_kind_of(Array)
       end
     end
+
+    describe '.buildtype_parameters' do
+      it 'should fetch the parameters for a given buildtype', :vcr do
+        @tc.buildtype_parameters(id: 'bt2').should_not be_empty
+      end
+
+      it 'should return an array', :vcr do
+        @tc.buildtype_parameters(id: 'bt2').should be_kind_of(Array)
+      end
+
+      it 'should return nil if there are no parameters defined', :vcr do
+        @tc.buildtype_parameters(id: 'bt3').should_not be_nil
+      end
+    end
+
+
   end
 end
