@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/features
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=D4FBA048C7B5F7D850D8D8C98CA63664; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2013 22:25:55 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"feature":[{"id":"perfmon","type":"perfmon","properties":null},{"id":"jetbrains.agent.free.space","type":"jetbrains.agent.free.space","properties":{"property":[{"name":"free-space-work","value":"3gb"}]}}]}'
+    http_version: 
+  recorded_at: Mon, 04 Mar 2013 22:25:55 GMT
+recorded_with: VCR 2.4.0

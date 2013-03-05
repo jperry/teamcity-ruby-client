@@ -86,5 +86,19 @@ describe 'Projects' do
         @tc.buildtype_steps(id: 'bt3').should be_nil
       end
     end
+
+    describe '.buildtype_features' do
+      it 'should fetch the build features defined for a particulare buildtype', :vcr do
+        @tc.buildtype_features(id: 'bt2').size.should eq(2)
+      end
+
+      it 'should return an array', :vcr do
+        @tc.buildtype_features(id: 'bt2').should be_kind_of(Array)
+      end
+
+      it 'should return nil if there are no steps defined', :vcr do
+        @tc.buildtype_features(id: 'bt3').should be_nil
+      end
+    end
   end
 end

@@ -58,6 +58,16 @@ module TeamCity
         response['step']
       end
 
+      # Get build configuration features
+      #
+      # @param (see #buildtype)
+      # @return [Array<Hashie::Mash>] of build configuration features
+      def buildtype_features(options={})
+        assert_options(options)
+        response = get("buildTypes/#{buildtype_locator(options)}/features")
+        response['feature']
+      end
+
       private
 
       def assert_options(options)
