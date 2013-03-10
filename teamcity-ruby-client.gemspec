@@ -19,11 +19,11 @@ Gem::Specification.new do |gem|
 
   # Dependencies
   gem.add_development_dependency('rspec', '~> 2.12')
-  gem.add_development_dependency('webmock', '~> 1.9.0')
+  gem.add_development_dependency('webmock', '~> 1.11.0')
   gem.add_development_dependency('rake', '~> 10.0.3')
   gem.add_development_dependency('pry', '~> 0.9.12')
   gem.add_development_dependency('vcr', '~> 2.4.0')
-  gem.add_development_dependency('yard', '~> 0.8.4.1')
+  gem.add_development_dependency('yard', '~> 0.8.5.2')
   gem.add_development_dependency('redcarpet', '~> 2.2.2')
   gem.add_runtime_dependency('faraday', '~> 0.8.5')
   gem.add_runtime_dependency('faraday_middleware', '~> 0.9.0')
