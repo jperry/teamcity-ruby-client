@@ -49,31 +49,18 @@ describe 'Projects' do
       end
     end
 
-    describe '.buildtype_settings' do
-      it 'should fetch the settings for a given buildtype', :vcr do
-        @tc.buildtype_settings(id: 'bt2').should_not be_empty
+    describe '.buildtype_settings', :vcr do
+      it 'should fetch the settings for a given buildtype' do
+        @tc.buildtype_settings(id: 'bt2').should have_at_least(1).items
       end
 
-      it 'should return an array', :vcr do
+      it 'should return an array' do
         @tc.buildtype_settings(id: 'bt2').should be_kind_of(Array)
       end
     end
 
-    describe '.buildtype_parameters' do
-      it 'should fetch the parameters for a given buildtype', :vcr do
-        @tc.buildtype_parameters(id: 'bt2').should_not be_empty
-      end
-
-      it 'should return an array', :vcr do
-        @tc.buildtype_parameters(id: 'bt2').should be_kind_of(Array)
-      end
-
-      it 'should return nil if there are no parameters defined', :vcr do
-        @tc.buildtype_parameters(id: 'bt3').should be_nil
-      end
-    end
-
     [
+      :parameters,
       :steps,
       :features,
       :triggers,
@@ -81,21 +68,21 @@ describe 'Projects' do
       :snapshot_dependencies,
       :artifact_dependencies
     ].each do |type|
-      describe ".buildtype_#{type}" do
+      describe ".buildtype_#{type}", :vcr do
 
         before(:each) do
           @method_name = "buildtype_#{type}"
         end
 
-        it "should fetch the build configuration #{type} for a buildtype", :vcr do
-          @tc.send(@method_name, id: 'bt2').size.should eq(1)
+        it "should fetch the build configuration #{type} for a buildtype" do
+          @tc.send(@method_name, id: 'bt2').should have_at_least(1).items
         end
 
-        it 'should return an array', :vcr do
+        it 'should return an array' do
           @tc.send(@method_name, id: 'bt2').should be_kind_of(Array)
         end
 
-        it "should return nil if there are no #{type} defined", :vcr do
+        it "should return nil if there are no #{type} defined" do
           @tc.send(@method_name, id: 'bt3').should be_nil
         end
       end
