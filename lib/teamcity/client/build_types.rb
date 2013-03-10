@@ -1,7 +1,11 @@
+require 'linguistics'
+
 module TeamCity
   class Client
     # Defines methods related to build types (or build configurations)
     module BuildTypes
+
+      Linguistics.use :en
 
       # HTTP GET
 
@@ -44,29 +48,31 @@ module TeamCity
       # @return [Array<Hashie::Mash>] of build configuration parameters
       def buildtype_parameters(options={})
         assert_options(options)
-        response = get("buildTypes/#{buildtype_locator(options)}/settings")
+        response = get("buildTypes/#{buildtype_locator(options)}/parameters")
         response['property']
       end
 
-      # Get build configuration steps
-      #
-      # @param (see #buildtype)
-      # @return [Array<Hashie::Mash>] of build configuration steps
-      def buildtype_steps(options={})
-        assert_options(options)
-        response = get("buildTypes/#{buildtype_locator(options)}/steps")
-        response['step']
+      # @macro [attach] build configuration settings
+      #   @method buildtype_$1(options = {})
+      #   Get build configuration $1
+      #   @param options [Hash] option keys, :id => buildtype_id
+      #   @return [Array<Hashie::Mash>] of build configuration $1
+      def self.make_method(name)
+        define_method("buildtype_#{name}".to_sym) do |options|
+          name_has_dashes = name.to_s.gsub('_', '-')
+          assert_options(options)
+          response = get("buildTypes/#{buildtype_locator(options)}/#{name_has_dashes}")
+          response[name_has_dashes.en.plural]
+        end
       end
+      private_class_method :make_method
 
-      # Get build configuration features
-      #
-      # @param (see #buildtype)
-      # @return [Array<Hashie::Mash>] of build configuration features
-      def buildtype_features(options={})
-        assert_options(options)
-        response = get("buildTypes/#{buildtype_locator(options)}/features")
-        response['feature']
-      end
+      make_method :features
+      make_method :triggers
+      make_method :steps
+      make_method :agent_requirements
+      make_method :artifact_dependencies
+      make_method :snapshot_dependencies
 
       private
 

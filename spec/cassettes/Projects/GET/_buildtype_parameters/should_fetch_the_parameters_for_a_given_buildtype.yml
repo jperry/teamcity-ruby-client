@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/settings
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/parameters
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=C327919B3BEAA46217D1752C3545A04D; Path=/; HttpOnly
+      - JSESSIONID=8405B61D997597A4DB9F52F3EB674A6D; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,10 +35,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 04 Mar 2013 22:01:54 GMT
+      - Thu, 07 Mar 2013 13:20:03 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"{0}"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"}]}'
+      string: ! '{"property":[{"name":"env.test1","value":"test"},{"name":"param1","value":"1"},{"name":"system.test","value":"test"}]}'
     http_version: 
-  recorded_at: Mon, 04 Mar 2013 22:01:54 GMT
+  recorded_at: Thu, 07 Mar 2013 13:20:03 GMT
 recorded_with: VCR 2.4.0

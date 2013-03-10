@@ -69,36 +69,58 @@ describe 'Projects' do
       end
 
       it 'should return nil if there are no parameters defined', :vcr do
-        @tc.buildtype_parameters(id: 'bt3').should_not be_nil
+        @tc.buildtype_parameters(id: 'bt3').should be_nil
       end
     end
 
-    describe '.buildtype_steps' do
-      it 'should fetch the build steps defined for a given buildtype', :vcr do
-        @tc.buildtype_steps(id: 'bt2').size.should eq(2)
-      end
+    [:steps, :features, :triggers, :agent_requirements, :snapshot_dependencies, :artifact_dependencies].each do |type|
+      describe ".buildtype_#{type}" do
 
-      it 'should return an array', :vcr do
-        @tc.buildtype_steps(id: 'bt2').should be_kind_of(Array)
-      end
+        before(:each) do
+          @method_name = "buildtype_#{type}"
+        end
 
-      it 'should return nil if there are no steps defined', :vcr do
-        @tc.buildtype_steps(id: 'bt3').should be_nil
+        it "should fetch the build configuration #{type} for a buildtype", :vcr do
+          @tc.send(@method_name, id: 'bt2').size.should eq(1)
+        end
+
+        it 'should return an array', :vcr do
+          @tc.send(@method_name, id: 'bt2').should be_kind_of(Array)
+        end
+
+        it "should return nil if there are no #{type} defined", :vcr do
+          @tc.send(@method_name, id: 'bt3').should be_nil
+        end
       end
     end
 
-    describe '.buildtype_features' do
-      it 'should fetch the build features defined for a particulare buildtype', :vcr do
-        @tc.buildtype_features(id: 'bt2').size.should eq(2)
-      end
 
-      it 'should return an array', :vcr do
-        @tc.buildtype_features(id: 'bt2').should be_kind_of(Array)
-      end
-
-      it 'should return nil if there are no steps defined', :vcr do
-        @tc.buildtype_features(id: 'bt3').should be_nil
-      end
-    end
+    #describe '.buildtype_steps' do
+    #  it 'should fetch the build steps defined for a given buildtype', :vcr do
+    #    @tc.buildtype_steps(id: 'bt2').size.should eq(2)
+    #  end
+    #
+    #  it 'should return an array', :vcr do
+    #    @tc.buildtype_steps(id: 'bt2').should be_kind_of(Array)
+    #  end
+    #
+    #  it 'should return nil if there are no steps defined', :vcr do
+    #    @tc.buildtype_steps(id: 'bt3').should be_nil
+    #  end
+    #end
+    #
+    #describe '.buildtype_features' do
+    #  it 'should fetch the build features defined for a particulare buildtype', :vcr do
+    #    @tc.buildtype_features(id: 'bt2').size.should eq(2)
+    #  end
+    #
+    #  it 'should return an array', :vcr do
+    #    @tc.buildtype_features(id: 'bt2').should be_kind_of(Array)
+    #  end
+    #
+    #  it 'should return nil if there are no steps defined', :vcr do
+    #    @tc.buildtype_features(id: 'bt3').should be_nil
+    #  end
+    #end
   end
 end

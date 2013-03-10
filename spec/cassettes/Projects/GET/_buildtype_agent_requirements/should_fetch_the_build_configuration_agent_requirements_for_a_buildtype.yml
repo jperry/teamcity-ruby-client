@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/features
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/agent-requirements
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=D4FBA048C7B5F7D850D8D8C98CA63664; Path=/; HttpOnly
+      - JSESSIONID=A209BED15B61EF2C906675892B8BE33D; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,10 +35,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 04 Mar 2013 22:25:55 GMT
+      - Sun, 10 Mar 2013 04:02:35 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"feature":[{"id":"perfmon","type":"perfmon","properties":null},{"id":"jetbrains.agent.free.space","type":"jetbrains.agent.free.space","properties":{"property":[{"name":"free-space-work","value":"3gb"}]}}]}'
+      string: ! '{"agent-requirement":[{"id":"system.os.name","type":"equals","properties":{"property":[{"name":"property-name","value":"system.os.name"},{"name":"property-value","value":"linux"}]}}]}'
     http_version: 
-  recorded_at: Mon, 04 Mar 2013 22:25:55 GMT
+  recorded_at: Sun, 10 Mar 2013 04:02:35 GMT
 recorded_with: VCR 2.4.0

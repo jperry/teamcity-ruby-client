@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=C46C85EAE3A5D62C2A01E0E34BB7B85B; Path=/; HttpOnly
+      - JSESSIONID=9BA979A1FD56C318E60082EF814D4463; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,14 +35,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 04 Mar 2013 22:17:09 GMT
+      - Sun, 10 Mar 2013 04:05:03 GMT
     body:
       encoding: US-ASCII
       string: ! '{"step":[{"id":"RUNNER_1","name":"continuous","type":"Maven2","properties":{"property":[{"name":"goals","value":"clean
         verify"},{"name":"mavenSelection","value":"mavenSelection:default"},{"name":"pomLocation","value":"pom.xml"},{"name":"teamcity.coverage.emma.include.source","value":"true"},{"name":"teamcity.coverage.emma.instr.parameters","value":"-ix
-        -*Test*"},{"name":"teamcity.coverage.idea.includePatterns","value":"*"},{"name":"teamcity.step.mode","value":"default"},{"name":"userSettingsSelection","value":"userSettingsSelection:default"}]}},{"id":"RUNNER_2","name":"run
-        tests","type":"simpleRunner","properties":{"property":[{"name":"script.content","value":"#
-        run some tests."},{"name":"teamcity.step.mode","value":"default"},{"name":"use.custom.script","value":"true"}]}}]}'
+        -*Test*"},{"name":"teamcity.coverage.idea.includePatterns","value":"*"},{"name":"teamcity.step.mode","value":"default"},{"name":"userSettingsSelection","value":"userSettingsSelection:default"}]}}]}'
     http_version: 
-  recorded_at: Mon, 04 Mar 2013 22:17:09 GMT
+  recorded_at: Sun, 10 Mar 2013 04:05:04 GMT
 recorded_with: VCR 2.4.0

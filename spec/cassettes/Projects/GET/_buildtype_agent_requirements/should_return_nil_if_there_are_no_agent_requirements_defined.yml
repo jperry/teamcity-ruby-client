@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/parameters
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt3/agent-requirements
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=FC02411E78837A955C8F07A237D0A486; Path=/; HttpOnly
+      - JSESSIONID=790DCE47DD60B549A4C5B05709B61730; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,10 +35,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Thu, 07 Mar 2013 13:20:03 GMT
+      - Sun, 10 Mar 2013 04:02:35 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"property":[{"name":"env.test1","value":"test"},{"name":"param1","value":"1"},{"name":"system.test","value":"test"}]}'
+      string: 'null'
     http_version: 
-  recorded_at: Thu, 07 Mar 2013 13:20:03 GMT
+  recorded_at: Sun, 10 Mar 2013 04:02:35 GMT
 recorded_with: VCR 2.4.0
