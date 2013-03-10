@@ -17,11 +17,11 @@ describe 'Projects' do
   end
 
   # Get requests
-  describe 'GET' do
+  describe 'GET', :vcr do
 
     describe '.buildtypes' do
 
-      it 'should fetch all the buildtypes', :vcr do
+      it 'should fetch all the buildtypes' do
         @tc.buildtypes.size.should eq(3)
       end
 
@@ -29,11 +29,11 @@ describe 'Projects' do
 
     describe '.buildtype' do
 
-      it 'should fetch the details of a buildtype by id', :vcr do
+      it 'should fetch the details of a buildtype by id' do
         @tc.buildtype(id: 'bt2').id.should eq('bt2')
       end
 
-      it 'should raise an error if the buildtype does not exist', :vcr do
+      it 'should raise an error if the buildtype does not exist' do
         expect { @tc.buildtype(id: 'missing') }.to raise_error
       end
 
@@ -43,13 +43,13 @@ describe 'Projects' do
     end
 
     describe '.buildtype_state' do
-      it 'should fetch the state of the buildtype', :vcr do
+      it 'should fetch the state of the buildtype' do
         pending "bug in rest api plugin"
         @tc.buildtype_state(id: 'bt2')
       end
     end
 
-    describe '.buildtype_settings', :vcr do
+    describe '.buildtype_settings' do
       it 'should fetch the settings for a given buildtype' do
         @tc.buildtype_settings(id: 'bt2').should have_at_least(1).items
       end
@@ -68,7 +68,7 @@ describe 'Projects' do
       :snapshot_dependencies,
       :artifact_dependencies
     ].each do |type|
-      describe ".buildtype_#{type}", :vcr do
+      describe ".buildtype_#{type}" do
 
         before(:each) do
           @method_name = "buildtype_#{type}"
