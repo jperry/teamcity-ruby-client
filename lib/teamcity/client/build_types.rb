@@ -23,13 +23,13 @@ module TeamCity
       # @return [Hashie::Mash] of build configuration details
       def buildtype(options={})
         assert_options(options)
-        get("buildTypes/#{buildtype_locator(options)}")
+        get("buildTypes/#{locator(options)}")
       end
 
       # TODO: File jetbrains ticket, this call doesn't work
       #def buildtype_state(options={})
       #  assert_options(options)
-      #  get("buildTypes/#{buildtype_locator(options)}/paused")
+      #  get("buildTypes/#{locator(options)}/paused")
       #end
 
       # Get build configuration settings
@@ -38,7 +38,7 @@ module TeamCity
       # @return [Array<Hashie::Mash>] of build configuration settings
       def buildtype_settings(options={})
         assert_options(options)
-        response = get("buildTypes/#{buildtype_locator(options)}/settings")
+        response = get("buildTypes/#{locator(options)}/settings")
         response['property']
       end
 
@@ -48,7 +48,7 @@ module TeamCity
       # @return [Array<Hashie::Mash>] of build configuration parameters
       def buildtype_parameters(options={})
         assert_options(options)
-        response = get("buildTypes/#{buildtype_locator(options)}/parameters")
+        response = get("buildTypes/#{locator(options)}/parameters")
         response['property']
       end
 
@@ -61,7 +61,7 @@ module TeamCity
         define_method("buildtype_#{name}".to_sym) do |options|
           name_has_dashes = name.to_s.gsub('_', '-')
           assert_options(options)
-          response = get("buildTypes/#{buildtype_locator(options)}/#{name_has_dashes}")
+          response = get("buildTypes/#{locator(options)}/#{name_has_dashes}")
           response[name_has_dashes.en.plural]
         end
       end
@@ -73,16 +73,6 @@ module TeamCity
       make_method :agent_requirements
       make_method :artifact_dependencies
       make_method :snapshot_dependencies
-
-      private
-
-      def assert_options(options)
-        !options[:id] and raise ArgumentError, "Must provide an id"
-      end
-
-      def buildtype_locator(options={})
-        "id:#{options[:id]}"
-      end
 
     end
   end

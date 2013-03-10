@@ -18,9 +18,8 @@ module TeamCity
       # @param options [Hash] option keys, :id => project_id
       # @return [Hashie::Mash] of project details
       def project(options={})
-        !options[:id] and raise ArgumentError, "Must provide an id"
-        locator = "id:#{options[:id]}"
-        get("projects/#{locator}")
+        assert_options(options)
+        get("projects/#{locator(options)}")
       end
 
       # List of Build Configurations of a project
@@ -28,9 +27,8 @@ module TeamCity
       # @param (see #project)
       # @return [Array<Hashie::Mash>, nil] of build types or nil if no build types exist
       def project_buildtypes(options={})
-        !options[:id] and raise ArgumentError, "Must provide an id"
-        locator = "id:#{options[:id]}"
-        response = get("projects/#{locator}/buildTypes")
+        assert_options(options)
+        response = get("projects/#{locator(options)}/buildTypes")
         response['buildType']
       end
 
@@ -39,9 +37,8 @@ module TeamCity
       # @param (see #project)
       # @return [Array<Hashie::Mash>, nil] of parameters or nil if no parameters are defined
       def project_parameters(options={})
-        !options[:id] and raise ArgumentError, "Must provide an id"
-        locator = "id:#{options[:id]}"
-        response = get("projects/#{locator}/parameters")
+        assert_options(options)
+        response = get("projects/#{locator(options)}/parameters")
         response['property']
       end
     end
