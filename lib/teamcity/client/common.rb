@@ -7,7 +7,7 @@ module TeamCity
       private
 
       def assert_options(options)
-        !options[:id] and raise ArgumentError, "Must provide an id"
+        !options[:id] and raise ArgumentError, "Must provide an id", caller
       end
 
       def locator(options={})
