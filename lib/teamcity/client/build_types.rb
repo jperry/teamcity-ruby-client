@@ -73,6 +73,7 @@ module TeamCity
       make_method :agent_requirements
       make_method :artifact_dependencies
       make_method :snapshot_dependencies
+      make_method :vcs_root_entries
 
     end
   end

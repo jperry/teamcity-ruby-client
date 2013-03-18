@@ -66,7 +66,8 @@ describe 'Projects' do
       :triggers,
       :agent_requirements,
       :snapshot_dependencies,
-      :artifact_dependencies
+      :artifact_dependencies,
+      :vcs_root_entries
     ].each do |type|
       describe ".buildtype_#{type}" do
 
