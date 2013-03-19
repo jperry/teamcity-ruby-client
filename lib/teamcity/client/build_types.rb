@@ -52,6 +52,19 @@ module TeamCity
         response['property']
       end
 
+      # Get template associated with build configuration
+      #
+      # @param (see #buildtype)
+      # @return [Hashie::Mash, nil] of build configuration parameters or nil if
+      def buildtype_template(options={})
+        assert_options(options)
+        begin
+          get("buildTypes/#{locator(options)}/template")
+        rescue StandardError => e
+          /No template associated/.match(e.to_s) ? nil : raise
+        end
+      end
+
       # @macro [attach] build configuration settings
       #   @method buildtype_$1(options = {})
       #   Get build configuration $1

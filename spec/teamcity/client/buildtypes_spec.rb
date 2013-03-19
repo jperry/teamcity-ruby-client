@@ -59,6 +59,20 @@ describe 'Projects' do
       end
     end
 
+    describe '.buildtype_template' do
+      it 'should return the attributes of the associated template' do
+        @tc.buildtype_template(id: 'bt2').id.should_not be_nil
+      end
+
+      it 'should return nil if the buildtype is not associated with a template' do
+        @tc.buildtype_template(id: 'bt3').should be_nil
+      end
+
+      it 'should raise an exception if the response is not due to a template not assigned' do
+        expect { @tc.buildtype_template(id: 'bt500').should be_nil }.to raise_error
+      end
+    end
+
     [
       :parameters,
       :steps,
