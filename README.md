@@ -104,6 +104,7 @@ the client against as well as the gem and ruby versions.
 4. Add documentation for your feature or bug fix.
 5. Run ```rake doc:yard```. If your changes are not 100% documented, go back to step 4.
 6. Add specs for your feature or bug fix.
+7. If the rspec test is making a request use VCR to record the response, see the other examples.
 7. Run ```rake spec```. If your changes are not 100% covered, go back to step 6.
 8. Commit and push your changes.
 9. Submit a pull request.
