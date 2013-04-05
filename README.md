@@ -46,7 +46,7 @@ puts TeamCity.project(id: 'project1')
 # Get a list of buildtypes for a project
 puts TeamCity.project_buildtypes(id: 'project1')
 
-# Each item returned is a mashie object which allows you to send messages
+# Each item returned is a Hashie::Mash object which allows you to send messages
 # to retreive an attribute easily.  For example, get the name of
 # the first buildtype in a project
 puts TeamCity.project_buildtypes(id: 'project1').first.name
