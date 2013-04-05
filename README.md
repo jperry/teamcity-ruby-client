@@ -20,15 +20,22 @@ Or install it yourself as:
 
 * Tested on TeamCity 7.0 and higher
 
+### Configuration
+
 ```ruby
 require 'teamcity'
 
 # Currently only guest authentication is supported, next version will
-# support authentication which will allow write api calls.
+# support authentication which will allow write api calls.  Use this
+# with all the other calls below.
 TeamCity.configure do |config|
   config.endpoint = 'http://teamcity:8111/guestAuth/app/rest'
 end
+```
 
+### Projects
+
+```ruby
 # Get a list of projects
 puts TeamCity.projects
 
@@ -37,7 +44,11 @@ puts TeamCity.project(id: project1)
 
 # Get a list of buildtypes for a project
 puts TeamCity.project_buildtypes(id: project1)
+```
 
+### Build Types (Build Configurations)
+
+```ruby
 # Get a list of buildtypes (build configurations)
 puts TeamCity.buildtypes
 
