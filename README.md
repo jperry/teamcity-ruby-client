@@ -19,6 +19,7 @@ Or install it yourself as:
 ## API Usage Examples
 
 * Tested on TeamCity 7.0 and higher
+* See the spec tests for more examples
 
 ### Configuration
 
@@ -40,10 +41,15 @@ end
 puts TeamCity.projects
 
 # Get a project by id
-puts TeamCity.project(id: project1)
+puts TeamCity.project(id: 'project1')
 
 # Get a list of buildtypes for a project
-puts TeamCity.project_buildtypes(id: project1)
+puts TeamCity.project_buildtypes(id: 'project1')
+
+# Each item returned is a mashie object which allows you to send messages
+# to retreive an attribute easily.  For example, get the name of
+# the first buildtype in a project
+puts TeamCity.project_buildtypes(id: 'project1').first.name
 ```
 
 ### Build Types (Build Configurations)
@@ -53,10 +59,10 @@ puts TeamCity.project_buildtypes(id: project1)
 puts TeamCity.buildtypes
 
 # Get buildtype details (build configuration)
-puts TeamCity.buildtype(id: bt1)
+puts TeamCity.buildtype(id: 'bt1')
 
 # Get buildtype steps
-puts TeamCity.buildtype_steps(id: bt1)
+puts TeamCity.buildtype_steps(id: 'bt1')
 
 # See the api docs for more api calls
 ```
