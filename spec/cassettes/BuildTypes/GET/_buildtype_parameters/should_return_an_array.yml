@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/parameters
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=B2AD6051817F75F169ABD1C2FDDCDFD4; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 23 Apr 2013 15:14:22 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"property":[{"name":"env.test1","value":"test"},{"name":"param1","value":"1"},{"name":"system.test","value":"test"}]}'
+    http_version: 
+  recorded_at: Tue, 23 Apr 2013 15:14:23 GMT
+recorded_with: VCR 2.4.0

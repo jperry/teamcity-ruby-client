@@ -1,6 +1,6 @@
 require_relative '../../spec_helper'
 
-describe 'Projects' do
+describe 'BuildTypes' do
 
   before(:each) do
     @tc = TeamCity
@@ -89,7 +89,7 @@ describe 'Projects' do
           @method_name = "buildtype_#{type}"
         end
 
-        it "should fetch the build configuration #{type} for a buildtype" do
+          it "should fetch the build configuration #{type} for a buildtype" do
           @tc.send(@method_name, id: 'bt2').should have_at_least(1).items
         end
 
@@ -98,7 +98,7 @@ describe 'Projects' do
         end
 
         it "should return nil if there are no #{type} defined" do
-          @tc.send(@method_name, id: 'bt3').should be_nil
+          @tc.send(@method_name, id: 'bt4').should be_nil
         end
       end
     end
