@@ -10,8 +10,14 @@ module TeamCity
         !options[:id] and raise ArgumentError, "Must provide an id", caller
       end
 
+      # Take a list of locators to search on multiple criterias
+      #
       def locator(options={})
-        "id:#{options[:id]}"
+        test = options.inject([]) do |locators, locator|
+          key, value = locator
+          locators << "#{key}:#{value}"
+        end.join(',')
+        test
       end
     end
   end

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds?locator=count:2,status:SUCCESS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=563DAE14C741955B5672071C628E6737; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 23 Apr 2013 18:53:33 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"count":2,"nextHref":"/guestAuth/app/rest/7.0/builds?locator=count:2,status:SUCCESS&count=2&start=2","build":[{"id":2,"number":"2","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T105917-0400","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3"},{"id":1,"number":"1","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T104727-0400","href":"/guestAuth/app/rest/7.0/builds/id:1","webUrl":"http://localhost:8111/viewLog.html?buildId=1&buildTypeId=bt3"}]}'
+    http_version: 
+  recorded_at: Tue, 23 Apr 2013 18:53:33 GMT
+recorded_with: VCR 2.4.0

@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=711FE3293D9E6763968CCBBD7EF01B1F; Path=/; HttpOnly
+      - JSESSIONID=4CB39062DC98CE06FD3703463EF939B3; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
       Pragma:
       - no-cache
@@ -35,10 +35,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:05:31 GMT
+      - Tue, 23 Apr 2013 18:43:45 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"count":2,"build":[{"id":2,"number":"2","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T105917-0400","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3"},{"id":1,"number":"1","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T104727-0400","href":"/guestAuth/app/rest/7.0/builds/id:1","webUrl":"http://localhost:8111/viewLog.html?buildId=1&buildTypeId=bt3"}]}'
+      string: ! '{"count":4,"build":[{"id":4,"number":"1","status":"FAILURE","buildTypeId":"bt4","startDate":"20130423T142954-0400","href":"/guestAuth/app/rest/7.0/builds/id:4","webUrl":"http://localhost:8111/viewLog.html?buildId=4&buildTypeId=bt4"},{"id":3,"number":"1","status":"FAILURE","buildTypeId":"bt2","startDate":"20130423T142629-0400","href":"/guestAuth/app/rest/7.0/builds/id:3","webUrl":"http://localhost:8111/viewLog.html?buildId=3&buildTypeId=bt2"},{"id":2,"number":"2","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T105917-0400","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3"},{"id":1,"number":"1","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T104727-0400","href":"/guestAuth/app/rest/7.0/builds/id:1","webUrl":"http://localhost:8111/viewLog.html?buildId=1&buildTypeId=bt3"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:05:31 GMT
+  recorded_at: Tue, 23 Apr 2013 18:43:45 GMT
 recorded_with: VCR 2.4.0
