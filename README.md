@@ -118,3 +118,7 @@ the client against as well as the gem and ruby versions.
 ## Debugging Tips
 
 * Enable debug-rest in TeamCity to see all the rest api requests come through in the `teamcity-rest.log`, you can find this on the Diagnostics page under Server Administration
+
+## Questions/Comments
+
+Feel free to contact me directly through github.  Enjoy!
