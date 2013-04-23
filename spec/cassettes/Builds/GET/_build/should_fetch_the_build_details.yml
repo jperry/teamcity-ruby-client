@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds/id:2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=D2EA85979E1D8F7D6429B8530B5D8C77; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 23 Apr 2013 15:24:02 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":2,"number":"2","status":"SUCCESS","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3","personal":false,"history":false,"pinned":false,"statusText":"Tests
+        passed: 63, ignored: 1","buildType":{"id":"bt3","name":"build B1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt3","projectName":"Project
+        B","projectId":"project3","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt3"},"startDate":"20130423T105917-0400","finishDate":"20130423T110028-0400","agent":{"href":"/guestAuth/app/rest/7.0/agents/id:1","id":1,"name":"Default
+        Agent"},"tags":null,"properties":null,"snapshot-dependencies":null,"artifact-dependencies":null,"revisions":{"revision":[{"version":"bb19f54ab1d7450bf85b060f9cc9b6218dd61e5b","vcs-root-instance":{"id":"1","vcs-root-id":"1","name":"teamcity
+        ruby client","href":"/guestAuth/app/rest/7.0/vcs-roots/id:1/instances/id:1"}}]},"triggered":{"date":"20130423T105906-0400","user":{"href":"/guestAuth/app/rest/7.0/users/id:1","id":1,"name":"Jay
+        Perry","username":"jperry"}},"changes":{"count":0,"href":"/guestAuth/app/rest/7.0/changes?build=id:2"}}'
+    http_version: 
+  recorded_at: Tue, 23 Apr 2013 15:24:02 GMT
+recorded_with: VCR 2.4.0

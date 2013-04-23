@@ -8,6 +8,7 @@ module TeamCity
 
     include TeamCity::Client::Projects
     include TeamCity::Client::BuildTypes
+    include TeamCity::Client::Builds
     include TeamCity::Client::Common
   end
 end
