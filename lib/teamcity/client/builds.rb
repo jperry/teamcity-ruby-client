@@ -7,14 +7,13 @@ module TeamCity
 
       # List of builds
       #
+      # @param options [Hash] list of build locators to filter build results on
       # @return [Array<Hashie::Mash>, nil] of builds or nil if no builds exist
       def builds(options={})
         url_params = options.empty? ? '' : "?locator=#{locator(options)}"
         response = get("builds#{url_params}")
         response['build']
       end
-
-      # TODO: Add ability to use all the locator options
 
       # Get build details
       #
