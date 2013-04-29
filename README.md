@@ -67,6 +67,27 @@ puts TeamCity.buildtype_steps(id: 'bt1')
 # See the api docs for more api calls
 ```
 
+### Builds ###
+
+```ruby
+# Get build details
+puts TeamCity.build(id: 1)
+
+# Get build tags
+puts TeamCity.build_tags(id: 1)
+
+# Get all builds
+puts TeamCity.builds
+
+# Filter builds by multiple criteria's using the build locator
+puts TeamCity.builds(count: 2, status: 'SUCCESS') # This will return 2 builds where status=SUCCESS
+
+puts TeamCity.builds(buildType: 'bt3') # Fetch all builds where buildType=bt4
+
+puts TeamCity.builds(status: 'FAILURE') # Fetch all builds that failed
+
+```
+
 ## Documentation
 
 ### Generating API Docs
