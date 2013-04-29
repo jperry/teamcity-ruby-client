@@ -24,6 +24,8 @@ Or install it yourself as:
 
 ### Configuration
 
+* See [configuration](lib/teamcity/configuration.rb) source or api doc for more configuration options
+
 ```ruby
 require 'teamcity'
 
