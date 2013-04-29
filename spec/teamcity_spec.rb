@@ -38,32 +38,6 @@ describe TeamCity do
     end
   end
 
-  describe ".hostname" do
-    it "should return the default hostname" do
-      TeamCity.hostname.should == TeamCity::Configuration::DEFAULT_HOSTNAME
-    end
-  end
-
-  describe ".hostname=" do
-    it "should set the teamcity hostname" do
-      TeamCity.hostname = "my-teamcity-server"
-      TeamCity.hostname.should == "my-teamcity-server"
-    end
-  end
-
-  describe ".api_version" do
-    it "should return the default api version" do
-      TeamCity.api_version.should == TeamCity::Configuration::DEFAULT_API_VERSION
-    end
-  end
-
-  describe ".api_version=" do
-    it "should set the api version to use" do
-      TeamCity.hostname = "8.0"
-      TeamCity.hostname.should == "8.0"
-    end
-  end
-
   describe ".endpoint" do
     it "should return the default endpoint" do
       TeamCity.endpoint.should == TeamCity::Configuration::DEFAULT_ENDPOINT

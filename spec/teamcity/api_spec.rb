@@ -31,8 +31,6 @@ describe TeamCity::API do
       before do
         @configuration = {
           :adapter => :excon,
-          :hostname => 'my-teamcity-server',
-          :api_version => '7.0',
           :endpoint => 'http://teamcity.mydomain.com/',
           :format => :xml,
           :user_agent => 'My User Agent',

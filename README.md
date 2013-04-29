@@ -33,7 +33,7 @@ require 'teamcity'
 # support authentication which will allow write api calls.  This only needs
 # to be set once per Ruby execution.
 TeamCity.configure do |config|
-  config.hostname = 'my-teamcity-server'
+  config.endpoint = 'http://my-teamcity-server:8111/guestAuth/app/rest'
 end
 ```
 
