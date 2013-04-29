@@ -19,6 +19,7 @@ Or install it yourself as:
 ## API Usage Examples
 
 * Tested on TeamCity 7.0 and higher
+* Most of the api calls return either an array of Hashie::Mash objects or a single Hashie::Mash object which allows you to send messages to retreive an attribute easily.
 * See the spec tests for more examples
 
 ### Configuration
@@ -82,9 +83,14 @@ puts TeamCity.builds
 # Filter builds by multiple criteria's using the build locator
 puts TeamCity.builds(count: 1, status: 'SUCCESS') # This will return the most recent build that passed
 
+puts TeamCity.builds(count: 1).first.name
+
 puts TeamCity.builds(buildType: 'bt3') # Fetch all builds where buildType=bt4
 
 puts TeamCity.builds(status: 'FAILURE') # Fetch all builds that failed
+
+# Passing the output to another to fetch additional information
+puts TeamCity.build(id: TeamCity.builds(count: 1).first.id).buildType.name # Fetch the name of the last build to run
 
 ```
 
