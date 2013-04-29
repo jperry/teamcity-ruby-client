@@ -28,10 +28,10 @@ Or install it yourself as:
 require 'teamcity'
 
 # Currently only guest authentication is supported, next version will
-# support authentication which will allow write api calls.  Use this
-# with all the other calls below.
+# support authentication which will allow write api calls.  This only needs
+# to be set once per Ruby execution.
 TeamCity.configure do |config|
-  config.endpoint = 'http://teamcity:8111/guestAuth/app/rest'
+  config.hostname = 'my-teamcity-server'
 end
 ```
 

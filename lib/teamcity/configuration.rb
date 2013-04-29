@@ -5,6 +5,8 @@ module TeamCity
   module Configuration
     VALID_OPTIONS_KEYS = [
       :adapter,
+      :hostname,
+      :api_version,
       :endpoint,
       :user_agent,
       :format
@@ -14,7 +16,11 @@ module TeamCity
 
     DEFAULT_ADAPTER = Faraday.default_adapter
 
-    DEFAULT_ENDPOINT = 'http://teamcity:8111/guestAuth/app/rest/7.0/'.freeze
+    DEFAULT_HOSTNAME = 'teamcity'.freeze
+
+    DEFAULT_API_VERSION = '7.0'.freeze
+
+    DEFAULT_ENDPOINT = "http://#{DEFAULT_HOSTNAME}:8111/guestAuth/app/rest/#{DEFAULT_API_VERSION}/".freeze
 
     DEFAULT_USER_AGENT = "TeamCity Ruby Client #{TeamCity::VERSION}".freeze
 
@@ -39,6 +45,8 @@ module TeamCity
     # Reset all configuration options to defaults
     def reset
       self.adapter        = DEFAULT_ADAPTER
+      self.hostname       = DEFAULT_HOSTNAME
+      self.api_version    = DEFAULT_API_VERSION
       self.endpoint       = DEFAULT_ENDPOINT
       self.user_agent     = DEFAULT_USER_AGENT
       self.format         = DEFAULT_FORMAT
