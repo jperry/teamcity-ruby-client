@@ -39,7 +39,7 @@ describe 'Builds' do
       end
 
       it 'should raise an error if the build does not exist' do
-        expect { @tc.build(id: '10000') }.to raise_error
+        expect { @tc.build(id: 10000) }.to raise_error
       end
 
       it 'should raise an error if an id is not provided' do
