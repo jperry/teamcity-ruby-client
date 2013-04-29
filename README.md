@@ -76,11 +76,11 @@ puts TeamCity.build(id: 1)
 # Get build tags
 puts TeamCity.build_tags(id: 1)
 
-# Get all builds
+# Fetch all the builds (defaults to the last 100 builds, use the 'count' build locator to return more)
 puts TeamCity.builds
 
 # Filter builds by multiple criteria's using the build locator
-puts TeamCity.builds(count: 2, status: 'SUCCESS') # This will return 2 builds where status=SUCCESS
+puts TeamCity.builds(count: 1, status: 'SUCCESS') # This will return the most recent build that passed
 
 puts TeamCity.builds(buildType: 'bt3') # Fetch all builds where buildType=bt4
 
