@@ -7,7 +7,9 @@ module TeamCity
       :adapter,
       :endpoint,
       :user_agent,
-      :format
+      :format,
+      :http_user,
+      :http_password
     ].freeze
 
     VALID_FORMATS = [:json].freeze
@@ -17,6 +19,10 @@ module TeamCity
     DEFAULT_ENDPOINT = 'http://teamcity:8111/guestAuth/app/rest/7.0/'.freeze
 
     DEFAULT_USER_AGENT = "TeamCity Ruby Client #{TeamCity::VERSION}".freeze
+
+    DEFAULT_HTTP_USER = nil
+
+    DEFAULT_HTTP_PASSWORD = nil
 
     DEFAULT_FORMAT = :json
 
@@ -42,6 +48,8 @@ module TeamCity
       self.endpoint       = DEFAULT_ENDPOINT
       self.user_agent     = DEFAULT_USER_AGENT
       self.format         = DEFAULT_FORMAT
+      self.http_user      = DEFAULT_HTTP_USER
+      self.http_password  = DEFAULT_HTTP_PASSWORD
     end
   end
 end

@@ -34,6 +34,8 @@ describe TeamCity::API do
           :endpoint => 'http://teamcity.mydomain.com/',
           :format => :xml,
           :user_agent => 'My User Agent',
+          :http_user => 'tc-test-user',
+          :http_password => 'tc-test-password'
         }
       end
 

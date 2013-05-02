@@ -38,6 +38,32 @@ describe TeamCity do
     end
   end
 
+  describe ".http_user" do
+    it "should return the default http_user" do
+      TeamCity.http_user.should == TeamCity::Configuration::DEFAULT_HTTP_USER
+    end
+  end
+
+  describe ".http_user=" do
+    it "should set the http_user" do
+      TeamCity.http_user = 'test-user'
+      TeamCity.http_user.should == 'test-user'
+    end
+  end
+
+  describe ".http_password" do
+    it "should return the default http_password" do
+      TeamCity.http_password.should == TeamCity::Configuration::DEFAULT_HTTP_PASSWORD
+    end
+  end
+
+  describe ".http_password=" do
+    it "should set the http_password" do
+      TeamCity.http_password = 'test-pass'
+      TeamCity.http_password.should == 'test-pass'
+    end
+  end
+
   describe ".endpoint" do
     it "should return the default endpoint" do
       TeamCity.endpoint.should == TeamCity::Configuration::DEFAULT_ENDPOINT
