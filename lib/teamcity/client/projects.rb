@@ -42,6 +42,10 @@ module TeamCity
         response['property']
       end
 
+      # Create an empty project
+      #
+      # @param name [String] Name of the project
+      # @return [Hashie::Mash] project details
       def create_project(name)
         post("projects") do |req|
           req.headers['Content-Type'] = 'text/plain'
@@ -49,6 +53,11 @@ module TeamCity
         end
       end
 
+      # Copy another project
+      #
+      # @param source_project_id [String] id of the project you wish to copy
+      # @param target_project_name [String] name of the project you want to create
+      # @return [Hashie::Mash] project details
       def copy_project(source_project_id, target_project_name)
         post("projects") do |req|
           req.headers['Content-Type'] = 'application/xml'
