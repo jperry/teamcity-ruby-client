@@ -41,6 +41,13 @@ module TeamCity
         response = get("projects/#{locator(options)}/parameters")
         response['property']
       end
+
+      def create_project(name)
+        post("projects") do |req|
+          req.headers['Content-Type'] = 'text/plain'
+          req.body = name
+        end
+      end
     end
   end
 end

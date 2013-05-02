@@ -21,6 +21,7 @@ module TeamCity
         end
         connection.use FaradayMiddleware::NullResponseBody
         connection.adapter(adapter)
+        connection.basic_auth(http_user, http_password)
       end
     end
   end

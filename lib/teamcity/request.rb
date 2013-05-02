@@ -2,37 +2,32 @@ module TeamCity
   # Defines HTTP request methods
   module Request
     # Perform an HTTP GET request
-    def get(path, options={})
-      request(:get, path, options)
+    def get(path, &block)
+      request(:get, path, &block)
     end
 
     # Perform an HTTP POST request
-    def post(path, options={})
-      request(:post, path, options)
+    def post(path, &block)
+      request(:post, path, &block)
     end
 
     # Perform an HTTP PUT request
-    def put(path, options={})
-      request(:put, path, options)
+    def put(path, &block)
+      request(:put, path, &block)
     end
 
     # Perform an HTTP DELETE request
-    def delete(path, options={})
-      request(:delete, path, options)
+    def delete(path, &block)
+      request(:delete, path, &block)
     end
 
     private
 
     # Perform an HTTP request
-    def request(method, path, options)
+    def request(method, path, &block)
       response = connection.send(method) do |request|
-        case method
-        when :get, :delete
-          request.url(path, options)
-        when :post, :put
-          request.path = path
-          request.body = options unless options.empty?
-        end
+        block.call(request) if block_given?
+        request.url(path)
       end
       response.body
     end

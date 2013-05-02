@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects
+    body:
+      encoding: US-ASCII
+      string: test-create-project
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.1.0
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=A8DCC1CA6ACA6730F8D61927FC3268D3; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 02 May 2013 02:23:21 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project8","id":"project8","name":"test-create-project","href":"/httpAuth/app/rest/7.0/projects/id:project8","buildTypes":null,"templates":null,"parameters":null}'
+    http_version: 
+  recorded_at: Thu, 02 May 2013 02:23:21 GMT
+recorded_with: VCR 2.4.0

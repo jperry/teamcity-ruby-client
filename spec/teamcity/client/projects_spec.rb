@@ -6,18 +6,19 @@ describe 'Projects' do
     @tc = TeamCity
   end
 
-  before(:all) do
-    TeamCity.configure do |config|
-      config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
-    end
-  end
-
   after(:all) do
     TeamCity.reset
   end
 
-  # Get requests
+  # GET requests
   describe 'GET', :vcr do
+
+    before(:all) do
+      TeamCity.reset
+      TeamCity.configure do |config|
+        config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
+      end
+    end
 
     describe '.projects' do
 
@@ -75,7 +76,26 @@ describe 'Projects' do
         expect { @tc.project_parameters(id: 'missing')}
       end
     end
+  end
 
+  # POST Requests
+  describe 'POST', :vcr do
+
+    before(:all) do
+      TeamCity.reset
+      TeamCity.configure do |config|
+        config.endpoint       = 'http://localhost:8111/httpAuth/app/rest/7.0/'
+        config.http_user      = 'teamcity-ruby-client'
+        config.http_password  = 'teamcity'
+      end
+    end
+
+    describe '.create_project' do
+      it 'should create a project' do
+        response = @tc.create_project('test-create-project')
+        response.id.should match(/project/)
+      end
+    end
 
 
   end
