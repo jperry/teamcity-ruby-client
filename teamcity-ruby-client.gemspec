@@ -6,7 +6,7 @@ require 'teamcity/version'
 Gem::Specification.new do |gem|
   gem.name          = "teamcity-ruby-client"
   gem.version       = TeamCity::VERSION
-  gem.authors       = ['Jason Perry"']
+  gem.authors       = ['Jason Perry']
   gem.email         = ['bosoxjay@gmail.com']
   gem.description   = %q{A Ruby wrapper for the TeamCity Rest API}
   gem.summary       = %q{Ruby wrapper for the TeamCity API}
