@@ -13,11 +13,10 @@ module TeamCity
       # Take a list of locators to search on multiple criterias
       #
       def locator(options={})
-        test = options.inject([]) do |locators, locator|
+        options.inject([]) do |locators, locator|
           key, value = locator
           locators << "#{key}:#{value}"
         end.join(',')
-        test
       end
     end
   end
