@@ -97,6 +97,15 @@ describe 'Projects' do
       end
     end
 
+    describe '.copy_project' do
+      it 'should copy a project' do
+        source_project = @tc.create_project('copy-project-testA')
+        copied_project_name = 'copy-project-testB'
+        response = @tc.copy_project(source_project.id, copied_project_name)
+        response.name.should eq(copied_project_name)
+      end
+    end
+
 
   end
 end

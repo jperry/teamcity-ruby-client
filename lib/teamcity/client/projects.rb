@@ -48,6 +48,13 @@ module TeamCity
           req.body = name
         end
       end
+
+      def copy_project(source_project_id, target_project_name)
+        post("projects") do |req|
+          req.headers['Content-Type'] = 'application/xml'
+          req.body = "<newProjectDescription name='#{target_project_name}' sourceProjectLocator='id:#{source_project_id}' copyAllAssociatedSettings='true' shareVCSRoots='false'/>"
+        end
+      end
     end
   end
 end
