@@ -61,7 +61,14 @@ module TeamCity
       def copy_project(source_project_id, target_project_name)
         post("projects") do |req|
           req.headers['Content-Type'] = 'application/xml'
-          req.body = "<newProjectDescription name='#{target_project_name}' sourceProjectLocator='id:#{source_project_id}' copyAllAssociatedSettings='true' shareVCSRoots='false'/>"
+          builder = Builder::XmlMarkup.new
+          builder.newProjectDescription(
+            :name => target_project_name,
+            :sourceProjectLocator => "id:#{source_project_id}",
+            :copyAllAssociatedSettings => 'true',
+            :shareVCSRoots => 'false'
+          )
+          req.body = builder.target!
         end
       end
     end
