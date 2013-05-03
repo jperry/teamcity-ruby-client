@@ -78,6 +78,31 @@ module TeamCity
       def delete_project(project_id)
         delete("projects/#{project_id}")
       end
+      
+      # Delete a project parameter
+      #
+      # @param project_id [String] the project id
+      # @param parameter_name [String] name of the parameter to delete
+      # @return [nil]
+      def delete_project_parameter(project_id, parameter_name)
+        delete("projects/#{project_id}/parameters/#{parameter_name}") do |req|
+          # only accepts text/plain
+          req.headers['Accept'] = 'text/plain'
+        end
+      end
+
+      # Set a project parameter (Create or Update)
+      #
+      #
+      # @param project_id [String] the project id
+      # @param parameter_name [String] name of the parameter to set
+      # @param parameter_value [String] value of the parameter
+      def set_project_parameter(project_id, parameter_name, parameter_value)
+        put("projects/#{project_id}/parameters/#{parameter_name}") do |req|
+          req.headers['Content-Type'] = 'text/plain'
+          req.body = parameter_value
+        end
+      end
     end
   end
 end

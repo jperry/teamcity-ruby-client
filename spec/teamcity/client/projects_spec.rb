@@ -117,5 +117,25 @@ describe 'Projects' do
         @tc.delete_project(response.id).should be_nil
       end
     end
+
+    describe '.delete_project_parameter' do
+      it 'should delete a project parameter' do
+        response = @tc.delete_project_parameter('project2', 'delete-this-parameter')
+        response.should be_nil
+      end
+    end
+  end
+
+  describe 'PUT', :vcr do
+
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.set_project_parameter' do
+      it 'should set a project parameter' do
+        @tc.set_project_parameter('project2', 'set-this-parameter', 'some-value')
+      end
+    end
   end
 end
