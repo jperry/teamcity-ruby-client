@@ -14,10 +14,13 @@ describe 'Projects' do
   describe 'GET', :vcr do
 
     before(:all) do
-      TeamCity.reset
       TeamCity.configure do |config|
         config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
       end
+    end
+
+    before(:each) do
+      @tc = TeamCity
     end
 
     describe '.projects' do
@@ -82,12 +85,7 @@ describe 'Projects' do
   describe 'POST', :vcr do
 
     before(:all) do
-      TeamCity.reset
-      TeamCity.configure do |config|
-        config.endpoint       = 'http://localhost:8111/httpAuth/app/rest/7.0/'
-        config.http_user      = 'teamcity-ruby-client'
-        config.http_password  = 'teamcity'
-      end
+      configure_client_with_authentication
     end
 
     describe '.create_project' do
@@ -105,7 +103,19 @@ describe 'Projects' do
         response.name.should eq(copied_project_name)
       end
     end
+  end
 
+  describe 'DELETE', :vcr do
 
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.delete_project' do
+      it 'should delete a project' do
+        response = @tc.create_project('project-to-delete')
+        @tc.delete_project(response.id).should be_nil
+      end
+    end
   end
 end

@@ -3,8 +3,6 @@ module TeamCity
     # Defines methods related to projects
     module Projects
 
-      # HTTP GET
-
       # List of projects
       #
       # @return [Array<Hashie::Mash>, nil] of projects or nil if no projects exist
@@ -15,7 +13,8 @@ module TeamCity
 
       # Get project details
       #
-      # @param options [Hash] option keys, :id => project_id
+      # @param options [Hash] The options hash,
+      # @option options [String] :id the project id
       # @return [Hashie::Mash] of project details
       def project(options={})
         assert_options(options)
@@ -70,6 +69,14 @@ module TeamCity
           )
           req.body = builder.target!
         end
+      end
+
+      # Delete a project
+      #
+      # @param project_id [String] the id of the project
+      # @return [nil]
+      def delete_project(project_id)
+        delete("projects/#{project_id}")
       end
     end
   end

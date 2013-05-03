@@ -11,3 +11,12 @@ end
 def stub_get(path)
   stub_request(:get, TeamCity.endpoint + path)
 end
+
+def configure_client_with_authentication
+  TeamCity.reset
+  TeamCity.configure do |config|
+    config.endpoint       = 'http://localhost:8111/httpAuth/app/rest/7.0/'
+    config.http_user      = 'teamcity-ruby-client'
+    config.http_password  = 'teamcity'
+  end
+end

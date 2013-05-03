@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects
+    body:
+      encoding: US-ASCII
+      string: project-to-delete
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.1.0
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=3EB74D20976869AE3B99E96F4BF02D0D; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Fri, 03 May 2013 12:32:40 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project20","id":"project20","name":"project-to-delete","href":"/httpAuth/app/rest/7.0/projects/id:project20","buildTypes":null,"templates":null,"parameters":null}'
+    http_version: 
+  recorded_at: Fri, 03 May 2013 12:32:40 GMT
+- request:
+    method: delete
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects/project20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.1.0
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=F1703C9A4C8A5251030D3AFD712FF0DB; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Date:
+      - Fri, 03 May 2013 12:32:40 GMT
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Fri, 03 May 2013 12:32:40 GMT
+recorded_with: VCR 2.4.0
