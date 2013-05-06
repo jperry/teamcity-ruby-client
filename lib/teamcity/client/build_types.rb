@@ -102,6 +102,18 @@ module TeamCity
         end
       end
 
+      # Delete a buildtype parameter
+      #
+      # @param buildtype_id [String] the buildtype id
+      # @param parameter_name [String] name of the parameter to delete
+      # @return [nil]
+      def delete_buildtype_parameter(buildtype_id, parameter_name)
+        delete("buildTypes/#{buildtype_id}/parameters/#{parameter_name}") do |req|
+          # only accepts text/plain
+          req.headers['Accept'] = 'text/plain'
+        end
+      end
+
       # Create a buildtype agent requirement (Create)
       #
       # @param buildtype_id [String] the buildtype id

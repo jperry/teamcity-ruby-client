@@ -138,6 +138,12 @@ describe 'BuildTypes' do
       configure_client_with_authentication
     end
 
+    describe '.delete_buildtype_parameter' do
+      it 'should delete a buildtype parameter' do
+        @tc.delete_buildtype_parameter('bt3', 'delete-me')
+      end
+    end
+
     describe '.delete_agent_requirement' do
       it 'should delete the agent requirement' do
         @tc.delete_agent_requirement('bt3', 'test')
