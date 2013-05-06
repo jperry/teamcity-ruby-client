@@ -134,7 +134,21 @@ describe 'Projects' do
 
     describe '.set_project_parameter' do
       it 'should set a project parameter' do
-        @tc.set_project_parameter('project2', 'set-this-parameter', 'some-value')
+        @tc.set_project_parameter('project2', 'set-this-parameter', 'some-value').should be_nil
+      end
+    end
+
+    describe '.set_project_field' do
+      it 'should set a projects name' do
+        @tc.set_project_field('project21', 'name', 'project-change-by-test').should be_nil
+      end
+
+      it 'should set a projects description' do
+        @tc.set_project_field('project21', 'description', 'description-changed-by-test').should be_nil
+      end
+
+      it 'should archive a project' do
+        @tc.set_project_field('project21', 'archived', 'true').should be_nil
       end
     end
   end

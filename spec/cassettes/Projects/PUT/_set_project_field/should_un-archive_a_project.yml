@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects/projecdt21/archived
+    body:
+      encoding: US-ASCII
+      string: 'false'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.1.0
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=97CD69C5D9B0D0B4FBB695C50116D1DC; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 06 May 2013 14:13:22 GMT
+    body:
+      encoding: US-ASCII
+      string: ! 'Error has occurred during request processing (Not Found).
+
+        Error: jetbrains.buildServer.server.rest.errors.NotFoundException: No project
+        found by locator ''projecdt21''. Project cannot be found by name or id ''projecdt21''.
+
+        Could not find the entity requested. Check the reference is correct and the
+        user has permissions to access the entity.'
+    http_version: 
+  recorded_at: Mon, 06 May 2013 14:13:22 GMT
+recorded_with: VCR 2.4.0

@@ -103,6 +103,25 @@ module TeamCity
           req.body = parameter_value
         end
       end
+
+      # Set a project field
+      #
+      # @example Set a projects name
+      #   TeamCity.set_project_field('project1', 'name', 'new-name')
+      # @example Set a projects description
+      #   TeamCity.set_project_field('project1', 'description', 'new-description')
+      # @example Archive/Unarchive a project
+      #   Teamcity.set_project_field('project1', 'archived', 'true|false')
+      #
+      # @param project_id [String] the project id
+      # @param field_name [String] the field name: 'name', 'description', 'archived'
+      # @param field_value [String] the value to set the field to
+      def set_project_field(project_id, field_name, field_value)
+        put("projects/#{project_id}/#{field_name}") do |req|
+          req.headers['Content-Type'] = 'text/plain'
+          req.body = field_value
+        end
+      end
     end
   end
 end
