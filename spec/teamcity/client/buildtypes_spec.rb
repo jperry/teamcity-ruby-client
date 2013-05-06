@@ -6,18 +6,22 @@ describe 'BuildTypes' do
     @tc = TeamCity
   end
 
-  before(:all) do
-    TeamCity.configure do |config|
-      config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
-    end
-  end
-
   after(:all) do
     TeamCity.reset
   end
 
   # Get requests
   describe 'GET', :vcr do
+
+    before(:all) do
+      TeamCity.configure do |config|
+        config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
+      end
+    end
+
+    before(:each) do
+      @tc = TeamCity
+    end
 
     describe '.buildtypes' do
 
@@ -100,6 +104,43 @@ describe 'BuildTypes' do
         it "should return nil if there are no #{type} defined" do
           @tc.send(@method_name, id: 'bt4').should be_nil
         end
+      end
+    end
+  end
+
+  describe 'PUT', :vcr do
+
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.set_buildtype_parameter' do
+      it 'should set a buildtype parameter' do
+        @tc.set_buildtype_parameter('bt3', 'set-this-parameter', 'some-value').should be_nil
+      end
+    end
+  end
+
+  describe 'POST', :vcr do
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.create_agent_requirement' do
+      it 'should create an agent requirement for a buildtype' do
+        @tc.create_agent_requirement('bt3', 'test', 'test', 'equals')
+      end
+    end
+  end
+
+  describe 'DELETE', :vcr do
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.delete_agent_requirement' do
+      it 'should delete the agent requirement' do
+        @tc.delete_agent_requirement('bt3', 'test')
       end
     end
   end
