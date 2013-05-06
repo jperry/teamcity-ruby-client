@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/vcs-roots
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.2.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=EB68C7AA38D9B38C86FDF4D53177D074; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 06 May 2013 18:14:22 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"vcs-root":[{"id":"1","name":"teamcity ruby client","href":"/httpAuth/app/rest/7.0/vcs-roots/id:1"}]}'
+    http_version: 
+  recorded_at: Mon, 06 May 2013 18:14:22 GMT
+recorded_with: VCR 2.4.0

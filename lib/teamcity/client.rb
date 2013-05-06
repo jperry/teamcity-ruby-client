@@ -11,5 +11,6 @@ module TeamCity
     include TeamCity::Client::BuildTypes
     include TeamCity::Client::Builds
     include TeamCity::Client::Common
+    include TeamCity::Client::VCSRoots
   end
 end
