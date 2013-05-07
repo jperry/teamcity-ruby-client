@@ -98,10 +98,8 @@ module TeamCity
       # @param parameter_name [String] name of the parameter to set
       # @param parameter_value [String] value of the parameter
       def set_project_parameter(project_id, parameter_name, parameter_value)
-        put("projects/#{project_id}/parameters/#{parameter_name}") do |req|
-          req.headers['Content-Type'] = 'text/plain'
-          req.body = parameter_value
-        end
+        path = "projects/#{project_id}/parameters/#{parameter_name}"
+        put_text_request(path, parameter_value)
       end
 
       # Set a project field
@@ -117,10 +115,8 @@ module TeamCity
       # @param field_name [String] the field name: 'name', 'description', 'archived'
       # @param field_value [String] the value to set the field to
       def set_project_field(project_id, field_name, field_value)
-        put("projects/#{project_id}/#{field_name}") do |req|
-          req.headers['Content-Type'] = 'text/plain'
-          req.body = field_value
-        end
+        path = "projects/#{project_id}/#{field_name}"
+        put_text_request(path, field_value)
       end
     end
   end

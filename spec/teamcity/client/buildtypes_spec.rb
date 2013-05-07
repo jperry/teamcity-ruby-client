@@ -148,7 +148,13 @@ describe 'BuildTypes' do
 
     describe '.create_agent_requirement' do
       it 'should create an agent requirement for a buildtype' do
-        @tc.create_agent_requirement('bt3', 'test', 'test', 'equals')
+        buildtype_id = 'bt3'
+        parameter_name = 'test'
+        parameter_value = 'test'
+        condition = 'equals'
+        args = [buildtype_id, parameter_name, parameter_value, condition]
+        response = @tc.create_agent_requirement(*args)
+        response.id.should eq('test')
       end
     end
   end

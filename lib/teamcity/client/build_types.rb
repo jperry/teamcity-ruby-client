@@ -113,10 +113,8 @@ module TeamCity
       # @param parameter_value [String] value of the parameter
       # @return [nil]
       def set_buildtype_parameter(buildtype_id, parameter_name, parameter_value)
-        put("buildTypes/#{buildtype_id}/parameters/#{parameter_name}") do |req|
-          req.headers['Content-Type'] = 'text/plain'
-          req.body = parameter_value
-        end
+        path = "buildTypes/#{buildtype_id}/parameters/#{parameter_name}"
+        put_text_request(path, parameter_value)
       end
 
       # Delete a buildtype parameter
@@ -163,10 +161,7 @@ module TeamCity
       # @param parameter_name [String] name of the requirement to delete
       # @return [nil]
       def delete_agent_requirement(buildtype_id, parameter_name)
-        delete("buildTypes/#{buildtype_id}/agent-requirements/#{parameter_name}") do |req|
-          # only accepts text/plain
-          #req.headers['Accept'] = 'text/plain'
-        end
+        delete("buildTypes/#{buildtype_id}/agent-requirements/#{parameter_name}")
       end
 
       # Set a buildtype field
@@ -182,10 +177,8 @@ module TeamCity
       # @param field_name [String] the field name
       # @param field_value [String] the value to set the field to
       def set_buildtype_field(buildtype_id, field_name, field_value)
-        put("buildTypes/#{buildtype_id}/#{field_name}") do |req|
-          req.headers['Content-Type'] = 'text/plain'
-          req.body = field_value
-        end
+        path = "buildTypes/#{buildtype_id}/#{field_name}"
+        put_text_request(path, field_value)
       end
     end
   end
