@@ -126,6 +126,12 @@ describe 'BuildTypes' do
       configure_client_with_authentication
     end
 
+    describe '.attach_vcs_root' do
+      it 'should attach a vcs root to a buildtype' do
+        @tc.attach_vcs_root('bt3', '1').id.should eq('1')
+      end
+    end
+
     describe '.create_agent_requirement' do
       it 'should create an agent requirement for a buildtype' do
         @tc.create_agent_requirement('bt3', 'test', 'test', 'equals')

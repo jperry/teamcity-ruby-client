@@ -88,6 +88,23 @@ module TeamCity
       make_method :snapshot_dependencies
       make_method :vcs_root_entries
 
+      # Attach a vcs root to a build type (build configuration_)
+      #
+      #
+      # @param buildtype_id [String] the buildtype id
+      # @param vcs_root_id [String, Numeric] id of vcs root
+      # @return [Hashie::Mash] vcs root object that was attached
+      def attach_vcs_root(buildtype_id, vcs_root_id)
+        builder = Builder::XmlMarkup.new
+        builder.tag!('vcs-root-entry'.to_sym) do |node|
+          node.tag!('vcs-root'.to_sym, :id => vcs_root_id)
+        end
+        post("buildTypes/#{buildtype_id}/vcs-root-entries") do |req|
+          req.headers['Content-Type'] = 'application/xml'
+          req.body = builder.target!
+        end
+      end
+
       # Set a buildtype parameter (Create or Update)
       #
       #
