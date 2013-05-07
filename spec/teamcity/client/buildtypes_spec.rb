@@ -166,13 +166,13 @@ describe 'BuildTypes' do
 
     describe '.delete_buildtype_parameter' do
       it 'should delete a buildtype parameter' do
-        @tc.delete_buildtype_parameter('bt3', 'delete-me')
+        @tc.delete_buildtype_parameter('bt3', 'delete-me').should be_nil
       end
     end
 
     describe '.delete_agent_requirement' do
       it 'should delete the agent requirement' do
-        @tc.delete_agent_requirement('bt3', 'test')
+        @tc.delete_agent_requirement('bt3', 'test').should be_nil
       end
     end
   end

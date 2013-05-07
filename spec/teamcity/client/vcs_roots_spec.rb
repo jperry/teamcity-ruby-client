@@ -28,7 +28,8 @@ describe 'VCSRoots' do
     describe '.vcs_root_details' do
 
       it 'should fetch the vcs root details' do
-        @tc.vcs_root_details(1)
+        response = @tc.vcs_root_details(1)
+        response.id.should eq(1)
       end
     end
   end
