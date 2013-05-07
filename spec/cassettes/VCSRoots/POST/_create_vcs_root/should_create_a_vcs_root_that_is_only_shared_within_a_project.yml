@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/vcs-roots
+    body:
+      encoding: US-ASCII
+      string: <vcs-root projectLocator="project2" name="testvcsroot" vcsName="jetbrains.git"><properties><property
+        name="branch" value="master"/><property name="url" value="git@github.com:jperry/teamcity-ruby-client.git"/><property
+        name="authMethod" value="PRIVATE_KEY_DEFAULT"/><property name="ignoreKnownHosts"
+        value="true"/></properties></vcs-root>
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.2.0
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=1BC5794E42A8D6EC7062370DCBB89C88; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 07 May 2013 19:13:22 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":16,"name":"testvcsroot","vcsName":"jetbrains.git","shared":false,"status":"NOT_MONITORED","lastChecked":"20130423T104612-0400","project":{"id":"project2","name":"project
+        A","href":"/httpAuth/app/rest/7.0/projects/id:project2"},"properties":{"property":[{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"}]}}'
+    http_version: 
+  recorded_at: Tue, 07 May 2013 19:13:23 GMT
+recorded_with: VCR 2.4.0

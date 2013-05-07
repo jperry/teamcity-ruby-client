@@ -20,27 +20,43 @@ module TeamCity
 
       # Create VCS Root
       #
-      # TODO: Come back, waiting for a response back from jetbrains as this isn't working
-      #def create_vcs_root(name)
-      #  builder = Builder::XmlMarkup.new
-      #  builder.tag!('vcs-root'.to_sym, :name => name, :vcsName => 'jetbrains.git', :shared => "false", :status => "NOT_MONITORED") do |node|
-      #    node.project(:id => 'project2')
-      #    node.properties do |p|
-      #      p.property(:name => 'url', :value => "git@github.com:jperry/teamcity-ruby-client.git")
-      #      p.property(:name => "agentCleanFilesPolicy", :value => "ALL_UNTRACKED")
-      #      p.property(:name=>"agentCleanPolicy", :value=>"ON_BRANCH_CHANGE")
-      #      p.property(:name=>"authMethod", :value=>"ANONYMOUS")
-      #      p.property(:name=>"branch", :value=>"master")
-      #      p.property(:name=>"ignoreKnownHosts", :value=>"true")
-      #      p.property(:name=>"submoduleCheckout", :value=>"CHECKOUT")
-      #      p.property(:name=>"usernameStyle", :value=>"USERID")
-      #    end
-      #  end
-      #  post("vcs-roots") do |req|
-      #    req.headers['Content-Type'] = 'application/xml'
-      #    req.body = builder.target!
-      #  end
-      #end
+      # @param vcs_name [String] Name of the vcs root
+      # @param vcs_type [String] Type of VCS: 'git', 'perforce', etc
+      # @param options [Hash] VCS root options
+      # @option options [String] :projectLocator the project id (not required if :shared => true)
+      # @option options [Boolean] :shared whether the vcs root is shared across projects
+      # @yield [Hash] properties to set on the vcs root, view the page source of the vcs root page for the id and value of a property
+      # @return [Hashie::Mash] vcs root object that was created
+      #
+      # @example Create a Git VCS Root that pulls from master that is only shared within a project and uses the default private key
+      #   TeamCity.create_vcs_root('my-git-vcs-root', 'git', :projectLocator => 'project2') do |properties|
+      #     properties['branch'] = 'master'
+      #     properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+      #     properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
+      #     properties['ignoreKnownHosts'] = true
+      #   end
+      def create_vcs_root(vcs_name, vcs_type, options = {}, &block)
+        attributes = {
+          :name    => vcs_name,
+          :vcsName => "jetbrains.#{vcs_type}"
+        }
+        builder = Builder::XmlMarkup.new
+        builder.tag!('vcs-root'.to_sym, options.merge(attributes)) do |node|
+          node.properties do |p|
+            if block_given?
+              properties = {}
+              yield(properties)
+              properties.each do |name, value|
+                p.property(:name => name, :value => value)
+              end
+            end
+          end
+        end
+        post("vcs-roots") do |req|
+          req.headers['Content-Type'] = 'application/xml'
+          req.body = builder.target!
+        end
+      end
     end
   end
 end

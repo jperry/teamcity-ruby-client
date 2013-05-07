@@ -35,12 +35,28 @@ describe 'VCSRoots' do
 
   describe 'POST', :vcr do
 
-    describe 'create_vcs_root' do
+    describe '.create_vcs_root' do
 
-      it 'should create a vcs root' do
-        pending 'waiting to here back from jetbrains' do
-          @tc.create_vcs_root('testvcsroot')
+      it 'should create a vcs root that is only shared within a project' do
+        vcs_name = 'testvcsroot'
+        vcs_type = 'git'
+        response = @tc.create_vcs_root(vcs_name, vcs_type, :projectLocator => 'project2') do |properties|
+          properties['branch'] = 'master'
+          properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+          properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
+          properties['ignoreKnownHosts'] = true
         end
+        response.name.should eq(vcs_name)
+        response.vcsName.should match(/#{vcs_type}/)
+        response.shared.should be_false
+      end
+
+      it 'should create a shared vcs root' do
+        response = @tc.create_vcs_root('sharedvcsroot', 'git', :shared => true) do |properties|
+          properties['branch'] = 'master'
+          properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+        end
+        response.shared.should be_true
       end
     end
   end

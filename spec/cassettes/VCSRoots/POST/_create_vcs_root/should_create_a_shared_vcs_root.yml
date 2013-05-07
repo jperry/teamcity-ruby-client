@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/vcs-roots
+    body:
+      encoding: US-ASCII
+      string: <vcs-root shared="true" name="sharedvcsroot" vcsName="jetbrains.git"><properties><property
+        name="branch" value="master"/><property name="url" value="git@github.com:jperry/teamcity-ruby-client.git"/></properties></vcs-root>
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.2.0
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=BD1DFD3426A9E8BAF583AF4D36628159; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 07 May 2013 19:13:22 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":17,"name":"sharedvcsroot","vcsName":"jetbrains.git","shared":true,"status":"NOT_MONITORED","lastChecked":"20130423T104612-0400","properties":{"property":[{"name":"branch","value":"master"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"}]}}'
+    http_version: 
+  recorded_at: Tue, 07 May 2013 19:13:23 GMT
+recorded_with: VCR 2.4.0
