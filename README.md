@@ -100,7 +100,7 @@ puts TeamCity.build(id: TeamCity.builds(count: 1).first.id).buildType.name # Fet
 
 ### API Docs
 
-[Latest](http://rubydoc.info/gems/teamcity-ruby-client/0.1.0/frames)
+[Latest](http://rubydoc.info/gems/teamcity-ruby-client/)
 
 ### Generating API Docs
 
