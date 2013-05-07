@@ -56,17 +56,19 @@ module TeamCity
       #
       # @param source_project_id [String] id of the project you wish to copy
       # @param target_project_name [String] name of the project you want to create
+      # @param options [Hash] copy project options
+      # @option options [Boolean] :copyAllAssociatedSettings copy all associated settings
+      # @options options[Boolean] :shareVCSRoots when true the vcs roots will be shared, otherwise they will be copied
       # @return [Hashie::Mash] project details
-      def copy_project(source_project_id, target_project_name)
+      def copy_project(source_project_id, target_project_name, options={})
+        attributes = {
+          :name => target_project_name,
+          :sourceProjectLocator => "id:#{source_project_id}",
+        }
         post("projects") do |req|
           req.headers['Content-Type'] = 'application/xml'
           builder = Builder::XmlMarkup.new
-          builder.newProjectDescription(
-            :name => target_project_name,
-            :sourceProjectLocator => "id:#{source_project_id}",
-            :copyAllAssociatedSettings => 'true',
-            :shareVCSRoots => 'false'
-          )
+          builder.newProjectDescription(options.merge(attributes))
           req.body = builder.target!
         end
       end

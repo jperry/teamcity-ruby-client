@@ -97,9 +97,14 @@ describe 'Projects' do
 
     describe '.copy_project' do
       it 'should copy a project' do
-        source_project = @tc.create_project('copy-project-testA')
+        source_project = @tc.project(id: 'project11')
         copied_project_name = 'copy-project-testB'
-        response = @tc.copy_project(source_project.id, copied_project_name)
+        response = @tc.copy_project(
+          source_project.id,
+          copied_project_name,
+          :copyAllAssociatedSettings => true,
+          :shareVCSRoots             => true
+        )
         response.name.should eq(copied_project_name)
       end
     end
