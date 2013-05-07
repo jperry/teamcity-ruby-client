@@ -119,6 +119,20 @@ describe 'BuildTypes' do
         @tc.set_buildtype_parameter('bt3', 'set-this-parameter', 'some-value').should be_nil
       end
     end
+
+    describe '.set_buildtype_field' do
+      it 'should set the buildtype name' do
+        @tc.set_buildtype_field('bt3', 'name', 'new-buildtype-name').should be_nil
+      end
+
+      it 'should set a projects description' do
+        @tc.set_buildtype_field('bt3', 'description', 'description-changed-by-test').should be_nil
+      end
+
+      it 'should pause a project' do
+        @tc.set_buildtype_field('bt3', 'paused', 'true').should be_nil
+      end
+    end
   end
 
   describe 'POST', :vcr do

@@ -168,6 +168,25 @@ module TeamCity
           #req.headers['Accept'] = 'text/plain'
         end
       end
+
+      # Set a buildtype field
+      #
+      # @example Change buildtype name
+      #   TeamCity.set_buildtype_field('bt3', 'name', 'new-name')
+      # @example Set buildtype description
+      #   TeamCity.set_buildtype_field('bt3', 'description', 'new-description')
+      # @example Pause/Unpause a buildtype
+      #   Teamcity.set_buildtype_field('buildtype', 'paused', 'true|false')
+      #
+      # @param buidltype_id [String] the buildtype id
+      # @param field_name [String] the field name
+      # @param field_value [String] the value to set the field to
+      def set_buildtype_field(buildtype_id, field_name, field_value)
+        put("buildTypes/#{buildtype_id}/#{field_name}") do |req|
+          req.headers['Content-Type'] = 'text/plain'
+          req.body = field_value
+        end
+      end
     end
   end
 end
