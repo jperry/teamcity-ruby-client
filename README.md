@@ -20,7 +20,7 @@ Or install it yourself as:
 
 * Tested on TeamCity 7.0 and higher
 * Most of the api calls return either an array of Hashie::Mash objects or a single Hashie::Mash object which allows you to send messages to retreive an attribute easily.
-* See the spec tests for more examples
+* See [api docs](http://rubydoc.info/gems/teamcity-ruby-client/TeamCity/Client) or [specs](spec/teamcity/client) for additional examples and usage
 
 ### Configuration
 
@@ -29,11 +29,12 @@ Or install it yourself as:
 ```ruby
 require 'teamcity'
 
-# Currently only guest authentication is supported, next version will
-# support authentication which will allow write api calls.  This only needs
-# to be set once per Ruby execution.
+# This only needs to be set once per Ruby execution.
+# You may use guestAuth instead of httpAuth and omit the use of http_user and http_password
 TeamCity.configure do |config|
-  config.endpoint = 'http://my-teamcity-server:8111/guestAuth/app/rest'
+  config.endpoint = 'http://my-teamcity-server:8111/httpAuth/app/rest'
+  config.http_user = 'teamcity-user'
+  config.http_password = 'teamcity-password'
 end
 ```
 
@@ -53,6 +54,18 @@ puts TeamCity.project_buildtypes(id: 'project1')
 # to retreive an attribute easily.  For example, get the name of
 # the first buildtype in a project
 puts TeamCity.project_buildtypes(id: 'project1').first.name
+
+# Create an empty project
+TeamCity.create_project('my-new-project')
+
+# Copy a project
+TeamCity.copy_project('project1', 'copied-project-name')
+
+# Delete a project
+TeamCity.delete_project('project1')
+
+# Change project name
+TeamCity.set_project_field('project1', 'name', 'new-project-name')
 ```
 
 ### Build Types (Build Configurations)
@@ -67,7 +80,8 @@ puts TeamCity.buildtype(id: 'bt1')
 # Get buildtype steps
 puts TeamCity.buildtype_steps(id: 'bt1')
 
-# See the api docs for more api calls
+# Change buildtype name
+TeamCity.set_buildtype_field('bt1', 'name', 'new-buildtype-name')
 ```
 
 ### Builds ###
@@ -96,11 +110,30 @@ puts TeamCity.build(id: TeamCity.builds(count: 1).first.id).buildType.name # Fet
 
 ```
 
+### VCS Roots ###
+
+```ruby
+# Get all the vcs roots
+puts Teamcity.vcs_roots
+
+# Get vcs root details
+puts TeamCity.vcs_root_details(1)
+
+# Create VCS Root for a project
+TeamCity.create_vcs_root('my-git-vcs-root', 'git', :projectLocator => 'project2') do |properties|
+  properties['branch'] = 'master'
+  properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+  properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
+  properties['ignoreKnownHosts'] = true
+end
+
+```
+
 ## Documentation
 
 ### API Docs
 
-[Latest](http://rubydoc.info/gems/teamcity-ruby-client/0.1.0/frames)
+[Latest](http://rubydoc.info/gems/teamcity-ruby-client/)
 
 ### Generating API Docs
 
