@@ -180,6 +180,14 @@ module TeamCity
         path = "buildTypes/#{buildtype_id}/#{field_name}"
         put_text_request(path, field_value)
       end
+
+      # Delete buildtype (build configuration)
+      #
+      # @param buildtype_id [String] the id of the buildtype
+      # @return [nil]
+      def delete_buildtype(buildtype_id)
+        delete("buildTypes/#{buildtype_id}")
+      end
     end
   end
 end

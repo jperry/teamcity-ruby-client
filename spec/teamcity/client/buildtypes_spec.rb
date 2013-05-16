@@ -175,5 +175,11 @@ describe 'BuildTypes' do
         @tc.delete_agent_requirement('bt3', 'test').should be_nil
       end
     end
+
+    describe '.delete_buildtype' do
+      it 'should delete a buildtype' do
+        @tc.delete_buildtype('bt8').should be_nil
+      end
+    end
   end
 end
