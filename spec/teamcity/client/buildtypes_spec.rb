@@ -133,6 +133,16 @@ describe 'BuildTypes' do
         @tc.set_buildtype_field('bt3', 'paused', 'true').should be_nil
       end
     end
+
+    describe '.set_build_step_field' do
+      it 'should disable a build step' do
+        @tc.set_build_step_field('bt3', 'RUNNER_2', 'disabled', 'true')
+      end
+
+      it 'should enable a build step' do
+        @tc.set_build_step_field('bt3', 'RUNNER_2', 'disabled', 'false')
+      end
+    end
   end
 
   describe 'POST', :vcr do

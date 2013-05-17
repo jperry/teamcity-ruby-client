@@ -141,6 +141,10 @@ describe 'Projects' do
       it 'should set a project parameter' do
         @tc.set_project_parameter('project2', 'set-this-parameter', 'some-value').should be_nil
       end
+
+      it 'should set a project parameter with a boolean value' do
+        @tc.set_project_parameter('project2', 'env.SET_ME', 'true')
+      end
     end
 
     describe '.set_project_field' do

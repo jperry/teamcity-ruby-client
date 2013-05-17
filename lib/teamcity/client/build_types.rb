@@ -188,6 +188,18 @@ module TeamCity
       def delete_buildtype(buildtype_id)
         delete("buildTypes/#{buildtype_id}")
       end
+
+      # Set build step field
+      #
+      # @param buildtype_id [String] the id of the buildtype
+      # @param step_id [String] the id of the build step
+      # @param field_name [String] the name of the field to set
+      # @param field_value [String] the value to set the field name to
+      # @return [nil]
+      def set_build_step_field(buildtype_id, step_id, field_name, field_value)
+        path = "buildTypes/#{buildtype_id}/steps/#{step_id}/#{field_name}"
+        put_text_request(path, field_value)
+      end
     end
   end
 end
