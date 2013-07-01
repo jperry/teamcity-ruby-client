@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/builds/27/pin
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - TeamCity Ruby Client 0.3.0
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - JSESSIONID=ECEF901E911DFA5B320740401E61BB02; Path=/; HttpOnly
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Date:
+      - Mon, 01 Jul 2013 15:30:11 GMT
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Mon, 01 Jul 2013 15:30:12 GMT
+recorded_with: VCR 2.4.0

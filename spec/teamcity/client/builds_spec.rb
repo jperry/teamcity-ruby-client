@@ -58,5 +58,52 @@ describe 'Builds' do
         @tc.build_tags(id: 1).should be_nil
       end
     end
+
+    describe '.build_pinned?', :vcr do
+      before(:all) do
+        configure_client_with_authentication
+      end
+
+      it 'should return true when a build is pinned' do
+        pending
+        @tc.pin_build('27')
+        @tc.build_pinned?('27').should be_true
+      end
+
+      it 'should return false when a build is not pinned' do
+        pending
+        @tc.unpin_build('27')
+        @tc.build_pinned?('27').should be_false
+      end
+    end
+  end
+
+  describe 'PUT', :vcr do
+
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.pin_build' do
+      it 'should pin a build' do
+        id = '27'
+        comment = 'this will add a comment'
+        @tc.pin_build(id, comment).should be_nil
+      end
+    end
+  end
+
+  describe 'DELETE', :vcr do
+
+    before(:all) do
+      configure_client_with_authentication
+    end
+
+    describe '.unpin_build' do
+      it 'should unpin a build' do
+        id = '27'
+        @tc.unpin_build(id).should be_nil
+      end
+    end
   end
 end
