@@ -52,6 +52,15 @@ module TeamCity
         response['property']
       end
 
+      # Get build investigation info
+      #
+      # @param buildtype_id [String] the buildtype id
+      # @return [Array<Hashie::Mash>] of build investigation info
+      def buildtype_investigations(buildtype_id)
+        response = get("buildTypes/#{buildtype_id}/investigations")
+        response['investigation']
+      end
+
       # Get template associated with build configuration
       #
       # @param (see #buildtype)
