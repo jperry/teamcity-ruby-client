@@ -1,3 +1,9 @@
+## 0.4.0 (Jun 15, 2013)
+
+* Added ```pin_build``` and ```unpin_build``` (Provides the ability to pin and unbuild a build respectively)
+* Added ```build_statistics``` (Provides the ability to fetch build [statistics](http://confluence.jetbrains.com/display/TCD8/Custom+Chart#CustomChart-listOfDefaultStatisticValues))
+* Added ```buildtype_investigations``` (Provides the ability to fetch build investigation details)
+
 ## 0.3.0 (May 23, 2013)
 
 * Loosen up dependency requirement on the version of builder (Conflicted with transitive dependencies of rails 3.2.13)
