@@ -1,6 +1,6 @@
 ## 0.4.0 (Jun 15, 2013)
 
-* Added ```pin_build``` and ```unpin_build``` (Provides the ability to pin and unbuild a build respectively)
+* Added ```pin_build``` and ```unpin_build``` (Provides the ability to pin and unpin a build respectively)
 * Added ```build_statistics``` (Provides the ability to fetch build [statistics](http://confluence.jetbrains.com/display/TCD8/Custom+Chart#CustomChart-listOfDefaultStatisticValues))
 * Added ```buildtype_investigations``` (Provides the ability to fetch build investigation details)
 
