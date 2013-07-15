@@ -52,7 +52,7 @@ module TeamCity
         response['property']
       end
 
-      # Get build investigation info
+      # Get investigation info for build configuration
       #
       # @param buildtype_id [String] the buildtype id
       # @return [Array<Hashie::Mash>] of build investigation info

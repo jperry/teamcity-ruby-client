@@ -106,6 +106,20 @@ describe 'BuildTypes' do
         end
       end
     end
+
+    describe '.buildtype_investigations' do
+      before(:all) do
+        configure_client_with_authentication
+      end
+
+      it 'should get investigation details' do
+        @tc.buildtype_investigations('bt9').should_not be_nil
+      end
+
+      it 'should return nil if no one is investigating' do
+        @tc.buildtype_investigations('bt9').should be_nil
+      end
+    end
   end
 
   describe 'PUT', :vcr do
