@@ -76,6 +76,22 @@ describe 'Builds' do
         @tc.build_pinned?('27').should be_false
       end
     end
+
+    describe '.build_statistics' do
+      before(:all) do
+        configure_client_with_authentication
+      end
+
+      it 'should return statistics for a build' do
+        result = @tc.build_statistics('30')
+        result.first.name.should_not be_empty
+        result.first.value.should_not be_empty
+      end
+
+      it 'should return an empty string for a build with no statistics' do
+        @tc.build_statistics('28').should be_nil
+      end
+    end
   end
 
   describe 'PUT', :vcr do

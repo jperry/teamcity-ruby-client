@@ -24,10 +24,23 @@ module TeamCity
         get("builds/#{locator(options)}")
       end
 
+      # Get the build tags
+      #
+      # @param options [Hash] option keys, :id => build_id
+      # @return [Array<Hashie::Mash>, nil] nil if build has not tags
       def build_tags(options={})
         assert_options(options)
         response = get("builds/#{locator(options)}/tags")
         response['tag']
+      end
+
+      # Get build statistics
+      #
+      # @param build_id [String]
+      # @return [Array<Hashie::Mash>, nil] returns nil if there are no statistics
+      def build_statistics(build_id)
+        response = get("builds/#{build_id}/statistics")
+        response['property']
       end
 
       # TODO: Will need to create a Faraday middleware for this
