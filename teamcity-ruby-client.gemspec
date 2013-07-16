@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{A Ruby wrapper for the TeamCity Rest API}
   gem.summary       = %q{Ruby wrapper for the TeamCity API}
   gem.homepage      = 'https://github.com/jperry/teamcity-ruby-client'
+  gem.licenses      = ['MIT']
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
