@@ -32,7 +32,6 @@ describe TeamCity::API do
         @configuration = {
           :adapter => :excon,
           :endpoint => 'http://teamcity.mydomain.com/',
-          :format => :xml,
           :user_agent => 'My User Agent',
           :http_user => 'tc-test-user',
           :http_password => 'tc-test-password'

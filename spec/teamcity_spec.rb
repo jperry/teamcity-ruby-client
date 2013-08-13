@@ -77,19 +77,6 @@ describe TeamCity do
     end
   end
 
-  describe ".format" do
-    it "should return the default format" do
-      TeamCity.format.should == TeamCity::Configuration::DEFAULT_FORMAT
-    end
-  end
-
-  describe ".format=" do
-    it "should set the format" do
-      TeamCity.format = :xml
-      TeamCity.format.should == :xml
-    end
-  end
-
   describe ".user_agent" do
     it "should return the default user agent" do
       TeamCity.user_agent.should == TeamCity::Configuration::DEFAULT_USER_AGENT

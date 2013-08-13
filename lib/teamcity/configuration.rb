@@ -7,12 +7,9 @@ module TeamCity
       :adapter,
       :endpoint,
       :user_agent,
-      :format,
       :http_user,
       :http_password
     ].freeze
-
-    VALID_FORMATS = [:json].freeze
 
     DEFAULT_ADAPTER = Faraday.default_adapter
 
@@ -47,7 +44,6 @@ module TeamCity
       self.adapter        = DEFAULT_ADAPTER
       self.endpoint       = DEFAULT_ENDPOINT
       self.user_agent     = DEFAULT_USER_AGENT
-      self.format         = DEFAULT_FORMAT
       self.http_user      = DEFAULT_HTTP_USER
       self.http_password  = DEFAULT_HTTP_PASSWORD
     end
