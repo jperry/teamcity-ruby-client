@@ -1,28 +1,28 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects/project21/description
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
     body:
       encoding: US-ASCII
-      string: description-changed-by-test
+      string: PutSetProjectDescriptionField
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.1.0
       Content-Type:
       - text/plain
   response:
     status:
-      code: 204
-      message: No Content
+      code: 200
+      message: OK
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=81E969C0654E55874C873D34DE486051; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=99F6F6C6D5774B7E45DBBDC654B9D4A4; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -30,11 +30,57 @@ http_interactions:
       Cache-Control:
       - no-cache
       - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Date:
-      - Mon, 06 May 2013 14:11:07 GMT
+      - Wed, 14 Aug 2013 02:43:28 GMT
     body:
       encoding: US-ASCII
-      string: ''
+      string: ! '{"id":"PutSetProjectDescriptionField","name":"PutSetProjectDescriptionField","href":"/httpAuth/app/rest/projects/id:PutSetProjectDescriptionField","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PutSetProjectDescriptionField","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PutSetProjectDescriptionField)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Mon, 06 May 2013 14:11:08 GMT
+  recorded_at: Wed, 14 Aug 2013 02:43:28 GMT
+- request:
+    method: put
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects/PutSetProjectDescriptionField/description
+    body:
+      encoding: US-ASCII
+      string: description-changed-by-test
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - text/plain
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=3A300E66809F9487E2528726FF2A761C; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 02:43:28 GMT
+    body:
+      encoding: US-ASCII
+      string: description-changed-by-test
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 02:43:28 GMT
 recorded_with: VCR 2.4.0

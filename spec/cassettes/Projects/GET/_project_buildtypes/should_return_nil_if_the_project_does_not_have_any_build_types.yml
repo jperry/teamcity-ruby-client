@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects/id:project5/buildTypes
+    uri: http://localhost:8111/guestAuth/app/rest/projects/id:GetProjectWithNoBuildTypes/buildTypes
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=A8CE54A1F37D36EB7C9300AA1456389C; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=E0D62BEC940C4C3F7C8455D8B0EA2833; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 26 Feb 2013 03:46:46 GMT
+      - Wed, 14 Aug 2013 02:13:16 GMT
     body:
       encoding: US-ASCII
-      string: 'null'
+      string: ! '{"buildType":[]}'
     http_version: 
-  recorded_at: Tue, 26 Feb 2013 03:46:46 GMT
+  recorded_at: Wed, 14 Aug 2013 02:13:16 GMT
 recorded_with: VCR 2.4.0

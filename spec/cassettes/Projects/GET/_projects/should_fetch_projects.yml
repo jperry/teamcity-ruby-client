@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects
+    uri: http://localhost:8111/guestAuth/app/rest/projects
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=5057656A6D66E122DBED5E13085F68F2; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=74D1BAF436F717F72C8D60331E13832F; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,12 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 26 Feb 2013 03:04:07 GMT
+      - Wed, 14 Aug 2013 01:39:34 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"project":[{"id":"project2","name":"Project A","href":"/guestAuth/app/rest/7.0/projects/id:project2"},{"id":"project3","name":"Project
-        B","href":"/guestAuth/app/rest/7.0/projects/id:project3"},{"id":"project4","name":"Project
-        C","href":"/guestAuth/app/rest/7.0/projects/id:project4"}]}'
+      string: ! '{"project":[{"id":"_Root","name":"<Root project>","href":"/guestAuth/app/rest/projects/id:_Root"}]}'
     http_version: 
-  recorded_at: Tue, 26 Feb 2013 03:04:07 GMT
+  recorded_at: Wed, 14 Aug 2013 01:39:34 GMT
 recorded_with: VCR 2.4.0
