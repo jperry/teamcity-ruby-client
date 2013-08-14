@@ -121,7 +121,7 @@ puts Teamcity.vcs_roots
 puts TeamCity.vcs_root_details(1)
 
 # Create VCS Root for a project
-TeamCity.create_vcs_root('my-git-vcs-root', 'git', :projectLocator => 'project2') do |properties|
+TeamCity.create_vcs_root(vcs_name: 'my-git-vcs-root', vcs_type: 'git', :project_id => 'project2') do |properties|
   properties['branch'] = 'master'
   properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
   properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
