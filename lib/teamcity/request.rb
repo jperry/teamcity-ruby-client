@@ -25,15 +25,9 @@ module TeamCity
 
     # Perform an HTTP request
     def request(method, path, options, &block)
-      response = connection.send(method) do |request|
+      response = connection(options).send(method) do |request|
         block.call(request) if block_given?
-        case method
-        when :get, :delete
-          request.url(path, options)
-        when :post, :put
-          request.path = path
-          request.body = options unless options.empty?
-        end
+        request.url(path)
       end
       response.body
     end
