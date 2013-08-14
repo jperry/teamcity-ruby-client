@@ -18,18 +18,6 @@ module TeamCity
           locators << "#{key}:#{value}"
         end.join(',')
       end
-
-      # Put request helper where the body is text
-      #
-      # @param path [String] request path
-      # @param body [String] body contents of the request
-      # @return [nil]
-      def put_text_request(path, body)
-        put(path) do |req|
-          req.headers['Content-Type'] = 'text/plain'
-          req.body = body
-        end
-      end
     end
   end
 end
