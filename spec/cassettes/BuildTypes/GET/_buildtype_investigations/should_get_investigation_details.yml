@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt9/investigations
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_GetBuildTypeWithInvestigations/investigations
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json; charset=utf-8
       User-Agent:
       - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=C0D703BE6F2B721CAEC44900B99042EC; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=819208565F94C62857E5CACB7716456E; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,14 +37,12 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 15 Jul 2013 15:30:24 GMT
+      - Wed, 14 Aug 2013 11:33:23 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"investigation":[{"id":"bt9","state":"TAKEN","responsible":{"href":"/httpAuth/app/rest/7.0/users/id:1","id":1,"name":"Jay
-        Perry","username":"jperry"},"assignment":{"user":{"href":"/httpAuth/app/rest/7.0/users/id:1","id":1,"name":"Jay
-        Perry","username":"jperry"},"timestamp":"20130715T112831-0400","text":""},"scope":{"buildType":{"id":"bt9","name":"investigation
-        test","href":"/httpAuth/app/rest/7.0/buildTypes/id:bt9","projectName":"Project
-        C","projectId":"project4","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt9"}}}]}'
+      string: ! '{"investigation":[{"id":"bt18","state":"TAKEN","responsible":{"username":"jperry","name":"Jay
+        Perry","id":1,"href":"/httpAuth/app/rest/users/id:1"},"assignment":{"user":{"username":"jperry","name":"Jay
+        Perry","id":1,"href":"/httpAuth/app/rest/users/id:1"},"timestamp":"20130814T073142-0400","text":""},"scope":{"buildType":{"id":"BuildTypeTests_GetBuildTypeWithInvestigations","name":"GetBuildTypeWithInvestigations","href":"/httpAuth/app/rest/buildTypes/id:BuildTypeTests_GetBuildTypeWithInvestigations","projectName":"BuildTypeTests","projectId":"BuildTypeTests","webUrl":"http://localhost:8111/viewType.html?buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"}}}]}'
     http_version: 
-  recorded_at: Mon, 15 Jul 2013 15:30:24 GMT
+  recorded_at: Wed, 14 Aug 2013 11:33:23 GMT
 recorded_with: VCR 2.4.0

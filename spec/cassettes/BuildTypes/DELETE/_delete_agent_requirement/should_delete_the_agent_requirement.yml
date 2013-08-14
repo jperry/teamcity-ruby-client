@@ -1,16 +1,61 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_DeleteBuildTypeSettings/agent-requirements
+    body:
+      encoding: US-ASCII
+      string: <agent-requirement id="delete-agent-requirement" type="equals"><properties><property
+        name="property-name" value="delete-agent-requirement"/><property name="property-value"
+        value=""/></properties></agent-requirement>
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=D3D0379B84E01FCC30F572AC9D235E06; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 13:40:01 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"delete-agent-requirement","type":"equals","properties":{"property":[{"name":"property-name","value":"delete-agent-requirement"},{"name":"property-value","value":""}]}}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 13:40:01 GMT
+- request:
     method: delete
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt3/agent-requirements/test
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_DeleteBuildTypeSettings/agent-requirements/delete-agent-requirement
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
+      Content-Type:
+      - application/json
   response:
     status:
       code: 204
@@ -19,8 +64,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=7D5C309BD50232088662586230C9FE5B; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=8A65EEF1CA573F6D40EC4EDE344112BC; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -29,10 +74,10 @@ http_interactions:
       - no-cache
       - no-store
       Date:
-      - Mon, 06 May 2013 19:35:55 GMT
+      - Wed, 14 Aug 2013 13:40:01 GMT
     body:
       encoding: US-ASCII
       string: ''
     http_version: 
-  recorded_at: Mon, 06 May 2013 19:35:55 GMT
+  recorded_at: Wed, 14 Aug 2013 13:40:01 GMT
 recorded_with: VCR 2.4.0

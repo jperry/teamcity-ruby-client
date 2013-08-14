@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/agent-requirements
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:BuildTypeTests_GetBuildTypeConfigTests/agent-requirements
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=926ACF600C2B65C0657FD0F786EDBDB4; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=23C9D62FDB6816D9618B3DABBD23F31E; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 11:45:55 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"agent-requirement":[{"id":"system.os.name","type":"equals","properties":{"property":[{"name":"property-name","value":"system.os.name"},{"name":"property-value","value":"linux"}]}}]}'
+      string: ! '{"agent-requirement":[{"id":"teamcity.agent.home.dir","type":"exists","properties":{"property":[{"name":"property-name","value":"teamcity.agent.home.dir"}]}}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:23 GMT
+  recorded_at: Wed, 14 Aug 2013 11:45:55 GMT
 recorded_with: VCR 2.4.0

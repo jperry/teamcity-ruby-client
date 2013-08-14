@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt9/investigations
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_GetBuildTypeWithNoInvestigations/investigations
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/json; charset=utf-8
       User-Agent:
       - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=368C88AD5958AA847BFFE03DBC24887F; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=26AA10FEE240EAE8F9FF63B6ECDACC95; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 15 Jul 2013 15:27:10 GMT
+      - Wed, 14 Aug 2013 11:33:23 GMT
     body:
       encoding: US-ASCII
-      string: 'null'
+      string: ! '{"investigation":[]}'
     http_version: 
-  recorded_at: Mon, 15 Jul 2013 15:27:10 GMT
+  recorded_at: Wed, 14 Aug 2013 11:33:23 GMT
 recorded_with: VCR 2.4.0

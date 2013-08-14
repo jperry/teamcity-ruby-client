@@ -2,16 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt3/agent-requirements
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/agent-requirements
     body:
       encoding: US-ASCII
-      string: <agent-requirement id="test" type="equals"><properties><property name="property-name"
-        value="test"/><property name="property-value" value="test"/></properties></agent-requirement>
+      string: <agent-requirement id="post-agent-requirement-name" type="equals"><properties><property
+        name="property-name" value="post-agent-requirement-name"/><property name="property-value"
+        value="post-agent-requirement-value"/></properties></agent-requirement>
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
       Content-Type:
       - application/xml
   response:
@@ -22,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=F9FA207CA22CA4B9183C04C49C0356FE; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=073F3886F402212F53AAB9FB029F1D9A; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -36,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 06 May 2013 19:48:12 GMT
+      - Wed, 14 Aug 2013 13:28:57 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":"test","type":"equals","properties":{"property":[{"name":"property-name","value":"test"},{"name":"property-value","value":"test"}]}}'
+      string: ! '{"id":"post-agent-requirement-name","type":"equals","properties":{"property":[{"name":"property-name","value":"post-agent-requirement-name"},{"name":"property-value","value":"post-agent-requirement-value"}]}}'
     http_version: 
-  recorded_at: Mon, 06 May 2013 19:48:12 GMT
+  recorded_at: Wed, 14 Aug 2013 13:28:57 GMT
 recorded_with: VCR 2.4.0

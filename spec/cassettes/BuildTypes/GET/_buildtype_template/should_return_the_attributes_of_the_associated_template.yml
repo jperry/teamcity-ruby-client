@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/template
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:BuildTypeTests_BuildTypeWithTemplate/template
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=A8DE4998AEB5A871160EEA9C51E60AB8; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=46323A713BA847632B08420CC43A3924; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,11 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 03:14:31 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":"btTemplate2","name":"test-template","href":"/guestAuth/app/rest/7.0/buildTypes/id:(template:btTemplate2)","projectName":"Project
-        A","projectId":"project2"}'
+      string: ! '{"id":"BuildTypeTests_TestBuildTypeTemplate","name":"TestBuildTypeTemplate","href":"/guestAuth/app/rest/buildTypes/id:BuildTypeTests_TestBuildTypeTemplate","projectName":"BuildTypeTests","projectId":"BuildTypeTests"}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:22 GMT
+  recorded_at: Wed, 14 Aug 2013 03:14:32 GMT
 recorded_with: VCR 2.4.0
