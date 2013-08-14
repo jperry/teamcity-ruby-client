@@ -13,13 +13,11 @@ describe 'BuildTypes' do
   # Get requests
   describe 'GET', :vcr do
 
-    before(:all) do
+    before(:each) do
+      TeamCity.reset
       TeamCity.configure do |config|
         config.endpoint = 'http://localhost:8111/guestAuth/app/rest'
       end
-    end
-
-    before(:each) do
       @tc = TeamCity
     end
 
@@ -110,7 +108,7 @@ describe 'BuildTypes' do
     end
 
     describe '.buildtype_investigations' do
-      before(:all) do
+      before(:each) do
         configure_client_with_authentication
       end
 

@@ -1,22 +1,8 @@
 require "spec_helper.rb"
 
 describe TeamCity do
-  after do
+  before(:each) do
     TeamCity.reset
-  end
-
-  context "when delegating to a client" do
-    before(:each) do
-      @url = "#{TeamCity::Configuration::DEFAULT_ENDPOINT}projects/id:project1"
-      stub_request(:get, @url).to_return(:body => "", :headers => {:content_type => "application/json; charset=utf-8"})
-    end
-
-    it "should get the correct resource" do
-      VCR.turned_off do
-        TeamCity.project(id: "project1")
-        a_request(:get, @url).should have_been_made
-      end
-    end
   end
 
   describe ".client" do
