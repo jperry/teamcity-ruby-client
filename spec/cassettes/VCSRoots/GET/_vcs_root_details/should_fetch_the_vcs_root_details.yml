@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/vcs-roots/id:1
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=21898D5DEC5FD7973C78F960725A1256; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=447067EED9E77DA8E82F8164E833C3DA; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,55 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 06 May 2013 18:14:22 GMT
+      - Wed, 14 Aug 2013 14:51:16 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":1,"name":"teamcity ruby client","vcsName":"jetbrains.git","shared":true,"status":"FINISHED","lastChecked":"20130506T141359-0400","properties":{"property":[{"name":"agentCleanFilesPolicy","value":"ALL_UNTRACKED"},{"name":"agentCleanPolicy","value":"ON_BRANCH_CHANGE"},{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"submoduleCheckout","value":"CHECKOUT"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"},{"name":"usernameStyle","value":"USERID"}]}}'
+      string: ! '{"count":3,"vcs-root":[{"id":"teamcity_ruby_client","name":"teamcity
+        ruby client","href":"/httpAuth/app/rest/vcs-roots/id:teamcity_ruby_client"},{"id":"sharedvcsroot","name":"sharedvcsroot","href":"/httpAuth/app/rest/vcs-roots/id:sharedvcsroot"},{"id":"copy_test","name":"copy-test","href":"/httpAuth/app/rest/vcs-roots/id:copy_test"}]}'
     http_version: 
-  recorded_at: Mon, 06 May 2013 18:14:22 GMT
+  recorded_at: Wed, 14 Aug 2013 14:51:16 GMT
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots/id:teamcity_ruby_client
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=63B01143F0BFD43FBBA4F13124629BD6; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 14:51:16 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"teamcity_ruby_client","name":"teamcity ruby client","vcsName":"jetbrains.git","status":"FINISHED","lastChecked":"20130814T105029-0400","href":"/httpAuth/app/rest/vcs-roots/id:teamcity_ruby_client","project":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"properties":{"property":[{"name":"agentCleanFilesPolicy","value":"ALL_UNTRACKED"},{"name":"agentCleanPolicy","value":"ON_BRANCH_CHANGE"},{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"submoduleCheckout","value":"CHECKOUT"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"},{"name":"usernameStyle","value":"USERID"}]},"vcsRootInstances":{"href":"/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:teamcity_ruby_client)"}}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 14:51:16 GMT
 recorded_with: VCR 2.4.0
