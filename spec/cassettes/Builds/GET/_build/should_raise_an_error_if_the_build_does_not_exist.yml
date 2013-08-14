@@ -2,27 +2,29 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds/id:10000
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds/id:doesnotexist
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 400
+      message: Bad Request
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=9AF99299E2C9B5FBEE57338AE5696FC3; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=87B31C0E67F8CBB479DF910003EA0BF0; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,16 +37,17 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:25:04 GMT
+      - Wed, 14 Aug 2013 14:08:54 GMT
+      Connection:
+      - close
     body:
       encoding: US-ASCII
-      string: ! 'Error has occurred during request processing (Not Found).
+      string: ! 'Error has occurred during request processing (Bad Request).
 
-        Error: jetbrains.buildServer.server.rest.errors.NotFoundException: No build
-        can be found by id ''10000''.
+        Error: jetbrains.buildServer.server.rest.errors.LocatorProcessException: Invalid
+        value of dimension ''id'': ''doesnotexist''. Should be a number.
 
-        Could not find the entity requested. Check the reference is correct and the
-        user has permissions to access the entity.'
+        Invalid request. Check locator is specified correctly.'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:25:04 GMT
+  recorded_at: Wed, 14 Aug 2013 14:08:54 GMT
 recorded_with: VCR 2.4.0

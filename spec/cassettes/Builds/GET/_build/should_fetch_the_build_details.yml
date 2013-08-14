@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds/id:2
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=D2EA85979E1D8F7D6429B8530B5D8C77; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=DA78A978C3FF65602A60155D7ED9E4D5; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,15 +37,55 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:24:02 GMT
+      - Wed, 14 Aug 2013 14:08:28 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":2,"number":"2","status":"SUCCESS","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3","personal":false,"history":false,"pinned":false,"statusText":"Tests
-        passed: 63, ignored: 1","buildType":{"id":"bt3","name":"build B1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt3","projectName":"Project
-        B","projectId":"project3","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt3"},"startDate":"20130423T105917-0400","finishDate":"20130423T110028-0400","agent":{"href":"/guestAuth/app/rest/7.0/agents/id:1","id":1,"name":"Default
-        Agent"},"tags":null,"properties":null,"snapshot-dependencies":null,"artifact-dependencies":null,"revisions":{"revision":[{"version":"bb19f54ab1d7450bf85b060f9cc9b6218dd61e5b","vcs-root-instance":{"id":"1","vcs-root-id":"1","name":"teamcity
-        ruby client","href":"/guestAuth/app/rest/7.0/vcs-roots/id:1/instances/id:1"}}]},"triggered":{"date":"20130423T105906-0400","user":{"href":"/guestAuth/app/rest/7.0/users/id:1","id":1,"name":"Jay
-        Perry","username":"jperry"}},"changes":{"count":0,"href":"/guestAuth/app/rest/7.0/changes?build=id:2"}}'
+      string: ! '{"count":5,"build":[{"id":35,"number":"3","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100159-0400","href":"/httpAuth/app/rest/builds/id:35","webUrl":"http://localhost:8111/viewLog.html?buildId=35&buildTypeId=BuildTests_GetBuildTests"},{"id":34,"number":"2","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100151-0400","href":"/httpAuth/app/rest/builds/id:34","webUrl":"http://localhost:8111/viewLog.html?buildId=34&buildTypeId=BuildTests_GetBuildTests"},{"id":33,"number":"1","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100134-0400","href":"/httpAuth/app/rest/builds/id:33","webUrl":"http://localhost:8111/viewLog.html?buildId=33&buildTypeId=BuildTests_GetBuildTests"},{"id":32,"number":"2","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073131-0400","href":"/httpAuth/app/rest/builds/id:32","webUrl":"http://localhost:8111/viewLog.html?buildId=32&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"},{"id":31,"number":"1","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073100-0400","href":"/httpAuth/app/rest/builds/id:31","webUrl":"http://localhost:8111/viewLog.html?buildId=31&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:24:02 GMT
+  recorded_at: Wed, 14 Aug 2013 14:08:28 GMT
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds/id:35
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=A2117C063AF74E799F18E8CAF380BF52; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 14:08:28 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":35,"number":"3","status":"SUCCESS","href":"/httpAuth/app/rest/builds/id:35","webUrl":"http://localhost:8111/viewLog.html?buildId=35&buildTypeId=BuildTests_GetBuildTests","personal":false,"history":false,"pinned":false,"statusText":"Success","buildType":{"id":"BuildTests_GetBuildTests","name":"GetBuildTests","href":"/httpAuth/app/rest/buildTypes/id:BuildTests_GetBuildTests","projectName":"BuildTests","projectId":"BuildTests","webUrl":"http://localhost:8111/viewType.html?buildTypeId=BuildTests_GetBuildTests"},"startDate":"20130814T100159-0400","finishDate":"20130814T100201-0400","agent":{"name":"Default
+        Agent","id":1,"href":"/httpAuth/app/rest/agents/id:1"},"tags":{"tag":[]},"properties":{"property":[]},"snapshot-dependencies":{"count":0,"build":[]},"artifact-dependencies":{"count":0,"build":[]},"revisions":{"revision":[]},"triggered":{"date":"20130814T100159-0400","user":{"username":"jperry","name":"Jay
+        Perry","id":1,"href":"/httpAuth/app/rest/users/id:1"}},"changes":{"count":0,"href":"/httpAuth/app/rest/changes?build=id:35"},"relatedIssues":{"href":"/httpAuth/app/rest/builds/id:35/relatedIssues"},"artifacts":{"href":"/httpAuth/app/rest/builds/id:35/artifacts/children"}}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 14:08:28 GMT
 recorded_with: VCR 2.4.0

@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=4CB39062DC98CE06FD3703463EF939B3; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=31DD1D2449D527108E6A34EFCEE6AB4A; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 18:43:45 GMT
+      - Wed, 14 Aug 2013 14:02:16 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"count":4,"build":[{"id":4,"number":"1","status":"FAILURE","buildTypeId":"bt4","startDate":"20130423T142954-0400","href":"/guestAuth/app/rest/7.0/builds/id:4","webUrl":"http://localhost:8111/viewLog.html?buildId=4&buildTypeId=bt4"},{"id":3,"number":"1","status":"FAILURE","buildTypeId":"bt2","startDate":"20130423T142629-0400","href":"/guestAuth/app/rest/7.0/builds/id:3","webUrl":"http://localhost:8111/viewLog.html?buildId=3&buildTypeId=bt2"},{"id":2,"number":"2","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T105917-0400","href":"/guestAuth/app/rest/7.0/builds/id:2","webUrl":"http://localhost:8111/viewLog.html?buildId=2&buildTypeId=bt3"},{"id":1,"number":"1","status":"SUCCESS","buildTypeId":"bt3","startDate":"20130423T104727-0400","href":"/guestAuth/app/rest/7.0/builds/id:1","webUrl":"http://localhost:8111/viewLog.html?buildId=1&buildTypeId=bt3"}]}'
+      string: ! '{"count":5,"build":[{"id":35,"number":"3","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100159-0400","href":"/httpAuth/app/rest/builds/id:35","webUrl":"http://localhost:8111/viewLog.html?buildId=35&buildTypeId=BuildTests_GetBuildTests"},{"id":34,"number":"2","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100151-0400","href":"/httpAuth/app/rest/builds/id:34","webUrl":"http://localhost:8111/viewLog.html?buildId=34&buildTypeId=BuildTests_GetBuildTests"},{"id":33,"number":"1","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100134-0400","href":"/httpAuth/app/rest/builds/id:33","webUrl":"http://localhost:8111/viewLog.html?buildId=33&buildTypeId=BuildTests_GetBuildTests"},{"id":32,"number":"2","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073131-0400","href":"/httpAuth/app/rest/builds/id:32","webUrl":"http://localhost:8111/viewLog.html?buildId=32&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"},{"id":31,"number":"1","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073100-0400","href":"/httpAuth/app/rest/builds/id:31","webUrl":"http://localhost:8111/viewLog.html?buildId=31&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 18:43:45 GMT
+  recorded_at: Wed, 14 Aug 2013 14:02:16 GMT
 recorded_with: VCR 2.4.0

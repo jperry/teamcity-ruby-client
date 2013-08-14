@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/builds/id:2/tags
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds?locator=tags:tag-test
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=3901267E5EC970712F37999461CAB7EE; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=E2C9BE1BBBFE74B3243E10B105E3C19A; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,53 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:36:27 GMT
+      - Wed, 14 Aug 2013 14:14:55 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"tag":["release_tag"]}'
+      string: ! '{"count":1,"build":[{"id":35,"number":"3","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100159-0400","href":"/httpAuth/app/rest/builds/id:35","webUrl":"http://localhost:8111/viewLog.html?buildId=35&buildTypeId=BuildTests_GetBuildTests"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:36:27 GMT
+  recorded_at: Wed, 14 Aug 2013 14:14:55 GMT
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds/id:35/tags
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=0E85BA668B0BE9963978501D70DC6C65; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 14:14:55 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"tag":["tag-test"]}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 14:14:55 GMT
 recorded_with: VCR 2.4.0
