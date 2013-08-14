@@ -20,6 +20,13 @@ module TeamCity
       yield(self) if block_given?
     end
 
+    def to_hash
+      {
+        'Accept' => accept,
+        'Content-Type' => content_type
+      }
+    end
+
     private
 
     class Xml
@@ -28,7 +35,7 @@ module TeamCity
     end
 
     class Json
-      def self.accept; "application/xml; charset=utf-8"; end
+      def self.accept; "application/json; charset=utf-8"; end
       def self.content_type; "application/json"; end
     end
 

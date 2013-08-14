@@ -7,7 +7,7 @@ describe TeamCity::Headers do
   end
 
   it "should default the accept header to json" do
-    build_headers.accept.should eq("application/xml; charset=utf-8")
+    build_headers.accept.should eq("application/json; charset=utf-8")
   end
 
   it "should default the content_type header to json" do
@@ -32,5 +32,12 @@ describe TeamCity::Headers do
 
   it "should not allow an invalid content_type format" do
     expect { build_headers(:content_type => :invalid) }.to raise_exception(ArgumentError)
+  end
+
+  it "should return a hash of headers" do
+    build_headers.to_hash.should eq({
+      'Accept' => 'application/json; charset=utf-8',
+      'Content-Type' => 'application/json'
+    })
   end
 end
