@@ -98,8 +98,7 @@ describe 'Projects' do
         response = @tc.copy_project(
           source_project.id,
           copied_project_name,
-          :copyAllAssociatedSettings => true,
-          :shareVCSRoots             => true
+          :copyAllAssociatedSettings => true
         )
         response.name.should eq(copied_project_name)
       end
