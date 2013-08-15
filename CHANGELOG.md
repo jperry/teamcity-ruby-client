@@ -1,3 +1,17 @@
+## 1.0.0 (TBD)
+
+* Features:
+    * TeamCity 8 Support
+    * Added ```build_pinned?``` (Provides the ability to ask if a build is pinned)
+    * If using TeamCity8 any call that is setting a value will now return that value instead of nil
+
+* API Changes:
+    * ```create_vcs_root``` method signature has been changed from using Ordinal Params to using Hash Params
+    * Removed the ability to set the format when configuring the client (Each method will now state what format it is sending and receiving, see the source for more info)
+
+* Doc Changes:
+    * The API docs were updated to reflect the return values now returned when using TeamCity 8
+
 ## 0.4.0 (Jun 15, 2013)
 
 * Added ```pin_build``` and ```unpin_build``` (Provides the ability to pin and unpin a build respectively)
