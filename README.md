@@ -19,22 +19,21 @@ Or install it yourself as:
 
 ## API Usage Examples
 
-* Tested on TeamCity 8.0.2 and higher
-    * There are no guarantees this works with TeamCity 7.X
-    * Use the teamcity7 branch or gem version < 1.0.0
-    * I'll be supporting teamcity7 for the next 6 months, please feel free to file tickets.
+* Tested on TeamCity 7.X and 8.X
 * Most of the api calls return either an array of Hashie::Mash objects or a single Hashie::Mash object which allows you to send messages to retreive an attribute easily.
 * See [api docs](http://rubydoc.info/gems/teamcity-ruby-client/TeamCity/Client) or [specs](spec/teamcity/client) for additional examples and usage
 
 ### Configuration
 
 * See [configuration](lib/teamcity/configuration.rb) source or api doc for more configuration options
+* You may use v7 of the TeamCity api by adding '7.0' to the endpoint configuration (This would be similar to using latest on a TeamCity 7 server)
 
 ```ruby
 require 'teamcity'
 
 # This only needs to be set once per Ruby execution.
 # You may use guestAuth instead of httpAuth and omit the use of http_user and http_password
+# This is using the latest version of the api
 TeamCity.configure do |config|
   config.endpoint = 'http://my-teamcity-server:8111/httpAuth/app/rest'
   config.http_user = 'teamcity-user'
