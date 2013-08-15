@@ -66,7 +66,6 @@ module TeamCity
           :sourceProject => "id:#{source_project_id}",
         }
         post("projects", :content_type => :xml) do |req|
-          req.headers['Content-Type'] = 'application/xml'
           builder = Builder::XmlMarkup.new
           builder.newProjectDescription(options.merge(attributes))
           req.body = builder.target!
