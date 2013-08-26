@@ -1,4 +1,4 @@
-## 1.0.0 (TBD)
+## 1.0.0 (Aug 26, 2013)
 
 * Features:
     * TeamCity 8 Support
