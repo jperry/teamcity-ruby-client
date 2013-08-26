@@ -24,7 +24,7 @@ module TeamCity
       # List of Build Configurations of a project
       #
       # @param (see #project)
-      # @return [Array<Hashie::Mash>, nil] of build types or nil if no build types exist
+      # @return [Array<Hashie::Mash> of build types (an empty array will be returne if none exist)
       def project_buildtypes(options={})
         assert_options(options)
         response = get("projects/#{locator(options)}/buildTypes")
@@ -34,7 +34,7 @@ module TeamCity
       # List of parameters defined on a project
       #
       # @param (see #project)
-      # @return [Array<Hashie::Mash>, nil] of parameters or nil if no parameters are defined
+      # @return [Array<Hashie::Mash>] of parameters (empty if none are defined)
       def project_parameters(options={})
         assert_options(options)
         response = get("projects/#{locator(options)}/parameters")
@@ -46,8 +46,7 @@ module TeamCity
       # @param name [String] Name of the project
       # @return [Hashie::Mash] project details
       def create_project(name)
-        post("projects") do |req|
-          req.headers['Content-Type'] = 'text/plain'
+        post("projects", :content_type => :text) do |req|
           req.body = name
         end
       end
@@ -58,17 +57,18 @@ module TeamCity
       # @param target_project_name [String] name of the project you want to create
       # @param options [Hash] copy project options
       # @option options [Boolean] :copyAllAssociatedSettings copy all associated settings
-      # @options options[Boolean] :shareVCSRoots when true the vcs roots will be shared, otherwise they will be copied
+      # @options options [String] :parentProject used to define the parent project to create this project under (root will be use by default)
+      # @options options [String] :id to use for the new project
       # @return [Hashie::Mash] project details
       def copy_project(source_project_id, target_project_name, options={})
         attributes = {
-          :name => target_project_name,
-          :sourceProjectLocator => "id:#{source_project_id}",
+          :name => target_project_name
         }
-        post("projects") do |req|
-          req.headers['Content-Type'] = 'application/xml'
-          builder = Builder::XmlMarkup.new
-          builder.newProjectDescription(options.merge(attributes))
+        builder = Builder::XmlMarkup.new
+        builder.tag!(:newProjectDescription ,options.merge(attributes)) do |node|
+          node.tag!(:sourceProject, locator: source_project_id)
+        end
+        post("projects", :content_type => :xml) do |req|
           req.body = builder.target!
         end
       end
@@ -87,10 +87,8 @@ module TeamCity
       # @param parameter_name [String] name of the parameter to delete
       # @return [nil]
       def delete_project_parameter(project_id, parameter_name)
-        delete("projects/#{project_id}/parameters/#{parameter_name}") do |req|
-          # only accepts text/plain
-          req.headers['Accept'] = 'text/plain'
-        end
+        path = "projects/#{project_id}/parameters/#{parameter_name}"
+        delete(path, :accept => :text)
       end
 
       # Set a project parameter (Create or Update)
@@ -99,9 +97,12 @@ module TeamCity
       # @param project_id [String] the project id
       # @param parameter_name [String] name of the parameter to set
       # @param parameter_value [String] value of the parameter
+      # @return [String] parameter_value that was set
       def set_project_parameter(project_id, parameter_name, parameter_value)
         path = "projects/#{project_id}/parameters/#{parameter_name}"
-        put_text_request(path, parameter_value)
+        put(path, :content_type => :text, :accept => :text) do |req|
+          req.body = parameter_value
+        end
       end
 
       # Set a project field
@@ -116,9 +117,12 @@ module TeamCity
       # @param project_id [String] the project id
       # @param field_name [String] the field name: 'name', 'description', 'archived'
       # @param field_value [String] the value to set the field to
+      # @return [String] project_field_value that was set
       def set_project_field(project_id, field_name, field_value)
         path = "projects/#{project_id}/#{field_name}"
-        put_text_request(path, field_value)
+        put(path, :content_type => :text, :accept => :text) do |req|
+          req.body = field_value
+        end
       end
     end
   end

@@ -6,19 +6,19 @@ module TeamCity
   module Connection
     private
 
-    def connection
-      options = {
-        :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent},
+    def connection(options={})
+      faraday_options = {
+        :headers => {
+          'User-Agent' => user_agent
+        }.merge((headers = Headers.build(options)).to_hash),
         :ssl => {:verify => false},
         :url => endpoint
       }
 
-      Faraday::Connection.new(options) do |connection|
+      Faraday::Connection.new(faraday_options) do |connection|
         connection.use Faraday::Request::UrlEncoded
         connection.use FaradayMiddleware::Mashify
-        case format.to_s.downcase
-        when 'json' then connection.use FaradayMiddleware::ParseJson
-        end
+        connection.use FaradayMiddleware::ParseJson if headers.accept =~ /json/
         connection.use FaradayMiddleware::NullResponseBody
         connection.adapter(adapter)
         connection.basic_auth(http_user, http_password)

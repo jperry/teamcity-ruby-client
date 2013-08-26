@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/artifact-dependencies
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:BuildTypeTests_GetBuildTypeConfigTests/artifact-dependencies
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=C65F97447944755125369E0DA3108794; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=6EC29D51A599236A543F6B8B44E99404; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 11:47:25 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"artifact-dependency":[{"id":"0","type":"artifact_dependency","properties":{"property":[{"name":"cleanDestinationDirectory","value":"false"},{"name":"pathRules","value":"+:version.txt"},{"name":"revisionName","value":"sameChainOrLastFinished"},{"name":"revisionValue","value":"latest.sameChainOrLastFinished"},{"name":"source_buildTypeId","value":"bt3"}]}}]}'
+      string: ! '{"artifact-dependency":[{"id":"0","type":"artifact_dependency","properties":{"property":[{"name":"cleanDestinationDirectory","value":"false"},{"name":"pathRules","value":"version.txt"},{"name":"revisionName","value":"lastSuccessful"},{"name":"revisionValue","value":"latest.lastSuccessful"}]},"source-buildType":{"id":"BuildTypeTests_BuildTypeWithNoTemplate","name":"BuildTypeWithNoTemplate","href":"/guestAuth/app/rest/buildTypes/id:BuildTypeTests_BuildTypeWithNoTemplate","projectName":"BuildTypeTests","projectId":"BuildTypeTests","webUrl":"http://localhost:8111/viewType.html?buildTypeId=BuildTypeTests_BuildTypeWithNoTemplate"}}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:23 GMT
+  recorded_at: Wed, 14 Aug 2013 11:47:25 GMT
 recorded_with: VCR 2.4.0

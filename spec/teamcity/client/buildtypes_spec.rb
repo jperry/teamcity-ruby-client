@@ -13,28 +13,25 @@ describe 'BuildTypes' do
   # Get requests
   describe 'GET', :vcr do
 
-    before(:all) do
-      TeamCity.configure do |config|
-        config.endpoint = 'http://localhost:8111/guestAuth/app/rest/7.0/'
-      end
-    end
-
     before(:each) do
+      TeamCity.reset
+      TeamCity.configure do |config|
+        config.endpoint = 'http://localhost:8111/guestAuth/app/rest'
+      end
       @tc = TeamCity
     end
 
     describe '.buildtypes' do
-
       it 'should fetch all the buildtypes' do
-        @tc.buildtypes.size.should eq(3)
+        build_types = @tc.buildtypes
+        build_types.should_not be_empty
       end
-
     end
 
     describe '.buildtype' do
-
       it 'should fetch the details of a buildtype by id' do
-        @tc.buildtype(id: 'bt2').id.should eq('bt2')
+        build_type = @tc.buildtypes[0]
+        @tc.buildtype(id: build_type.id).id.should_not be_empty
       end
 
       it 'should raise an error if the buildtype does not exist' do
@@ -48,32 +45,33 @@ describe 'BuildTypes' do
 
     describe '.buildtype_state' do
       it 'should fetch the state of the buildtype' do
-        pending "bug in rest api plugin"
-        @tc.buildtype_state(id: 'bt2')
+        build_type = @tc.buildtypes[0]
+        @tc.buildtype_state(id: build_type.id).should eq('false')
       end
     end
 
     describe '.buildtype_settings' do
+
+      before(:each) do
+        @build_type = @tc.buildtypes[0]
+      end
+
       it 'should fetch the settings for a given buildtype' do
-        @tc.buildtype_settings(id: 'bt2').should have_at_least(1).items
+        @tc.buildtype_settings(id: @build_type.id).should_not be_empty
       end
 
       it 'should return an array' do
-        @tc.buildtype_settings(id: 'bt2').should be_kind_of(Array)
+        @tc.buildtype_settings(id: @build_type.id).should be_kind_of(Array)
       end
     end
 
     describe '.buildtype_template' do
       it 'should return the attributes of the associated template' do
-        @tc.buildtype_template(id: 'bt2').id.should_not be_nil
+        @tc.buildtype_template(id: 'BuildTypeTests_BuildTypeWithTemplate').id.should_not be_nil
       end
 
       it 'should return nil if the buildtype is not associated with a template' do
-        @tc.buildtype_template(id: 'bt3').should be_nil
-      end
-
-      it 'should raise an exception if the response is not due to a template not assigned' do
-        expect { @tc.buildtype_template(id: 'bt500').should be_nil }.to raise_error
+        @tc.buildtype_template(id: 'BuildTypeTests_BuildTypeWithNoTemplate').should be_nil
       end
     end
 
@@ -91,33 +89,35 @@ describe 'BuildTypes' do
 
         before(:each) do
           @method_name = "buildtype_#{type}"
+          @buildtype_id_with_settings = 'BuildTypeTests_GetBuildTypeConfigTests'
+          @buildtype_id_with_no_settings = 'BuildTypeTests_GetBuildTypeEmptyConfigTests'
         end
 
-          it "should fetch the build configuration #{type} for a buildtype" do
-          @tc.send(@method_name, id: 'bt2').should have_at_least(1).items
+        it "should fetch the build configuration #{type} for a buildtype" do
+          @tc.send(@method_name, id: @buildtype_id_with_settings).should have_at_least(1).items
         end
 
         it 'should return an array' do
-          @tc.send(@method_name, id: 'bt2').should be_kind_of(Array)
+          @tc.send(@method_name, id: @buildtype_id_with_settings).should be_kind_of(Array)
         end
 
         it "should return nil if there are no #{type} defined" do
-          @tc.send(@method_name, id: 'bt4').should be_nil
+          @tc.send(@method_name, id: @buildtype_id_with_no_settings).should be_empty
         end
       end
     end
 
     describe '.buildtype_investigations' do
-      before(:all) do
+      before(:each) do
         configure_client_with_authentication
       end
 
       it 'should get investigation details' do
-        @tc.buildtype_investigations('bt9').should_not be_nil
+        @tc.buildtype_investigations('BuildTypeTests_GetBuildTypeWithInvestigations').should_not be_empty
       end
 
       it 'should return nil if no one is investigating' do
-        @tc.buildtype_investigations('bt9').should be_nil
+        @tc.buildtype_investigations('BuildTypeTests_GetBuildTypeWithNoInvestigations').should be_empty
       end
     end
   end
@@ -130,31 +130,54 @@ describe 'BuildTypes' do
 
     describe '.set_buildtype_parameter' do
       it 'should set a buildtype parameter' do
-        @tc.set_buildtype_parameter('bt3', 'set-this-parameter', 'some-value').should be_nil
+        buildtype_id = 'BuildTypeTests_PutSetBuildTypeParameters'
+        param_name = 'test-setting-buildtype-parameters'
+        param_value = 'param-value'
+        @tc.set_buildtype_parameter(buildtype_id, param_name, param_value).should eq(param_value)
       end
     end
 
     describe '.set_buildtype_field' do
+
+      before(:each) do
+        @buildtype_id = 'BuildTypeTests_PutSetBuildTypeField'
+      end
+
       it 'should set the buildtype name' do
-        @tc.set_buildtype_field('bt3', 'name', 'new-buildtype-name').should be_nil
+        field_name = 'name'
+        field_value = 'PutSetBuildTypeField_Name_Changed_By_Test'
+        @tc.set_buildtype_field(@buildtype_id, field_name, field_value).should eq(field_value)
       end
 
       it 'should set a projects description' do
-        @tc.set_buildtype_field('bt3', 'description', 'description-changed-by-test').should be_nil
+        field_name = 'description'
+        field_value = 'description-set_buildtype_field'
+        @tc.set_buildtype_field(@buildtype_id, field_name, field_value).should eq(field_value)
       end
 
       it 'should pause a project' do
-        @tc.set_buildtype_field('bt3', 'paused', 'true').should be_nil
+        field_name = 'paused'
+        field_value = 'true'
+        @tc.set_buildtype_field(@buildtype_id, field_name, field_value).should eq(field_value)
       end
     end
 
     describe '.set_build_step_field' do
+      before(:each) do
+        @buildtype_id = 'BuildTypeTests_PutSetBuildStepField'
+        @build_step_id = 'RUNNER_7'
+      end
+
       it 'should disable a build step' do
-        @tc.set_build_step_field('bt3', 'RUNNER_2', 'disabled', 'true')
+        field_name = 'disabled'
+        field_value = 'true'
+        @tc.set_build_step_field(@buildtype_id, @build_step_id, field_name, field_value)
       end
 
       it 'should enable a build step' do
-        @tc.set_build_step_field('bt3', 'RUNNER_2', 'disabled', 'false')
+        field_name = 'disabled'
+        field_value = 'false'
+        @tc.set_build_step_field(@build_type_id, @build_step_id, field_name, field_value)
       end
     end
   end
@@ -164,21 +187,25 @@ describe 'BuildTypes' do
       configure_client_with_authentication
     end
 
+    before(:each) do
+      @buildtype_id = 'BuildTypeTests_PostBuildTypeTests'
+    end
+
     describe '.attach_vcs_root' do
       it 'should attach a vcs root to a buildtype' do
-        @tc.attach_vcs_root('bt3', '1').id.should eq('1')
+        vcs_root_id = 'teamcity_ruby_client'
+        @tc.attach_vcs_root(@buildtype_id, vcs_root_id).id.should eq(vcs_root_id)
       end
     end
 
     describe '.create_agent_requirement' do
       it 'should create an agent requirement for a buildtype' do
-        buildtype_id = 'bt3'
-        parameter_name = 'test'
-        parameter_value = 'test'
+        parameter_name = 'post-agent-requirement-name'
+        parameter_value = 'post-agent-requirement-value'
         condition = 'equals'
-        args = [buildtype_id, parameter_name, parameter_value, condition]
+        args = [@buildtype_id, parameter_name, parameter_value, condition]
         response = @tc.create_agent_requirement(*args)
-        response.id.should eq('test')
+        response.id.should eq(parameter_name)
       end
     end
   end
@@ -188,21 +215,30 @@ describe 'BuildTypes' do
       configure_client_with_authentication
     end
 
+    before(:each) do
+      @buildtype_id = 'BuildTypeTests_DeleteBuildTypeSettings'
+    end
+
     describe '.delete_buildtype_parameter' do
       it 'should delete a buildtype parameter' do
-        @tc.delete_buildtype_parameter('bt3', 'delete-me').should be_nil
+        param_to_delete = 'delete-buildtype-param'
+        @tc.set_buildtype_parameter(@buildtype_id, param_to_delete, '')
+        @tc.delete_buildtype_parameter(@buildtype_id, 'delete-me').should be_nil
       end
     end
 
     describe '.delete_agent_requirement' do
       it 'should delete the agent requirement' do
-        @tc.delete_agent_requirement('bt3', 'test').should be_nil
+        agent_requirement_to_delete = 'delete-agent-requirement'
+        @tc.create_agent_requirement(@buildtype_id, agent_requirement_to_delete, '', 'equals')
+        @tc.delete_agent_requirement(@buildtype_id, agent_requirement_to_delete).should be_nil
       end
     end
 
     describe '.delete_buildtype' do
       it 'should delete a buildtype' do
-        @tc.delete_buildtype('bt8').should be_nil
+        project_id_to_delete = 'BuildTypeTests_DeleteBuildTypeRequest'
+        @tc.delete_buildtype(project_id_to_delete).should be_nil
       end
     end
   end

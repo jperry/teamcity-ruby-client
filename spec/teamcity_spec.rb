@@ -1,22 +1,8 @@
 require "spec_helper.rb"
 
 describe TeamCity do
-  after do
+  before(:each) do
     TeamCity.reset
-  end
-
-  context "when delegating to a client" do
-    before(:each) do
-      @url = "#{TeamCity::Configuration::DEFAULT_ENDPOINT}projects/id:project1"
-      stub_request(:get, @url).to_return(:body => "", :headers => {:content_type => "application/json; charset=utf-8"})
-    end
-
-    it "should get the correct resource" do
-      VCR.turned_off do
-        TeamCity.project(id: "project1")
-        a_request(:get, @url).should have_been_made
-      end
-    end
   end
 
   describe ".client" do
@@ -74,19 +60,6 @@ describe TeamCity do
     it "should set the endpoint" do
       TeamCity.endpoint = "http://teamcity.mydomain.net:8111"
       TeamCity.endpoint.should == "http://teamcity.mydomain.net:8111"
-    end
-  end
-
-  describe ".format" do
-    it "should return the default format" do
-      TeamCity.format.should == TeamCity::Configuration::DEFAULT_FORMAT
-    end
-  end
-
-  describe ".format=" do
-    it "should set the format" do
-      TeamCity.format = :xml
-      TeamCity.format.should == :xml
     end
   end
 

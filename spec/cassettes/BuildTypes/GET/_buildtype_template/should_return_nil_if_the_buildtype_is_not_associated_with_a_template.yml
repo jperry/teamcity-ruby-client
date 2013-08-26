@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt3/template
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:BuildTypeTests_BuildTypeWithNoTemplate/template
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=EAB1D56AFE6582F404447ACF2A1245EA; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=CC424BEBA7912AC9A0E67314916D5E9D; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,7 +37,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 03:14:36 GMT
     body:
       encoding: US-ASCII
       string: ! 'Error has occurred during request processing (Not Found).
@@ -46,5 +48,5 @@ http_interactions:
         Could not find the entity requested. Check the reference is correct and the
         user has permissions to access the entity.'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:22 GMT
+  recorded_at: Wed, 14 Aug 2013 03:14:36 GMT
 recorded_with: VCR 2.4.0

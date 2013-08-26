@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/projects/id:project2
+    uri: http://localhost:8111/guestAuth/app/rest/projects/id:GetProjectRequest
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=487E769721FC69401E90949E6B74828F; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=BAB023247FFCB886D35EBEE366BE1407; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,13 +37,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 22 Feb 2013 14:22:30 GMT
+      - Wed, 14 Aug 2013 01:46:41 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project2","id":"project2","name":"Project
-        A","href":"/guestAuth/app/rest/7.0/projects/id:project2","buildTypes":{"buildType":[{"id":"bt2","name":"build
-        A1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt2","projectName":"Project
-        A","projectId":"project2","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt2"}]},"templates":null,"parameters":null}'
+      string: ! '{"id":"GetProjectRequest","name":"GetProjectRequest","href":"/guestAuth/app/rest/projects/id:GetProjectRequest","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=GetProjectRequest","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/guestAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/guestAuth/app/rest/vcs-roots?locator=project:(id:GetProjectRequest)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Fri, 22 Feb 2013 14:22:30 GMT
+  recorded_at: Wed, 14 Aug 2013 01:46:41 GMT
 recorded_with: VCR 2.4.0

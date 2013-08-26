@@ -1,28 +1,28 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects/project2/parameters/set-this-parameter
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
     body:
       encoding: US-ASCII
-      string: some-value
+      string: PutCreateProjectParam
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.1.0
       Content-Type:
       - text/plain
   response:
     status:
-      code: 204
-      message: No Content
+      code: 200
+      message: OK
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=155B49584EEB5230B10BBAC7DAB270DD; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=38F07F472DD6656B4F7DFFDD7BCB099B; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -30,11 +30,57 @@ http_interactions:
       Cache-Control:
       - no-cache
       - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Date:
-      - Fri, 03 May 2013 19:56:03 GMT
+      - Wed, 14 Aug 2013 02:31:01 GMT
     body:
       encoding: US-ASCII
-      string: ''
+      string: ! '{"id":"PutCreateProjectParam","name":"PutCreateProjectParam","href":"/httpAuth/app/rest/projects/id:PutCreateProjectParam","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PutCreateProjectParam","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PutCreateProjectParam)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Fri, 03 May 2013 19:56:03 GMT
+  recorded_at: Wed, 14 Aug 2013 02:31:01 GMT
+- request:
+    method: put
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects/PutCreateProjectParam/parameters/set-with-param
+    body:
+      encoding: US-ASCII
+      string: some-value
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - text/plain
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=DBCB09D9B7AD076E2256FF2930450E3A; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 02:31:01 GMT
+    body:
+      encoding: US-ASCII
+      string: some-value
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 02:31:01 GMT
 recorded_with: VCR 2.4.0

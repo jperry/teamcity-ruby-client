@@ -26,11 +26,15 @@ module TeamCity
         get("buildTypes/#{locator(options)}")
       end
 
-      # TODO: File jetbrains ticket, this call doesn't work
-      #def buildtype_state(options={})
-      #  assert_options(options)
-      #  get("buildTypes/#{locator(options)}/paused")
-      #end
+      # Get whether the build is paused or not
+      #
+      # @param options [Hash] option keys, :id => buildtype_id
+      # @return [String] 'true' or 'false' on whether the build is paused
+      def buildtype_state(options={})
+        assert_options(options)
+        path = "buildTypes/#{locator(options)}/paused"
+        get(path, :accept => :text, :content_type => :text)
+      end
 
       # Get build configuration settings
       #
@@ -120,10 +124,12 @@ module TeamCity
       # @param buildtype_id [String] the buildtype id
       # @param parameter_name [String] name of the parameter to set
       # @param parameter_value [String] value of the parameter
-      # @return [nil]
+      # @return parameter_value [String] that was set
       def set_buildtype_parameter(buildtype_id, parameter_name, parameter_value)
         path = "buildTypes/#{buildtype_id}/parameters/#{parameter_name}"
-        put_text_request(path, parameter_value)
+        put(path, :accept => :text, :content_type => :text) do |req|
+          req.body = parameter_value
+        end
       end
 
       # Delete a buildtype parameter
@@ -132,10 +138,8 @@ module TeamCity
       # @param parameter_name [String] name of the parameter to delete
       # @return [nil]
       def delete_buildtype_parameter(buildtype_id, parameter_name)
-        delete("buildTypes/#{buildtype_id}/parameters/#{parameter_name}") do |req|
-          # only accepts text/plain
-          req.headers['Accept'] = 'text/plain'
-        end
+        path = "buildTypes/#{buildtype_id}/parameters/#{parameter_name}"
+        delete(path, :accept => :text, :content_type => :text)
       end
 
       # Create a buildtype agent requirement (Create)
@@ -144,7 +148,7 @@ module TeamCity
       # @param parameter_name [String] name of the parameter to set
       # @param parameter_value [String] value of the parameter
       # @param condition [String] the condition for which to check against
-      # @return [nil]
+      # @return [Hashie::Mash]
       #
       # @example Create a condition where a system property equals something
       #    TeamCity.create_agent_requirement('bt1', 'system.os.name', 'Linux', 'equals')
@@ -158,8 +162,8 @@ module TeamCity
             p.property(:name => 'property-value', :value => parameter_value)
           end
         end
-        post("buildTypes/#{buildtype_id}/agent-requirements") do |req|
-          req.headers['Content-Type'] = 'application/xml'
+        path = "buildTypes/#{buildtype_id}/agent-requirements"
+        post(path, :accept => :json, :content_type => :xml) do |req|
           req.body = builder.target!
         end
       end
@@ -185,9 +189,12 @@ module TeamCity
       # @param buidltype_id [String] the buildtype id
       # @param field_name [String] the field name
       # @param field_value [String] the value to set the field to
+      # @return field_value [String] value that was set
       def set_buildtype_field(buildtype_id, field_name, field_value)
         path = "buildTypes/#{buildtype_id}/#{field_name}"
-        put_text_request(path, field_value)
+        put(path, :accept => :text, :content_type => :text) do |req|
+          req.body = field_value
+        end
       end
 
       # Delete buildtype (build configuration)
@@ -207,7 +214,9 @@ module TeamCity
       # @return [nil]
       def set_build_step_field(buildtype_id, step_id, field_name, field_value)
         path = "buildTypes/#{buildtype_id}/steps/#{step_id}/#{field_name}"
-        put_text_request(path, field_value)
+        put(path, :accept => :text, :content_type => :text) do |req|
+          req.body = field_value
+        end
       end
     end
   end

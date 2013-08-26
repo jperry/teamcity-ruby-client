@@ -2,15 +2,15 @@
 http_interactions:
 - request:
     method: post
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt3/vcs-root-entries
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/vcs-root-entries
     body:
       encoding: US-ASCII
-      string: <vcs-root-entry><vcs-root id="1"/></vcs-root-entry>
+      string: <vcs-root-entry><vcs-root id="teamcity_ruby_client"/></vcs-root-entry>
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
       Content-Type:
       - application/xml
   response:
@@ -21,8 +21,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=3199BAE6ED6C5168E66F422655D13476; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=2C57E65BDB7952BC8CE5ED7E65BCBB2E; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,11 +35,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 06 May 2013 20:06:44 GMT
+      - Wed, 14 Aug 2013 13:26:41 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":"1","checkout-rules":"","vcs-root":{"id":"1","name":"teamcity
-        ruby client","href":"/httpAuth/app/rest/7.0/vcs-roots/id:1"}}'
+      string: ! '{"id":"teamcity_ruby_client","vcs-root":{"id":"teamcity_ruby_client","name":"teamcity
+        ruby client","href":"/httpAuth/app/rest/vcs-roots/id:teamcity_ruby_client"},"checkout-rules":""}'
     http_version: 
-  recorded_at: Mon, 06 May 2013 20:06:44 GMT
+  recorded_at: Wed, 14 Aug 2013 13:26:41 GMT
 recorded_with: VCR 2.4.0

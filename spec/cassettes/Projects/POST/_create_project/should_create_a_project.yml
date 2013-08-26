@@ -2,15 +2,15 @@
 http_interactions:
 - request:
     method: post
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
     body:
       encoding: US-ASCII
-      string: test-create-project
+      string: PostCreateProject
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.1.0
       Content-Type:
       - text/plain
   response:
@@ -21,8 +21,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=A8DCC1CA6ACA6730F8D61927FC3268D3; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=125B8B5DF367F863B682F55690B3F64F; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +35,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Thu, 02 May 2013 02:23:21 GMT
+      - Wed, 14 Aug 2013 02:44:49 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project8","id":"project8","name":"test-create-project","href":"/httpAuth/app/rest/7.0/projects/id:project8","buildTypes":null,"templates":null,"parameters":null}'
+      string: ! '{"id":"PostCreateProject","name":"PostCreateProject","href":"/httpAuth/app/rest/projects/id:PostCreateProject","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PostCreateProject","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PostCreateProject)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Thu, 02 May 2013 02:23:21 GMT
+  recorded_at: Wed, 14 Aug 2013 02:44:49 GMT
 recorded_with: VCR 2.4.0

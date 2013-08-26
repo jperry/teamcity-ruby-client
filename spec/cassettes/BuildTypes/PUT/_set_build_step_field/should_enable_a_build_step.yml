@@ -2,27 +2,27 @@
 http_interactions:
 - request:
     method: put
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt3/steps/RUNNER_2/disabled
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/steps/RUNNER_7/disabled
     body:
       encoding: US-ASCII
       string: 'false'
     headers:
-      Accept:
-      - application/json; charset=utf-8
       User-Agent:
-      - TeamCity Ruby Client 0.2.0
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - text/plain
       Content-Type:
       - text/plain
   response:
     status:
-      code: 204
-      message: No Content
+      code: 404
+      message: Not Found
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=390FA7EC04A13260A15FA79CB87FF977; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=2B799D506CC71F8334DA8F32D2B0A7E9; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -30,11 +30,19 @@ http_interactions:
       Cache-Control:
       - no-cache
       - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
       Date:
-      - Fri, 17 May 2013 13:53:19 GMT
+      - Wed, 14 Aug 2013 13:23:57 GMT
     body:
       encoding: US-ASCII
-      string: ''
+      string: ! 'Error has occurred during request processing (Not Found).
+
+        Error: com.sun.jersey.api.NotFoundException: null for uri: http://localhost:8111/app/rest/buildTypes/steps/RUNNER_7/disabled
+
+        Please check URL is correct.'
     http_version: 
-  recorded_at: Fri, 17 May 2013 13:53:19 GMT
+  recorded_at: Wed, 14 Aug 2013 13:23:57 GMT
 recorded_with: VCR 2.4.0

@@ -8,11 +8,11 @@ module TeamCity
       # List of builds
       #
       # @param options [Hash] list of build locators to filter build results on
-      # @return [Array<Hashie::Mash>, nil] of builds or nil if no builds exist
+      # @return [Array<Hashie::Mash>] of builds (empty array if no builds exist)
       def builds(options={})
         url_params = options.empty? ? '' : "?locator=#{locator(options)}"
         response = get("builds#{url_params}")
-        response['build']
+        response.build
       end
 
       # Get build details
@@ -27,30 +27,31 @@ module TeamCity
       # Get the build tags
       #
       # @param options [Hash] option keys, :id => build_id
-      # @return [Array<Hashie::Mash>, nil] nil if build has not tags
+      # @return [Array<Hashie::Mash>] or empty array if no tags exist
       def build_tags(options={})
         assert_options(options)
         response = get("builds/#{locator(options)}/tags")
-        response['tag']
+        response.fetch(:tag)
       end
 
       # Get build statistics
       #
       # @param build_id [String]
-      # @return [Array<Hashie::Mash>, nil] returns nil if there are no statistics
+      # @return [Array<Hashie::Mash>]
       def build_statistics(build_id)
         response = get("builds/#{build_id}/statistics")
         response['property']
       end
 
-      # TODO: Will need to create a Faraday middleware for this
-      # since the response returns a string not a json object
-      #def build_pinned?(id)
-      #  path = "builds/#{id}/pin"
-      #  get(path) do |req|
-      #    req.headers['Accept'] = 'text/plain'
-      #  end
-      #end
+      # Tells you whether or not a build is pinned
+      #
+      # @param id [String] build to check if it is pinned
+      # @return [Boolean] whether the build is pinned or not
+      def build_pinned?(id)
+        path = "builds/#{id}/pin"
+        response = get(path, :accept => :text, :content_type => :text)
+        response == 'true'
+      end
 
       # HTTP PUT
 
@@ -61,7 +62,9 @@ module TeamCity
       # @return [nil]
       def pin_build(id, comment='')
         path = "builds/#{id}/pin"
-        put_text_request(path, comment)
+        put(path, :accept => :text, :content_type => :text) do |req|
+          req.body = comment
+        end
       end
 
       # HTTP DELETE
@@ -71,7 +74,8 @@ module TeamCity
       # @param id [String] build to unpin
       # @return [nil]
       def unpin_build(id)
-        delete("builds/#{id}/pin")
+        path = "builds/#{id}/pin"
+        delete(path, :content_type => :text)
       end
     end
   end

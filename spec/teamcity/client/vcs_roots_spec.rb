@@ -4,44 +4,33 @@ describe 'VCSRoots' do
 
   before(:each) do
     @tc = TeamCity
-  end
-
-  before(:all) do
-    TeamCity.configure do |config|
-      configure_client_with_authentication
-    end
-  end
-
-  after(:all) do
-    TeamCity.reset
+    configure_client_with_authentication
   end
 
   # GET requests
   describe 'GET', :vcr do
     describe '.vcs_roots' do
-
       it 'should fetch vcs roots' do
-        @tc.vcs_roots.should_not be_nil
+        @tc.vcs_roots.should have_at_least(1).items
       end
     end
 
     describe '.vcs_root_details' do
-
       it 'should fetch the vcs root details' do
-        response = @tc.vcs_root_details(1)
-        response.id.should eq(1)
+        vcs_root_id = @tc.vcs_roots.first.id
+        response = @tc.vcs_root_details(vcs_root_id)
+        response.id.should eq(vcs_root_id)
       end
     end
   end
 
   describe 'POST', :vcr do
-
     describe '.create_vcs_root' do
-
-      it 'should create a vcs root that is only shared within a project' do
-        vcs_name = 'testvcsroot'
+      it 'should create a vcs root that is shared with the project and sub-projects' do
+        project_id = @tc.projects[1].id
+        vcs_name = 'PostCreateVCSRoot'
         vcs_type = 'git'
-        response = @tc.create_vcs_root(vcs_name, vcs_type, :projectLocator => 'project2') do |properties|
+        response = @tc.create_vcs_root(vcs_name: vcs_name, vcs_type: vcs_type, project_id: project_id) do |properties|
           properties['branch'] = 'master'
           properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
           properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
@@ -49,15 +38,6 @@ describe 'VCSRoots' do
         end
         response.name.should eq(vcs_name)
         response.vcsName.should match(/#{vcs_type}/)
-        response.shared.should be_false
-      end
-
-      it 'should create a shared vcs root' do
-        response = @tc.create_vcs_root('sharedvcsroot', 'git', :shared => true) do |properties|
-          properties['branch'] = 'master'
-          properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
-        end
-        response.shared.should be_true
       end
     end
   end

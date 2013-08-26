@@ -1,16 +1,60 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: US-ASCII
+      string: PostProjectToBeCopied
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=EB8FC3077515BB9F2FB21C7C298F881E; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 02:17:53 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"PostProjectToBeCopied","name":"PostProjectToBeCopied","href":"/httpAuth/app/rest/projects/id:PostProjectToBeCopied","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PostProjectToBeCopied","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PostProjectToBeCopied)"},"projects":{"project":[]}}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 02:17:53 GMT
+- request:
     method: get
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects/id:project11
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects/id:PostProjectToBeCopied
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +65,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=696E3723E42972161ABF5953440B70EF; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=F1707A337A6E252376447F6E0ADEA9CC; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,24 +79,25 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 07 May 2013 21:19:17 GMT
+      - Wed, 14 Aug 2013 02:17:53 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project11","id":"project11","name":"copy-project-testA","href":"/httpAuth/app/rest/7.0/projects/id:project11","buildTypes":{"buildType":[{"id":"bt6","name":"test","href":"/httpAuth/app/rest/7.0/buildTypes/id:bt6","projectName":"copy-project-testA","projectId":"project11","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt6"}]},"templates":null,"parameters":null}'
+      string: ! '{"id":"PostProjectToBeCopied","name":"PostProjectToBeCopied","href":"/httpAuth/app/rest/projects/id:PostProjectToBeCopied","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PostProjectToBeCopied","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PostProjectToBeCopied)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Tue, 07 May 2013 21:19:17 GMT
+  recorded_at: Wed, 14 Aug 2013 02:17:53 GMT
 - request:
     method: post
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/projects
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
     body:
       encoding: US-ASCII
       string: <newProjectDescription copyAllAssociatedSettings="true" shareVCSRoots="true"
-        name="copy-project-testB" sourceProjectLocator="id:project11"/>
+        name="PostCopyProject" sourceProject="id:PostProjectToBeCopied"/>
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.2.0
       Content-Type:
       - application/xml
   response:
@@ -63,8 +108,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=74E16DAC7E989ADFE93500048AA660A2; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=3AA892705059A6D172EFA1A5E81A441A; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -77,10 +122,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 07 May 2013 21:19:17 GMT
+      - Wed, 14 Aug 2013 02:17:53 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=project23","id":"project23","name":"copy-project-testB","href":"/httpAuth/app/rest/7.0/projects/id:project23","buildTypes":{"buildType":[{"id":"bt7","name":"test","href":"/httpAuth/app/rest/7.0/buildTypes/id:bt7","projectName":"copy-project-testB","projectId":"project23","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt7"}]},"templates":null,"parameters":null}'
+      string: ! '{"id":"PostCopyProject","name":"PostCopyProject","href":"/httpAuth/app/rest/projects/id:PostCopyProject","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PostCopyProject","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PostCopyProject)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Tue, 07 May 2013 21:19:17 GMT
+  recorded_at: Wed, 14 Aug 2013 02:17:53 GMT
 recorded_with: VCR 2.4.0
