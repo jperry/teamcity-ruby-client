@@ -24,7 +24,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=958CA272FB153B33C786C244A04A3B83; Path=/; HttpOnly
+      - TCSESSIONID=E1B571639FC1FBF5F7B3C975CD224B74; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -37,15 +37,15 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 14 Aug 2013 03:08:51 GMT
+      - Wed, 14 Aug 2013 03:03:55 GMT
     body:
       encoding: US-ASCII
       string: ! '{"buildType":[{"id":"GetProjectBuildTypes_Bt1","name":"BT1","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt1"},{"id":"GetProjectBuildTypes_Bt2","name":"BT2","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt2","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt2"}]}'
     http_version: 
-  recorded_at: Wed, 14 Aug 2013 03:08:51 GMT
+  recorded_at: Wed, 14 Aug 2013 03:03:55 GMT
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1/settings
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1/paused
     body:
       encoding: US-ASCII
       string: ''
@@ -53,9 +53,9 @@ http_interactions:
       User-Agent:
       - TeamCity Ruby Client 0.4.0
       Accept:
-      - application/json; charset=utf-8
+      - text/plain
       Content-Type:
-      - application/json
+      - text/plain
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -67,7 +67,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=72713B25C7EFA9992021C40F1607562F; Path=/; HttpOnly
+      - TCSESSIONID=4B6A9E00E881C63571AA0EE3E0D15675; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -76,14 +76,14 @@ http_interactions:
       - no-cache
       - no-store
       Content-Type:
-      - application/json
+      - text/plain
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 14 Aug 2013 03:08:51 GMT
+      - Wed, 14 Aug 2013 03:03:55 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]}'
+      string: 'false'
     http_version: 
-  recorded_at: Wed, 14 Aug 2013 03:08:51 GMT
+  recorded_at: Wed, 14 Aug 2013 03:03:55 GMT
 recorded_with: VCR 2.4.0

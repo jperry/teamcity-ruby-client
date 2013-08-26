@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=23EBB01F6E51B3438C0F1D6E983325BB; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=1E55294896E54A273A5A6F266CB2EB9A; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,15 +37,53 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 03:00:45 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"id":"bt2","name":"build A1","href":"/guestAuth/app/rest/7.0/buildTypes/id:bt2","webUrl":"http://localhost:8111/viewType.html?buildTypeId=bt2","description":"","paused":false,"project":{"id":"project2","name":"Project
-        A","href":"/guestAuth/app/rest/7.0/projects/id:project2"},"template":{"id":"btTemplate2","name":"test-template","href":"/guestAuth/app/rest/7.0/buildTypes/id:(template:btTemplate2)","projectName":"Project
-        A","projectId":"project2"},"vcs-root-entries":{"vcs-root-entry":[{"id":"1","checkout-rules":"","vcs-root":{"id":"1","name":"teamcity
-        ruby client","href":"/guestAuth/app/rest/7.0/vcs-roots/id:1"}}]},"builds":{"href":"/guestAuth/app/rest/7.0/buildTypes/id:bt2/builds/"},"settings":{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"{0}"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"}]},"parameters":{"property":[{"name":"env.test1","value":"test"},{"name":"param1","value":"1"},{"name":"system.test","value":"test"}]},"steps":{"step":[{"id":"RUNNER_1","name":"continuous","type":"Maven2","properties":{"property":[{"name":"goals","value":"clean
-        verify"},{"name":"mavenSelection","value":"mavenSelection:default"},{"name":"pomLocation","value":"pom.xml"},{"name":"teamcity.coverage.emma.include.source","value":"true"},{"name":"teamcity.coverage.emma.instr.parameters","value":"-ix
-        -*Test*"},{"name":"teamcity.coverage.idea.includePatterns","value":"*"},{"name":"teamcity.step.mode","value":"default"},{"name":"userSettingsSelection","value":"userSettingsSelection:default"}]}}]},"features":{"feature":[{"id":"perfmon","type":"perfmon","properties":null}]},"triggers":{"trigger":[{"id":"vcsTrigger","type":"vcsTrigger","properties":{"property":[{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}]},"snapshot-dependencies":{"snapshot-dependency":[{"id":"bt3","type":"snapshot_dependency","properties":{"property":[{"name":"run-build-if-dependency-failed","value":"false"},{"name":"run-build-on-the-same-agent","value":"false"},{"name":"source_buildTypeId","value":"bt3"},{"name":"take-started-build-with-same-revisions","value":"true"},{"name":"take-successful-builds-only","value":"true"}]}}]},"artifact-dependencies":{"artifact-dependency":[{"id":"0","type":"artifact_dependency","properties":{"property":[{"name":"cleanDestinationDirectory","value":"false"},{"name":"pathRules","value":"+:version.txt"},{"name":"revisionName","value":"sameChainOrLastFinished"},{"name":"revisionValue","value":"latest.sameChainOrLastFinished"},{"name":"source_buildTypeId","value":"bt3"}]}}]},"agent-requirements":{"agent-requirement":[{"id":"system.os.name","type":"equals","properties":{"property":[{"name":"property-name","value":"system.os.name"},{"name":"property-value","value":"linux"}]}}]}}'
+      string: ! '{"buildType":[{"id":"GetProjectBuildTypes_Bt1","name":"BT1","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt1"},{"id":"GetProjectBuildTypes_Bt2","name":"BT2","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt2","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt2"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:22 GMT
+  recorded_at: Wed, 14 Aug 2013 03:00:45 GMT
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=8AAE8AAAAF10B36876EDC54DA195D836; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 03:00:45 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"GetProjectBuildTypes_Bt1","name":"BT1","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt1","description":"","paused":false,"project":{"id":"GetProjectBuildTypes","name":"GetProjectBuildTypes","href":"/guestAuth/app/rest/projects/id:GetProjectBuildTypes"},"builds":{"href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1/builds/"},"vcs-root-entries":{"vcs-root-entry":[]},"settings":{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]},"parameters":{"property":[]},"steps":{"step":[]},"features":{"feature":[]},"triggers":{"trigger":[]},"snapshot-dependencies":{"snapshot-dependency":[]},"artifact-dependencies":{"artifact-dependency":[]},"agent-requirements":{"agent-requirement":[]}}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 03:00:45 GMT
 recorded_with: VCR 2.4.0

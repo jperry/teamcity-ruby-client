@@ -2,15 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8111/guestAuth/app/rest/7.0/buildTypes/id:bt2/settings
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
       Accept:
       - application/json; charset=utf-8
-      User-Agent:
-      - TeamCity Ruby Client 0.0.1
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,8 +23,8 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=D246D46EAC8C6EAB698F2BC09313ED31; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=32235710A445AAE79E4EBAF0A19DEE8C; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -35,10 +37,53 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Tue, 23 Apr 2013 15:14:22 GMT
+      - Wed, 14 Aug 2013 03:08:47 GMT
     body:
       encoding: US-ASCII
-      string: ! '{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"{0}"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"}]}'
+      string: ! '{"buildType":[{"id":"GetProjectBuildTypes_Bt1","name":"BT1","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt1"},{"id":"GetProjectBuildTypes_Bt2","name":"BT2","href":"/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt2","projectName":"GetProjectBuildTypes","projectId":"GetProjectBuildTypes","webUrl":"http://localhost:8111/viewType.html?buildTypeId=GetProjectBuildTypes_Bt2"}]}'
     http_version: 
-  recorded_at: Tue, 23 Apr 2013 15:14:22 GMT
+  recorded_at: Wed, 14 Aug 2013 03:08:47 GMT
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/id:GetProjectBuildTypes_Bt1/settings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=50A20841B50F4D94AFBD55412A07C548; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 14 Aug 2013 03:08:47 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]}'
+    http_version: 
+  recorded_at: Wed, 14 Aug 2013 03:08:47 GMT
 recorded_with: VCR 2.4.0

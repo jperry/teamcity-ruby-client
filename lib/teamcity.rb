@@ -1,5 +1,6 @@
 require_relative 'teamcity/configuration'
 require_relative 'teamcity/client'
+require_relative 'teamcity/headers'
 
 module TeamCity
   extend Configuration

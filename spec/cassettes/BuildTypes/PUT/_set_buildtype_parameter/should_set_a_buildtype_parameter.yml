@@ -2,27 +2,27 @@
 http_interactions:
 - request:
     method: put
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/7.0/buildTypes/bt3/parameters/set-this-parameter
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PutSetBuildTypeParameters/parameters/test-setting-buildtype-parameters
     body:
       encoding: US-ASCII
-      string: some-value
+      string: param-value
     headers:
-      Accept:
-      - application/json; charset=utf-8
       User-Agent:
-      - TeamCity Ruby Client 0.2.0
+      - TeamCity Ruby Client 0.4.0
+      Accept:
+      - text/plain
       Content-Type:
       - text/plain
   response:
     status:
-      code: 204
-      message: No Content
+      code: 200
+      message: OK
     headers:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - JSESSIONID=A121E2C8864D517C191AAC59B4B7D6EA; Path=/; HttpOnly
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=6D26566BB7711798F748B359FC121618; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -30,11 +30,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
       Date:
-      - Mon, 06 May 2013 19:05:28 GMT
+      - Wed, 14 Aug 2013 11:51:59 GMT
     body:
       encoding: US-ASCII
-      string: ''
+      string: param-value
     http_version: 
-  recorded_at: Mon, 06 May 2013 19:05:28 GMT
+  recorded_at: Wed, 14 Aug 2013 11:51:59 GMT
 recorded_with: VCR 2.4.0
