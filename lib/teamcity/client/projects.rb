@@ -62,12 +62,13 @@ module TeamCity
       # @return [Hashie::Mash] project details
       def copy_project(source_project_id, target_project_name, options={})
         attributes = {
-          :name => target_project_name,
-          :sourceProject => "id:#{source_project_id}",
+          :name => target_project_name
         }
+        builder = Builder::XmlMarkup.new
+        builder.tag!(:newProjectDescription ,options.merge(attributes)) do |node|
+          node.tag!(:sourceProject, locator: source_project_id)
+        end
         post("projects", :content_type => :xml) do |req|
-          builder = Builder::XmlMarkup.new
-          builder.newProjectDescription(options.merge(attributes))
           req.body = builder.target!
         end
       end
