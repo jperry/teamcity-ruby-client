@@ -82,6 +82,14 @@ describe 'Builds' do
         results.should have_at_least(1).items
       end
     end
+
+    describe '.build_artifacts' do
+      it 'should fetch all the artifacts' do
+        build = @tc.builds.first
+        artifacts = @tc.build_artifacts(build.id)     
+        artifacts.should have_at_least(2).items
+      end
+    end
   end
 
   describe 'PUT', :vcr do
