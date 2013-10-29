@@ -53,6 +53,15 @@ module TeamCity
         response == 'true'
       end
 
+      # Get build artifacts
+      #
+      # @param build_id [String]
+      # @return [Array<Hashie::Mash>]
+      def build_artifacts(build_id)
+        response = get("builds/#{build_id}/artifacts")
+        response['files']
+      end
+      
       # HTTP PUT
 
       # Pin a build
