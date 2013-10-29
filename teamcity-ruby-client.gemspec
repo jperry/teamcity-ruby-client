@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
 
   # Dependencies
   gem.add_development_dependency('rspec', '~> 2.12')
-  gem.add_development_dependency('webmock', '~> 1.11.0')
+  gem.add_development_dependency('webmock', '~> 1.8.0')
   gem.add_development_dependency('rake', '~> 10.0.3')
   gem.add_development_dependency('pry', '~> 0.9.12')
   gem.add_development_dependency('vcr', '~> 2.4.0')
