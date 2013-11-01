@@ -2,11 +2,11 @@
 
 * Features:
     * Added ```build_artifacts``` (Provides the ability to fetch the
-      contents of an aritfact), courtesy of @orikremer
+      contents of an aritfact), courtesy of [@orikremer](https://github.com/orikremer)
 
 * Gem Updates
     * Upgraded webmock to remove deprecation warning, courtesy of
-      @akiellor
+      [@akiellor](https://github.com/akiellor)
 
 ## 1.0.0 (Aug 26, 2013)
 
