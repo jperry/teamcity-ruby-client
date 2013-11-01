@@ -1,4 +1,4 @@
-## 1.0.1 (Nov 1, 2013)
+## 1.1.0 (Nov 1, 2013)
 
 * Features:
     * Added ```build_artifacts``` (Provides the ability to fetch the
@@ -7,6 +7,10 @@
 * Gem Updates
     * Upgraded webmock to remove deprecation warning, courtesy of
       [@akiellor](https://github.com/akiellor)
+
+## 1.0.1 (Nov 1, 2013)
+
+* Same as 1.1.0 above
 
 ## 1.0.0 (Aug 26, 2013)
 
