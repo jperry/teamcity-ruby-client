@@ -1,3 +1,13 @@
+## 1.0.1 (Nov 1, 2013)
+
+* Features:
+    * Added ```build_artifacts``` (Provides the ability to fetch the
+      contents of an aritfact), courtesy of @orikremer
+
+* Gem Updates
+    * Upgraded webmock to remove deprecation warning, courtesy of
+      @akiellor
+
 ## 1.0.0 (Aug 26, 2013)
 
 * Features:
