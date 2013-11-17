@@ -41,6 +41,17 @@ module TeamCity
         response['property']
       end
 
+      # Get parent project
+      #
+      # @param (see #project)
+      # @return [Hashie::Mash] of the parent project details
+      def parent_project(options={})
+        assert_options(options)
+        response = get("projects/#{locator(options)}/parentProject")
+        return nil if response['id'] == '_Root'
+        response
+      end
+
       # Create an empty project
       #
       # @param name [String] Name of the project
@@ -80,7 +91,7 @@ module TeamCity
       def delete_project(project_id)
         delete("projects/#{project_id}")
       end
-      
+
       # Delete a project parameter
       #
       # @param project_id [String] the project id
@@ -122,6 +133,23 @@ module TeamCity
         path = "projects/#{project_id}/#{field_name}"
         put(path, :content_type => :text, :accept => :text) do |req|
           req.body = field_value
+        end
+      end
+
+      # Set a parent for a given project
+      #
+      # @example Set project1 as parent for project2
+      #   TeamCity.set_parent_project('project2', 'project1')
+      #
+      # @param project_id [String] the project id
+      # @param parent_project_id [String] the parent project id
+      # @return [Hashie::Mash] of child project details
+      def set_parent_project(project_id, parent_project_id)
+        path = "projects/#{project_id}/parentProject"
+        builder = Builder::XmlMarkup.new
+        builder.tag!(:'project-ref', :id => parent_project_id)
+        put(path, :content_type => :xml) do |req|
+          req.body = builder.target!
         end
       end
     end

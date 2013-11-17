@@ -74,6 +74,20 @@ describe 'Projects' do
         expect { @tc.project_parameters(id: 'missing')}
       end
     end
+
+    describe '.parent_project' do
+      it 'should fetch the parent project for a given project' do
+        parent = @tc.parent_project(id: 'GetProjectWithParent').should_not be_nil
+      end
+
+      it 'should return nil if there is no parent project for a given project' do
+        parent = @tc.parent_project(id: 'GetProjectWithNoParent').should be_nil
+      end
+
+      it 'should raise an error if the project does not exist' do
+        expect { @tc.parent_project(id: 'missing') }
+      end
+    end
   end
 
   # POST Requests
@@ -167,6 +181,26 @@ describe 'Projects' do
         @tc.create_project(project_id)
         field_value = 'true'
         @tc.set_project_field(project_id, 'archived', field_value).should eq(field_value)
+      end
+    end
+
+    describe '.set_parent_project' do
+      it 'should set a parent project for a given project' do
+        project_id = 'PutSetParentProject'
+        @tc.create_project(project_id)
+
+        parent_project_id = 'PutParentProject'
+        @tc.create_project(parent_project_id)
+
+        @tc.set_parent_project(project_id, parent_project_id)['id'].should eq(project_id)
+      end
+
+      it 'should raise an error if the parent project does not exist' do
+        expect { @tc.parent_project('GetProjectWithoutParent', 'missing') }.to raise_error
+      end
+
+      it 'should raise an error if the child project does not exist' do
+        expect { @tc.parent_project('missing', 'GetParentProject') }.to raise_error
       end
     end
   end
