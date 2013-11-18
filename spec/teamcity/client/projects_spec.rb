@@ -44,6 +44,7 @@ describe 'Projects' do
       end
     end
 
+
     describe '.project_buildtypes' do
 
       it 'should fetch all the buildTypes for a project' do
@@ -103,6 +104,14 @@ describe 'Projects' do
         response.name.should eq(copied_project_name)
       end
     end
+
+    describe '.create_project_buildtype' do
+      it 'should create a build type' do
+        @tc.create_project('PostProjectWithABuildType')
+        response = @tc.create_project_buildtype('PostProjectWithABuildType', 'PostCreateBuildType')
+        response.id.should eq('PostProjectWithABuildType_PostCreateBuildType')
+      end
+    end
   end
 
   describe 'DELETE', :vcr do
@@ -147,7 +156,6 @@ describe 'Projects' do
     end
 
     describe '.set_project_field' do
-
       it 'should set a projects name' do
         project_id = 'PutSetProjectNameField'
         @tc.create_project(project_id)
