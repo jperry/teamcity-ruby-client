@@ -45,6 +45,7 @@ module TeamCity
       #
       # @param (see #project)
       # @return [Hashie::Mash] of the parent project details
+      # @note Only supported for TeamCity Server version >= 8
       def parent_project(options={})
         assert_options(options)
         response = get("projects/#{locator(options)}/parentProject")
@@ -144,6 +145,7 @@ module TeamCity
       # @param project_id [String] the project id
       # @param parent_project_id [String] the parent project id
       # @return [Hashie::Mash] of child project details
+      # @note Only supported for TeamCity Server version >= 8
       def set_parent_project(project_id, parent_project_id)
         path = "projects/#{project_id}/parentProject"
         builder = Builder::XmlMarkup.new
