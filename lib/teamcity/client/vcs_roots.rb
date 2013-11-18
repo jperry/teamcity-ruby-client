@@ -2,6 +2,8 @@ module TeamCity
   class Client
     module VCSRoots
 
+      VCS_TYPES = { 'git' => 'jetbrains.git' }
+
       # List of VCS Roots
       #
       # @return [Array<Hashie::Mash>, nil] of vcs roots or nil if no vcs roots exist
@@ -36,7 +38,7 @@ module TeamCity
       def create_vcs_root(options = {}, &block)
         attributes = {
           :name    => options.fetch(:vcs_name),
-          :vcsName => "jetbrains.#{options.fetch(:vcs_type)}",
+          :vcsName => VCS_TYPES[options.fetch(:vcs_type)] || options.fetch(:vcs_type),
           :projectLocator => options.fetch(:project_id)
         }
         builder = Builder::XmlMarkup.new
