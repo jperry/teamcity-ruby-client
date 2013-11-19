@@ -46,7 +46,7 @@ describe 'VCSRoots' do
         vcs_type = 'svn'
         response = @tc.create_vcs_root(vcs_name: vcs_name, vcs_type: vcs_type, project_id: project_id) do |properties|
           properties['branch'] = 'master'
-          properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+          properties['url'] = 'http://svn.example.com/jperry/teamcity-ruby-client'
           properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
           properties['ignoreKnownHosts'] = true
         end
