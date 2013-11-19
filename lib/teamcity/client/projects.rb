@@ -33,7 +33,7 @@ module TeamCity
 
       # Create a Build Configurations for a project
       #
-      # @param source_project_id [String] id of the project you wish to copy
+      # @param project_id [String] id of the project you are adding the build configuration
       # @param buildtype [String] name of the buildtype you wish to create
       # @return [Hashie::Mash] of build configuration details
       def create_project_buildtype(project_id, buildtype)
