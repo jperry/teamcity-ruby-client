@@ -156,16 +156,14 @@ module TeamCity
       #
       # @note Check the TeamCity UI for supported conditions
       def create_agent_requirement(buildtype_id, parameter_name, parameter_value, condition)
-        builder = Builder::XmlMarkup.new
-        builder.tag!('agent-requirement'.to_sym, :id => parameter_name, :type => condition) do |node|
-          node.properties do |p|
-            p.property(:name => 'property-name', :value => parameter_name)
-            p.property(:name => 'property-value', :value => parameter_value)
-          end
+        builder = TeamCity::ElementBuilder.new('agent-requirement', :id => parameter_name, :type => condition) do |properties|
+          properties['property-name']  = parameter_name
+          properties['property-value'] = parameter_value
         end
+
         path = "buildTypes/#{buildtype_id}/agent-requirements"
         post(path, :accept => :json, :content_type => :xml) do |req|
-          req.body = builder.target!
+          req.body = builder.to_request_body
         end
       end
 
@@ -253,24 +251,14 @@ module TeamCity
       #   end
       def create_build_step(buildtype_id, options = {}, &block)
         attributes = {
-          :type    => options.fetch(:type),
+          :type => options.fetch(:type),
           :name => options.fetch(:name),
         }
 
-        builder = Builder::XmlMarkup.new
-        builder.tag!('step'.to_sym, attributes) do |node|
-          node.properties do |p|
-            if block_given?
-              properties = {}
-              yield(properties)
-              properties.each do |name, value|
-                p.property(:name => name, :value => value)
-              end
-            end
-          end
-        end
+        builder = TeamCity::ElementBuilder.new('step', attributes, &block)
+
         post("buildTypes/#{buildtype_id}/steps", :content_type => :xml) do |req|
-          req.body = builder.target!
+          req.body = builder.to_request_body
         end
       end
     end

@@ -41,20 +41,9 @@ module TeamCity
           :vcsName => VCS_TYPES[options.fetch(:vcs_type)] || options.fetch(:vcs_type),
           :projectLocator => options.fetch(:project_id)
         }
-        builder = Builder::XmlMarkup.new
-        builder.tag!('vcs-root'.to_sym, attributes) do |node|
-          node.properties do |p|
-            if block_given?
-              properties = {}
-              yield(properties)
-              properties.each do |name, value|
-                p.property(:name => name, :value => value)
-              end
-            end
-          end
-        end
+        builder = TeamCity::ElementBuilder.new('vcs-root', attributes, &block)
         post("vcs-roots", :content_type => :xml) do |req|
-          req.body = builder.target!
+          req.body = builder.to_request_body
         end
       end
     end
