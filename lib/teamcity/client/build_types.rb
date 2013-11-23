@@ -91,6 +91,7 @@ module TeamCity
           response[name_has_dashes.en.plural]
         end
       end
+
       private_class_method :make_method
 
       make_method :features
@@ -233,6 +234,43 @@ module TeamCity
         path = "buildTypes/#{buildtype_id}/steps/#{step_id}/#{field_name}"
         put(path, :accept => :text, :content_type => :text) do |req|
           req.body = field_value
+        end
+      end
+
+      # Create Build Step
+      #
+      # @param buildtype_id [String] :buildtype_id to create the step under
+      # @option options [String] :name for the step definition
+      # @option options [String] :type Type of Build Step: 'Maven2', 'Maven3', etc
+      # @yield [Hash] properties to set on the step, view the official documentation for supported properties
+      # @return [Hashie::Mash] step object that was created
+      #
+      # @example Create a Maven2 step that executes the target verify
+      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'Maven2', name: 'Unit Tests') do |properties|
+      #     properties['goals'] = 'verify'
+      #     properties['mavenSelection'] = 'mavenSelection:default'
+      #     properties['pomLocation'] = 'pom.xml'
+      #   end
+      def create_build_step(buildtype_id, options = {}, &block)
+        attributes = {
+          :type    => options.fetch(:type),
+          :name => options.fetch(:name),
+        }
+
+        builder = Builder::XmlMarkup.new
+        builder.tag!('step'.to_sym, attributes) do |node|
+          node.properties do |p|
+            if block_given?
+              properties = {}
+              yield(properties)
+              properties.each do |name, value|
+                p.property(:name => name, :value => value)
+              end
+            end
+          end
+        end
+        post("buildTypes/#{buildtype_id}/steps", :content_type => :xml) do |req|
+          req.body = builder.target!
         end
       end
     end

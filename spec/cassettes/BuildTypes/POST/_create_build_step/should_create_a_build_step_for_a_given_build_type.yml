@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/steps
+    body:
+      encoding: UTF-8
+      string: <step type="Maven2" name="Unit Tests"><properties><property name="goals"
+        value="verify"/><property name="mavenSelection" value="mavenSelection:default"/><property
+        name="pomLocation" value="pom.xml"/></properties></step>
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=0F4BBF25C367F38C72230FBE97F92B81; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 23 Nov 2013 17:29:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"RUNNER_4","name":"Unit Tests","type":"Maven2","properties":{"property":[{"name":"goals","value":"verify"},{"name":"mavenSelection","value":"mavenSelection:default"},{"name":"pomLocation","value":"pom.xml"}]}}'
+    http_version: 
+  recorded_at: Sat, 23 Nov 2013 17:29:12 GMT
+recorded_with: VCR 2.4.0
