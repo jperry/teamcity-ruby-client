@@ -261,6 +261,31 @@ module TeamCity
           req.body = builder.to_request_body
         end
       end
+
+      # Create Build Trigger
+      #
+      # @param buildtype_id [String] :buildtype_id to create the trigger under
+      # @option options [String] :type Type of Build Trigger: 'vcsTrigger', 'schedulingTrigger', etc
+      # @yield [Hash] properties to set on the trigger, view the official documentation for supported properties
+      # @return [Hashie::Mash] trigger object that was created
+      #
+      # @example Create a a VCS build trigger for checkins
+      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'vcsTrigger', name: 'Every Checkin') do |properties|
+      #     properties['groupCheckkinsByCommitter'] = 'true'
+      #     properties['perCheckinTriggering'] = 'true'
+      #     properties['quietPeriodMode'] = 'DO_NOT_USE'
+      #   end
+      def create_build_trigger(buildtype_id, options = {}, &block)
+        attributes = {
+          :type => options.fetch(:type),
+        }
+
+        builder = TeamCity::ElementBuilder.new('trigger', attributes, &block)
+
+        post("buildTypes/#{buildtype_id}/triggers", :content_type => :xml) do |req|
+          req.body = builder.to_request_body
+        end
+      end
     end
   end
 end

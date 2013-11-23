@@ -242,6 +242,17 @@ describe 'BuildTypes' do
         response.name.should eq('Unit Tests')
       end
     end
+
+    describe '.create_build_trigger' do
+      it 'should create a build trigger for a given build type' do
+        response = @tc.create_build_trigger(@buildtype_id, type: 'vcsTrigger') do |properties|
+          properties['groupCheckkinsByCommitter'] = 'true'
+          properties['perCheckinTriggering'] = 'true'
+          properties['quietPeriodMode'] = 'DO_NOT_USE'
+        end
+        response.type.should eq('vcsTrigger')
+      end
+    end
   end
 
   describe 'DELETE', :vcr do
