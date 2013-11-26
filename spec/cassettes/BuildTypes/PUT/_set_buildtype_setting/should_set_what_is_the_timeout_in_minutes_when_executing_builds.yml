@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PutSetBuildTypeSettings/settings/executionTimeoutMin
+    body:
+      encoding: UTF-8
+      string: '10'
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - text/plain
+      Content-Type:
+      - text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=4FE4C7EC997C6647CFB8D72A8A4D27C3; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 19 Nov 2013 15:50:59 GMT
+    body:
+      encoding: UTF-8
+      string: '10'
+    http_version: 
+  recorded_at: Tue, 19 Nov 2013 15:50:59 GMT
+recorded_with: VCR 2.4.0

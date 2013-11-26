@@ -197,6 +197,23 @@ module TeamCity
         end
       end
 
+      # Set buildtype settings
+      #
+      # @example Cleaning all files between the builds
+      #   TeamCity.set_buildtype_setting('bt3', 'cleanBuild', 'true')
+      # @example Checkout on the server
+      #   TeamCity.set_buildtype_setting('bt3', 'checkoutMode', 'ON_SERVER')
+      # @example Fail the build after 10 Minutes
+      #   Teamcity.set_buildtype_setting('bt3', 'executionTimeoutMin', '10')
+      #
+      # @param buidltype_id [String] the buildtype id
+      # @param setting_name [String] the settings name
+      # @param setting_value [String] the value to set the settings to
+      # @return setting_value [String] value that was set
+      def set_buildtype_setting(buildtype_id, setting_name, setting_value)
+        set_buildtype_field(buildtype_id, "settings/#{setting_name}", setting_value)
+      end
+
       # Delete buildtype (build configuration)
       #
       # @param buildtype_id [String] the id of the buildtype

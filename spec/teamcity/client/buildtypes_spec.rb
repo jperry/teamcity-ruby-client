@@ -138,7 +138,6 @@ describe 'BuildTypes' do
     end
 
     describe '.set_buildtype_field' do
-
       before(:each) do
         @buildtype_id = 'BuildTypeTests_PutSetBuildTypeField'
       end
@@ -159,6 +158,30 @@ describe 'BuildTypes' do
         field_name = 'paused'
         field_value = 'true'
         @tc.set_buildtype_field(@buildtype_id, field_name, field_value).should eq(field_value)
+      end
+    end
+
+    describe '.set_buildtype_setting' do
+      before(:each) do
+        @buildtype_id = 'BuildTypeTests_PutSetBuildTypeSettings'
+      end
+
+      it 'should set if it should perform clean builds' do
+        settings_name = 'cleanBuild'
+        settings_value = 'true'
+        @tc.set_buildtype_setting(@buildtype_id, settings_name, settings_value).should eq(settings_value)
+      end
+
+      it 'should set where the checkout happens when building' do
+        settings_name = 'checkoutMode'
+        settings_value = 'ON_AGENT'
+        @tc.set_buildtype_setting(@buildtype_id, settings_name, settings_value).should eq(settings_value)
+      end
+
+      it 'should set what is the timeout in minutes when executing builds' do
+        settings_name = 'executionTimeoutMin'
+        settings_value = '10'
+        @tc.set_buildtype_setting(@buildtype_id, settings_name, settings_value).should eq(settings_value)
       end
     end
 
