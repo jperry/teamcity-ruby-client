@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=ED515AC5C6765EFD1E7325EE253C9A4C; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 18 Nov 2013 15:08:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"project":[{"id":"_Root","name":"<Root project>","href":"/httpAuth/app/rest/projects/id:_Root"},{"id":"GetParentProject","name":"GetParentProject","href":"/httpAuth/app/rest/projects/id:GetParentProject"},{"id":"GetProjectWithParent","name":"GetProjectWithParent","href":"/httpAuth/app/rest/projects/id:GetProjectWithParent"},{"id":"GetProjectWithNoParent","name":"GetProjectWithNoParent","href":"/httpAuth/app/rest/projects/id:GetProjectWithNoParent"},{"id":"PutParentProject","name":"PutParentProject","href":"/httpAuth/app/rest/projects/id:PutParentProject"},{"id":"PutSetParentProject","name":"PutSetParentProject","href":"/httpAuth/app/rest/projects/id:PutSetParentProject"}]}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2013 15:08:45 GMT
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots
+    body:
+      encoding: UTF-8
+      string: <vcs-root name="PostCreateVCSRootGit" vcsName="jetbrains.git" projectLocator="GetParentProject"><properties><property
+        name="branch" value="master"/><property name="url" value="git@github.com:jperry/teamcity-ruby-client.git"/><property
+        name="authMethod" value="PRIVATE_KEY_DEFAULT"/><property name="ignoreKnownHosts"
+        value="true"/></properties></vcs-root>
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=88B38B21392034B3FDF3F18ECB30D74E; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 18 Nov 2013 15:08:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"GetParentProject_PostCreateVCSRootGit","name":"PostCreateVCSRootGit","vcsName":"jetbrains.git","status":"NOT_MONITORED","lastChecked":"20131118T150051+0000","href":"/httpAuth/app/rest/vcs-roots/id:GetParentProject_PostCreateVCSRootGit","project":{"id":"GetParentProject","name":"GetParentProject","href":"/httpAuth/app/rest/projects/id:GetParentProject"},"properties":{"property":[{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"}]},"vcsRootInstances":{"href":"/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:GetParentProject_PostCreateVCSRootGit)"}}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2013 15:08:45 GMT
+recorded_with: VCR 2.4.0

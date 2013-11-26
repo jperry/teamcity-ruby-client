@@ -26,13 +26,27 @@ describe 'VCSRoots' do
 
   describe 'POST', :vcr do
     describe '.create_vcs_root' do
-      it 'should create a vcs root that is shared with the project and sub-projects' do
+      it 'should create a git vcs root that is shared with the project and sub-projects' do
         project_id = @tc.projects[1].id
-        vcs_name = 'PostCreateVCSRoot'
+        vcs_name = 'PostCreateVCSRootGit'
         vcs_type = 'git'
         response = @tc.create_vcs_root(vcs_name: vcs_name, vcs_type: vcs_type, project_id: project_id) do |properties|
           properties['branch'] = 'master'
           properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+          properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
+          properties['ignoreKnownHosts'] = true
+        end
+        response.name.should eq(vcs_name)
+        response.vcsName.should match(/#{vcs_type}/)
+      end
+
+      it 'should create a subversion vcs root that is shared with the project and sub-projects' do
+        project_id = @tc.projects[1].id
+        vcs_name = 'PostCreateVCSRootSvn'
+        vcs_type = 'svn'
+        response = @tc.create_vcs_root(vcs_name: vcs_name, vcs_type: vcs_type, project_id: project_id) do |properties|
+          properties['branch'] = 'master'
+          properties['url'] = 'http://svn.example.com/jperry/teamcity-ruby-client'
           properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
           properties['ignoreKnownHosts'] = true
         end
