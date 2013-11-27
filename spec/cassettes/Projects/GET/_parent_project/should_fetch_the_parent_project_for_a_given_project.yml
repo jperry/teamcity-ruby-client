@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/projects/id:GetProjectWithParent/parentProject
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=2AE7B81BB70BF99FF8B3C9EEAA6510EF; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sun, 17 Nov 2013 19:27:28 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"GetParentProject","name":"GetParentProject","href":"/guestAuth/app/rest/projects/id:GetParentProject"}'
+    http_version: 
+  recorded_at: Sun, 17 Nov 2013 19:27:30 GMT
+recorded_with: VCR 2.4.0
