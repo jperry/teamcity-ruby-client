@@ -5,16 +5,14 @@ http_interactions:
     uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/triggers
     body:
       encoding: UTF-8
-      string: <trigger type="vcsTrigger"><properties><property name="groupCheckkinsByCommitter"
-        value="true"/><property name="perCheckinTriggering" value="true"/><property
-        name="quietPeriodMode" value="DO_NOT_USE"/></properties></trigger>
+      string: '{"type":"vcsTrigger","properties":{"property":[{"name":"groupCheckkinsByCommitter","value":"true"},{"name":"perCheckinTriggering","value":"true"},{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}'
     headers:
       User-Agent:
       - TeamCity Ruby Client 1.1.0
       Accept:
       - application/json; charset=utf-8
       Content-Type:
-      - application/xml
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -26,7 +24,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=129AE34E86BB2E479B6FA0D2090A7D1C; Path=/; HttpOnly
+      - TCSESSIONID=0A77BCA87213D3A0A8B420E420F08E2D; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -39,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sat, 23 Nov 2013 18:18:02 GMT
+      - Wed, 27 Nov 2013 18:38:38 GMT
     body:
       encoding: UTF-8
       string: '{"id":"vcsTrigger","type":"vcsTrigger","properties":{"property":[{"name":"groupCheckkinsByCommitter","value":"true"},{"name":"perCheckinTriggering","value":"true"},{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}'
     http_version: 
-  recorded_at: Sat, 23 Nov 2013 18:18:02 GMT
+  recorded_at: Wed, 27 Nov 2013 18:38:38 GMT
 recorded_with: VCR 2.4.0

@@ -42,7 +42,7 @@ module TeamCity
           :projectLocator => options.fetch(:project_id)
         }
         builder = TeamCity::ElementBuilder.new('vcs-root', attributes, &block)
-        post("vcs-roots", :content_type => :xml) do |req|
+        post("vcs-roots", :content_type => :json) do |req|
           req.body = builder.to_request_body
         end
       end

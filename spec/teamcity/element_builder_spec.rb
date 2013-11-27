@@ -6,14 +6,27 @@ describe TeamCity::ElementBuilder do
       properties['property1'] = 'z'
     end
 
-    builder.to_request_body.should ==
-      '<some_element attr1="x"><properties><property name="property1" value="z"/></properties></some_element>'
+    builder.to_request_body.should == {
+      :attr1 => 'x',
+      :properties => {
+        :property => [
+          {
+            :name => 'property1',
+            :value => 'z'
+          }
+        ]
+      }
+    }.to_json
   end
 
   it 'outputs xml following TeamCity convention for elements even if no properties are defined' do
     builder = TeamCity::ElementBuilder.new('some_element', :attr1 => 'x')
 
-    builder.to_request_body.should ==
-      '<some_element attr1="x"><properties></properties></some_element>'
+    builder.to_request_body.should == {
+      :attr1 => 'x',
+      :properties => {
+        :property => []
+      }
+    }.to_json
   end
 end

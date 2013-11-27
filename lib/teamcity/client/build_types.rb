@@ -162,7 +162,7 @@ module TeamCity
         end
 
         path = "buildTypes/#{buildtype_id}/agent-requirements"
-        post(path, :accept => :json, :content_type => :xml) do |req|
+        post(path, :accept => :json, :content_type => :json) do |req|
           req.body = builder.to_request_body
         end
       end
@@ -238,8 +238,8 @@ module TeamCity
       # Create Build Step
       #
       # @param buildtype_id [String] :buildtype_id to create the step under
-      # @option options [String] :name for the step definition
-      # @option options [String] :type Type of Build Step: 'Maven2', 'Maven3', etc
+      # @option options [String] :name for the step definition (default nil)
+      # @option options [String] :type Type of Build Step: 'Maven2', 'Maven3', etc (default 'Maven2')
       # @yield [Hash] properties to set on the step, view the official documentation for supported properties
       # @return [Hashie::Mash] step object that was created
       #
@@ -250,14 +250,14 @@ module TeamCity
       #     properties['pomLocation'] = 'pom.xml'
       #   end
       def create_build_step(buildtype_id, options = {}, &block)
-        attributes = {
-          :type => options.fetch(:type),
-          :name => options.fetch(:name),
-        }
+        attributes = {}
+
+        attributes[:type] = options.fetch(:type) || 'Maven2'
+        attributes[:name] = options.fetch(:name) if options.fetch(:name)
 
         builder = TeamCity::ElementBuilder.new('step', attributes, &block)
 
-        post("buildTypes/#{buildtype_id}/steps", :content_type => :xml) do |req|
+        post("buildTypes/#{buildtype_id}/steps", :content_type => :json) do |req|
           req.body = builder.to_request_body
         end
       end
@@ -282,7 +282,7 @@ module TeamCity
 
         builder = TeamCity::ElementBuilder.new('trigger', attributes, &block)
 
-        post("buildTypes/#{buildtype_id}/triggers", :content_type => :xml) do |req|
+        post("buildTypes/#{buildtype_id}/triggers", :content_type => :json) do |req|
           req.body = builder.to_request_body
         end
       end
