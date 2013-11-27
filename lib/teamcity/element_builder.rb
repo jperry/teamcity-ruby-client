@@ -1,12 +1,12 @@
 module TeamCity
   class ElementBuilder
-    def initialize(element, attributes = {}, &block)
+    def initialize(attributes = {}, &block)
       @payload = attributes
 
-      @payload['properties'] ||= {}
-      @payload['properties']['property'] ||= []
-
       if block_given?
+        @payload['properties'] ||= {}
+        @payload['properties']['property'] ||= []
+
         properties = {}
 
         yield(properties)

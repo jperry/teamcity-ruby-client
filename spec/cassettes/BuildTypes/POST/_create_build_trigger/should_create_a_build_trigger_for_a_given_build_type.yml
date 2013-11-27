@@ -24,7 +24,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=0A77BCA87213D3A0A8B420E420F08E2D; Path=/; HttpOnly
+      - TCSESSIONID=65A15803341C99784EDBBD5D5F286E32; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -37,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 27 Nov 2013 18:38:38 GMT
+      - Wed, 27 Nov 2013 19:09:51 GMT
     body:
       encoding: UTF-8
       string: '{"id":"vcsTrigger","type":"vcsTrigger","properties":{"property":[{"name":"groupCheckkinsByCommitter","value":"true"},{"name":"perCheckinTriggering","value":"true"},{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}'
     http_version: 
-  recorded_at: Wed, 27 Nov 2013 18:38:38 GMT
+  recorded_at: Wed, 27 Nov 2013 19:09:51 GMT
 recorded_with: VCR 2.4.0

@@ -76,6 +76,7 @@ module TeamCity
         attributes = {
           :name => target_project_name
         }
+
         builder = Builder::XmlMarkup.new
         builder.tag!(:newProjectDescription ,options.merge(attributes)) do |node|
           node.tag!(:sourceProject, locator: source_project_id)

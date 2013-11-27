@@ -109,13 +109,10 @@ module TeamCity
       # @param vcs_root_id [String, Numeric] id of vcs root
       # @return [Hashie::Mash] vcs root object that was attached
       def attach_vcs_root(buildtype_id, vcs_root_id)
-        builder = Builder::XmlMarkup.new
-        builder.tag!('vcs-root-entry'.to_sym) do |node|
-          node.tag!('vcs-root'.to_sym, :id => vcs_root_id)
-        end
-        post("buildTypes/#{buildtype_id}/vcs-root-entries") do |req|
-          req.headers['Content-Type'] = 'application/xml'
-          req.body = builder.target!
+        builder = TeamCity::ElementBuilder.new('vcs-root' => { :id => vcs_root_id })
+
+        post("buildTypes/#{buildtype_id}/vcs-root-entries", :content_type => :json) do |req|
+          req.body = builder.to_request_body
         end
       end
 
@@ -156,7 +153,7 @@ module TeamCity
       #
       # @note Check the TeamCity UI for supported conditions
       def create_agent_requirement(buildtype_id, parameter_name, parameter_value, condition)
-        builder = TeamCity::ElementBuilder.new('agent-requirement', :id => parameter_name, :type => condition) do |properties|
+        builder = TeamCity::ElementBuilder.new(:id => parameter_name, :type => condition) do |properties|
           properties['property-name']  = parameter_name
           properties['property-value'] = parameter_value
         end
@@ -255,7 +252,7 @@ module TeamCity
         attributes[:type] = options.fetch(:type) || 'Maven2'
         attributes[:name] = options.fetch(:name) if options.fetch(:name)
 
-        builder = TeamCity::ElementBuilder.new('step', attributes, &block)
+        builder = TeamCity::ElementBuilder.new(attributes, &block)
 
         post("buildTypes/#{buildtype_id}/steps", :content_type => :json) do |req|
           req.body = builder.to_request_body
@@ -280,7 +277,7 @@ module TeamCity
           :type => options.fetch(:type),
         }
 
-        builder = TeamCity::ElementBuilder.new('trigger', attributes, &block)
+        builder = TeamCity::ElementBuilder.new(attributes, &block)
 
         post("buildTypes/#{buildtype_id}/triggers", :content_type => :json) do |req|
           req.body = builder.to_request_body

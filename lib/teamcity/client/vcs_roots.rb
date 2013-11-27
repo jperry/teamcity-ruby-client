@@ -41,7 +41,7 @@ module TeamCity
           :vcsName => VCS_TYPES[options.fetch(:vcs_type)] || options.fetch(:vcs_type),
           :projectLocator => options.fetch(:project_id)
         }
-        builder = TeamCity::ElementBuilder.new('vcs-root', attributes, &block)
+        builder = TeamCity::ElementBuilder.new(attributes, &block)
         post("vcs-roots", :content_type => :json) do |req|
           req.body = builder.to_request_body
         end
