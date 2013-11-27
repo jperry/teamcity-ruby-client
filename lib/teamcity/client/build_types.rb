@@ -1,12 +1,7 @@
-require 'linguistics'
-
 module TeamCity
   class Client
     # Defines methods related to build types (or build configurations)
     module BuildTypes
-
-      Linguistics.use :en
-
       # HTTP GET
 
       # List of build types
@@ -87,8 +82,8 @@ module TeamCity
         define_method("buildtype_#{name}".to_sym) do |options|
           name_has_dashes = name.to_s.gsub('_', '-')
           assert_options(options)
-          response = get("buildTypes/#{locator(options)}/#{name_has_dashes}")
-          response[name_has_dashes.en.plural]
+          response = get("buildTypes/#{locator(options)}/#{name_has_dashes}", accept: :json)
+          response[response.keys.first]
         end
       end
 
@@ -109,10 +104,10 @@ module TeamCity
       # @param vcs_root_id [String, Numeric] id of vcs root
       # @return [Hashie::Mash] vcs root object that was attached
       def attach_vcs_root(buildtype_id, vcs_root_id)
-        builder = TeamCity::ElementBuilder.new('vcs-root' => { :id => vcs_root_id })
+        payload = { 'vcs-root' => { :id => vcs_root_id } }
 
         post("buildTypes/#{buildtype_id}/vcs-root-entries", :content_type => :json) do |req|
-          req.body = builder.to_request_body
+          req.body = payload.to_json
         end
       end
 

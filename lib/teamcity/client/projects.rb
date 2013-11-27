@@ -77,12 +77,10 @@ module TeamCity
           :name => target_project_name
         }
 
-        builder = Builder::XmlMarkup.new
-        builder.tag!(:newProjectDescription ,options.merge(attributes)) do |node|
-          node.tag!(:sourceProject, locator: source_project_id)
-        end
-        post("projects", :content_type => :xml) do |req|
-          req.body = builder.target!
+        payload = { 'sourceProject' => { locator: source_project_id } }.merge(attributes)
+
+        post("projects", :content_type => :json, :accept => :json) do |req|
+          req.body = payload.to_json
         end
       end
 
@@ -149,10 +147,10 @@ module TeamCity
       # @rest_api_version >= 8.0
       def set_parent_project(project_id, parent_project_id)
         path = "projects/#{project_id}/parentProject"
-        builder = Builder::XmlMarkup.new
-        builder.tag!(:'project-ref', :id => parent_project_id)
-        put(path, :content_type => :xml) do |req|
-          req.body = builder.target!
+        payload = { :id => parent_project_id }
+
+        put(path, :content_type => :json, :accept => :json) do |req|
+          req.body = payload.to_json
         end
       end
     end

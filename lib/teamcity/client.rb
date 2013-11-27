@@ -1,5 +1,4 @@
 require_relative 'api'
-require 'builder'
 
 module TeamCity
   # Wrapper for the TeamCity REST API
