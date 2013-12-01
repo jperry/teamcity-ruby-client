@@ -1,4 +1,5 @@
 require File.expand_path('../../spec_helper', __FILE__)
+require_relative '../spec_helper'
 
 describe TeamCity::ElementBuilder do
   it 'outputs xml following TeamCity convention for elements and properties' do
