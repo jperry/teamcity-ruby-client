@@ -231,6 +231,28 @@ describe 'BuildTypes' do
         response.id.should eq(parameter_name)
       end
     end
+
+    describe '.create_build_step' do
+      it 'should create a build step for a given build type' do
+        response = @tc.create_build_step(@buildtype_id, name: 'Unit Tests', type: 'Maven') do |properties|
+          properties['goals'] = 'verify'
+          properties['mavenSelection'] = 'mavenSelection:default'
+          properties['pomLocation'] = 'pom.xml'
+        end
+        response.name.should eq('Unit Tests')
+      end
+    end
+
+    describe '.create_build_trigger' do
+      it 'should create a build trigger for a given build type' do
+        response = @tc.create_build_trigger(@buildtype_id, type: 'vcsTrigger') do |properties|
+          properties['groupCheckkinsByCommitter'] = 'true'
+          properties['perCheckinTriggering'] = 'true'
+          properties['quietPeriodMode'] = 'DO_NOT_USE'
+        end
+        response.type.should eq('vcsTrigger')
+      end
+    end
   end
 
   describe 'DELETE', :vcr do

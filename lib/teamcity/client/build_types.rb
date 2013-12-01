@@ -1,12 +1,7 @@
-require 'linguistics'
-
 module TeamCity
   class Client
     # Defines methods related to build types (or build configurations)
     module BuildTypes
-
-      Linguistics.use :en
-
       # HTTP GET
 
       # List of build types
@@ -87,10 +82,11 @@ module TeamCity
         define_method("buildtype_#{name}".to_sym) do |options|
           name_has_dashes = name.to_s.gsub('_', '-')
           assert_options(options)
-          response = get("buildTypes/#{locator(options)}/#{name_has_dashes}")
-          response[name_has_dashes.en.plural]
+          response = get("buildTypes/#{locator(options)}/#{name_has_dashes}", accept: :json)
+          response[response.keys.first]
         end
       end
+
       private_class_method :make_method
 
       make_method :features
@@ -108,13 +104,10 @@ module TeamCity
       # @param vcs_root_id [String, Numeric] id of vcs root
       # @return [Hashie::Mash] vcs root object that was attached
       def attach_vcs_root(buildtype_id, vcs_root_id)
-        builder = Builder::XmlMarkup.new
-        builder.tag!('vcs-root-entry'.to_sym) do |node|
-          node.tag!('vcs-root'.to_sym, :id => vcs_root_id)
-        end
-        post("buildTypes/#{buildtype_id}/vcs-root-entries") do |req|
-          req.headers['Content-Type'] = 'application/xml'
-          req.body = builder.target!
+        payload = { 'vcs-root' => { :id => vcs_root_id } }
+
+        post("buildTypes/#{buildtype_id}/vcs-root-entries", :content_type => :json) do |req|
+          req.body = payload.to_json
         end
       end
 
@@ -155,16 +148,14 @@ module TeamCity
       #
       # @note Check the TeamCity UI for supported conditions
       def create_agent_requirement(buildtype_id, parameter_name, parameter_value, condition)
-        builder = Builder::XmlMarkup.new
-        builder.tag!('agent-requirement'.to_sym, :id => parameter_name, :type => condition) do |node|
-          node.properties do |p|
-            p.property(:name => 'property-name', :value => parameter_name)
-            p.property(:name => 'property-value', :value => parameter_value)
-          end
+        builder = TeamCity::ElementBuilder.new(:id => parameter_name, :type => condition) do |properties|
+          properties['property-name']  = parameter_name
+          properties['property-value'] = parameter_value
         end
+
         path = "buildTypes/#{buildtype_id}/agent-requirements"
-        post(path, :accept => :json, :content_type => :xml) do |req|
-          req.body = builder.target!
+        post(path, :accept => :json, :content_type => :json) do |req|
+          req.body = builder.to_request_body
         end
       end
 
@@ -233,6 +224,58 @@ module TeamCity
         path = "buildTypes/#{buildtype_id}/steps/#{step_id}/#{field_name}"
         put(path, :accept => :text, :content_type => :text) do |req|
           req.body = field_value
+        end
+      end
+
+      # Create Build Step
+      #
+      # @param buildtype_id [String] :buildtype_id to create the step under
+      # @option options [String] :name for the step definition (optional)
+      # @option options [String] :type Type of Build Step: 'Maven', 'Ant', etc
+      # @yield [Hash] properties to set on the step, view the official documentation for supported properties
+      # @return [Hashie::Mash] step object that was created
+      #
+      # @example Create a Maven2 step that executes the target verify
+      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'Maven', name: 'Unit Tests') do |properties|
+      #     properties['goals'] = 'verify'
+      #     properties['mavenSelection'] = 'mavenSelection:default'
+      #     properties['pomLocation'] = 'pom.xml'
+      #   end
+      def create_build_step(buildtype_id, options = {}, &block)
+        attributes = {
+          :type => options.fetch(:type),
+          :name => options.fetch(:name) { nil }
+        }
+
+        builder = TeamCity::ElementBuilder.new(attributes, &block)
+
+        post("buildTypes/#{buildtype_id}/steps", :content_type => :json) do |req|
+          req.body = builder.to_request_body
+        end
+      end
+
+      # Create Build Trigger
+      #
+      # @param buildtype_id [String] :buildtype_id to create the trigger under
+      # @option options [String] :type Type of Build Trigger: 'vcsTrigger', 'schedulingTrigger', etc
+      # @yield [Hash] properties to set on the trigger, view the official documentation for supported properties
+      # @return [Hashie::Mash] trigger object that was created
+      #
+      # @example Create a a VCS build trigger for checkins
+      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'vcsTrigger', name: 'Every Checkin') do |properties|
+      #     properties['groupCheckkinsByCommitter'] = 'true'
+      #     properties['perCheckinTriggering'] = 'true'
+      #     properties['quietPeriodMode'] = 'DO_NOT_USE'
+      #   end
+      def create_build_trigger(buildtype_id, options = {}, &block)
+        attributes = {
+          :type => options.fetch(:type),
+        }
+
+        builder = TeamCity::ElementBuilder.new(attributes, &block)
+
+        post("buildTypes/#{buildtype_id}/triggers", :content_type => :json) do |req|
+          req.body = builder.to_request_body
         end
       end
     end

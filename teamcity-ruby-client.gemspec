@@ -30,6 +30,4 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('faraday', '~> 0.8.5')
   gem.add_runtime_dependency('faraday_middleware', '~> 0.9.0')
   gem.add_runtime_dependency('hashie',  '~> 2.0.0')
-  gem.add_runtime_dependency('linguistics', '~> 2.0.2')
-  gem.add_runtime_dependency('builder', '>=3.0')
 end

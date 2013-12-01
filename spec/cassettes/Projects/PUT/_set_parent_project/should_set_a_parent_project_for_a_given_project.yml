@@ -24,7 +24,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=DDB35E2360FFF7F93BB3F1DE027A6F45; Path=/; HttpOnly
+      - TCSESSIONID=2E6ADC4C3CCCF8C6F835151D5D0AB8FE; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -37,13 +37,13 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sun, 17 Nov 2013 19:27:28 GMT
+      - Wed, 27 Nov 2013 20:12:34 GMT
     body:
       encoding: UTF-8
       string: '{"id":"PutSetParentProject","name":"PutSetParentProject","href":"/httpAuth/app/rest/projects/id:PutSetParentProject","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PutSetParentProject","parentProject":{"id":"_Root","name":"<Root
         project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PutSetParentProject)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Sun, 17 Nov 2013 19:27:30 GMT
+  recorded_at: Wed, 27 Nov 2013 20:12:34 GMT
 - request:
     method: post
     uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
@@ -68,7 +68,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=BE07C7C00F1D2FCFC884BEB2F74247F2; Path=/; HttpOnly
+      - TCSESSIONID=2BE939246A12318C13D0CFCD0C0D867C; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -81,26 +81,26 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sun, 17 Nov 2013 19:27:29 GMT
+      - Wed, 27 Nov 2013 20:12:34 GMT
     body:
       encoding: UTF-8
       string: '{"id":"PutParentProject","name":"PutParentProject","href":"/httpAuth/app/rest/projects/id:PutParentProject","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=PutParentProject","parentProject":{"id":"_Root","name":"<Root
         project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:PutParentProject)"},"projects":{"project":[]}}'
     http_version: 
-  recorded_at: Sun, 17 Nov 2013 19:27:30 GMT
+  recorded_at: Wed, 27 Nov 2013 20:12:34 GMT
 - request:
     method: put
     uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects/PutSetParentProject/parentProject
     body:
       encoding: UTF-8
-      string: <project-ref id="PutParentProject"/>
+      string: '{"id":"PutParentProject"}'
     headers:
       User-Agent:
       - TeamCity Ruby Client 1.1.0
       Accept:
       - application/json; charset=utf-8
       Content-Type:
-      - application/xml
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -112,7 +112,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=C5B2D5F84F7B663BA25399009F217D82; Path=/; HttpOnly
+      - TCSESSIONID=82BA0B46E09E33C6CA272123B17D3208; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -125,10 +125,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sun, 17 Nov 2013 19:27:29 GMT
+      - Wed, 27 Nov 2013 20:12:34 GMT
     body:
       encoding: UTF-8
       string: '{"id":"PutSetParentProject","name":"PutSetParentProject","href":"/httpAuth/app/rest/projects/id:PutSetParentProject"}'
     http_version: 
-  recorded_at: Sun, 17 Nov 2013 19:27:30 GMT
+  recorded_at: Wed, 27 Nov 2013 20:12:34 GMT
 recorded_with: VCR 2.4.0

@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/agent-requirements
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes/BuildTypeTests_PostBuildTypeTests/triggers
     body:
       encoding: UTF-8
-      string: '{"id":"post-agent-requirement-name","type":"equals","properties":{"property":[{"name":"property-name","value":"post-agent-requirement-name"},{"name":"property-value","value":"post-agent-requirement-value"}]}}'
+      string: '{"type":"vcsTrigger","properties":{"property":[{"name":"groupCheckkinsByCommitter","value":"true"},{"name":"perCheckinTriggering","value":"true"},{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}'
     headers:
       User-Agent:
       - TeamCity Ruby Client 1.1.0
@@ -24,7 +24,7 @@ http_interactions:
       - Apache-Coyote/1.1
       Set-Cookie:
       - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
-      - TCSESSIONID=F99201B872CA2CCB1E069B9597490641; Path=/; HttpOnly
+      - TCSESSIONID=65A15803341C99784EDBBD5D5F286E32; Path=/; HttpOnly
       Pragma:
       - no-cache
       Expires:
@@ -37,10 +37,10 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 27 Nov 2013 18:34:32 GMT
+      - Wed, 27 Nov 2013 19:09:51 GMT
     body:
       encoding: UTF-8
-      string: '{"id":"post-agent-requirement-name","type":"equals","properties":{"property":[{"name":"property-name","value":"post-agent-requirement-name"},{"name":"property-value","value":"post-agent-requirement-value"}]}}'
+      string: '{"id":"vcsTrigger","type":"vcsTrigger","properties":{"property":[{"name":"groupCheckkinsByCommitter","value":"true"},{"name":"perCheckinTriggering","value":"true"},{"name":"quietPeriodMode","value":"DO_NOT_USE"}]}}'
     http_version: 
-  recorded_at: Wed, 27 Nov 2013 18:34:31 GMT
+  recorded_at: Wed, 27 Nov 2013 19:09:51 GMT
 recorded_with: VCR 2.4.0
