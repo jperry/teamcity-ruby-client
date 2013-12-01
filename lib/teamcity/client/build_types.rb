@@ -230,22 +230,22 @@ module TeamCity
       # Create Build Step
       #
       # @param buildtype_id [String] :buildtype_id to create the step under
-      # @option options [String] :name for the step definition (default nil)
-      # @option options [String] :type Type of Build Step: 'Maven2', 'Maven3', etc (default 'Maven2')
+      # @option options [String] :name for the step definition (optional)
+      # @option options [String] :type Type of Build Step: 'Maven', 'Ant', etc
       # @yield [Hash] properties to set on the step, view the official documentation for supported properties
       # @return [Hashie::Mash] step object that was created
       #
       # @example Create a Maven2 step that executes the target verify
-      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'Maven2', name: 'Unit Tests') do |properties|
+      #   TeamCity.create_build_step(:buildtype_id => 'my-build-type-id', :type => 'Maven', name: 'Unit Tests') do |properties|
       #     properties['goals'] = 'verify'
       #     properties['mavenSelection'] = 'mavenSelection:default'
       #     properties['pomLocation'] = 'pom.xml'
       #   end
       def create_build_step(buildtype_id, options = {}, &block)
-        attributes = {}
-
-        attributes[:type] = options.fetch(:type) || 'Maven2'
-        attributes[:name] = options.fetch(:name) if options.fetch(:name)
+        attributes = {
+          :type => options.fetch(:type),
+          :name => options.fetch(:name) { nil }
+        }
 
         builder = TeamCity::ElementBuilder.new(attributes, &block)
 

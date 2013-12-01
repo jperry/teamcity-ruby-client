@@ -234,7 +234,7 @@ describe 'BuildTypes' do
 
     describe '.create_build_step' do
       it 'should create a build step for a given build type' do
-        response = @tc.create_build_step(@buildtype_id, name: 'Unit Tests', type: 'Maven2') do |properties|
+        response = @tc.create_build_step(@buildtype_id, name: 'Unit Tests', type: 'Maven') do |properties|
           properties['goals'] = 'verify'
           properties['mavenSelection'] = 'mavenSelection:default'
           properties['pomLocation'] = 'pom.xml'
