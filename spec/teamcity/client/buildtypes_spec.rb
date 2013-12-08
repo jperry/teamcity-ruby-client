@@ -214,6 +214,17 @@ describe 'BuildTypes' do
       @buildtype_id = 'BuildTypeTests_PostBuildTypeTests'
     end
 
+    describe '.create_buildtype' do
+      it 'should create a build type' do
+        project_id = 'ProjectToTestBuildTypes'
+        buildtype_name = 'PostCreateBuildType'
+        buildtype_id = "#{project_id}_#{buildtype_name}"
+        @tc.create_project(project_id)
+        response = @tc.create_buildtype(project_id, buildtype_name)
+        response.id.should eq(buildtype_id)
+      end
+    end
+
     describe '.attach_vcs_root' do
       it 'should attach a vcs root to a buildtype' do
         vcs_root_id = 'teamcity_ruby_client'

@@ -21,6 +21,17 @@ module TeamCity
         get("buildTypes/#{locator(options)}")
       end
 
+      # Create a Build Configuration
+      #
+      # @param project_id [String] id of the project you are adding the build configuration
+      # @param name [String] name of the buildtype you wish to create
+      # @return [Hashie::Mash] of build configuration details
+      def create_buildtype(project_id, name)
+        post("projects/#{project_id}/buildTypes", :content_type => :text) do |req|
+          req.body = name
+        end
+      end
+
       # Get whether the build is paused or not
       #
       # @param options [Hash] option keys, :id => buildtype_id

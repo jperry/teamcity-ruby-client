@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: US-ASCII
+      string: ProjectToTestBuildTypes
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=1A877CAB29A83C6B5990DBA2E10326AC; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 07 Dec 2013 00:15:29 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"ProjectToTestBuildTypes","name":"ProjectToTestBuildTypes","href":"/httpAuth/app/rest/projects/id:ProjectToTestBuildTypes","description":"","archived":false,"webUrl":"http://localhost:8111/project.html?projectId=ProjectToTestBuildTypes","parentProject":{"id":"_Root","name":"<Root
+        project>","href":"/httpAuth/app/rest/projects/id:_Root"},"buildTypes":{"buildType":[]},"templates":{"buildType":[]},"parameters":{"property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:ProjectToTestBuildTypes)"},"projects":{"project":[]}}'
+    http_version: 
+  recorded_at: Sat, 07 Dec 2013 00:15:29 GMT
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects/ProjectToTestBuildTypes/buildTypes
+    body:
+      encoding: US-ASCII
+      string: PostCreateBuildType
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.1.0
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=00528D7A7D064B8152CAD47030215F5F; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 07 Dec 2013 00:15:29 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"ProjectToTestBuildTypes_PostCreateBuildType","name":"PostCreateBuildType","href":"/httpAuth/app/rest/buildTypes/id:ProjectToTestBuildTypes_PostCreateBuildType","webUrl":"http://localhost:8111/viewType.html?buildTypeId=ProjectToTestBuildTypes_PostCreateBuildType","paused":false,"project":{"id":"ProjectToTestBuildTypes","name":"ProjectToTestBuildTypes","href":"/httpAuth/app/rest/projects/id:ProjectToTestBuildTypes"},"builds":{"href":"/httpAuth/app/rest/buildTypes/id:ProjectToTestBuildTypes_PostCreateBuildType/builds/"},"vcs-root-entries":{"vcs-root-entry":[]},"settings":{"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules"},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]},"parameters":{"property":[]},"steps":{"step":[]},"features":{"feature":[]},"triggers":{"trigger":[]},"snapshot-dependencies":{"snapshot-dependency":[]},"artifact-dependencies":{"artifact-dependency":[]},"agent-requirements":{"agent-requirement":[]}}'
+    http_version: 
+  recorded_at: Sat, 07 Dec 2013 00:15:29 GMT
+recorded_with: VCR 2.4.0

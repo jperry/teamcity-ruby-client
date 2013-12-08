@@ -44,6 +44,7 @@ describe 'Projects' do
       end
     end
 
+
     describe '.project_buildtypes' do
 
       it 'should fetch all the buildTypes for a project' do
@@ -161,7 +162,6 @@ describe 'Projects' do
     end
 
     describe '.set_project_field' do
-
       it 'should set a projects name' do
         project_id = 'PutSetProjectNameField'
         @tc.create_project(project_id)
