@@ -7,6 +7,7 @@
 * BuildType: Added ```.create_build_step```, provides the ability to create a build step in a build configuration [@jeffersongirao]
 * Project: Added ```.set_parent_project``` and ```.parent_project``` for setting and getting parent project. (TeamCity8 only) [@jeffersongirao]
 * Bug: Fix ```.create_vcs_root``` to work for svn [@jeffersongirao]
+* Bug: Fix incompatibility with ruby 1.9.2 [@jeffersongirao]
 * Cleanup: Remove dependency on xmlbuilder and linguistics [@jeffersongirao]
 * Testing: Upgrade to rspec 2.14.1 and added guard-rspec gem
 * Documentation: Added *rest_api_version* tag for specify teamcity api compatibility
