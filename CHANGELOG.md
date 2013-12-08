@@ -2,6 +2,7 @@
 
 * Features
    * Added ```.set_buildtype_setting```, provides the ability to set build configuration settings [@jeffersongirao]
+   * Added ```.create_buildtype```, provides ability to create a new build configuration [@jeffersongirao]
 
 * Bug Fixes
    * ```.create_vcs_root``` did not work for svn [@jeffersongirao]
