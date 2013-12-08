@@ -118,6 +118,14 @@ describe 'Projects' do
         response.name.should eq(copied_project_name)
       end
     end
+
+    describe '.create_project_buildtype' do
+      it 'should create a build type' do
+        @tc.create_project('PostProjectWithABuildType')
+        response = @tc.create_project_buildtype('PostProjectWithABuildType', 'PostCreateBuildType')
+        response.id.should eq('PostProjectWithABuildType_PostCreateBuildType')
+      end
+    end
   end
 
   describe 'DELETE', :vcr do

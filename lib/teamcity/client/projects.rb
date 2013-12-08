@@ -31,6 +31,17 @@ module TeamCity
         response['buildType']
       end
 
+      # Create a Build Configurations for a project
+      #
+      # @param project_id [String] id of the project you are adding the build configuration
+      # @param buildtype [String] name of the buildtype you wish to create
+      # @return [Hashie::Mash] of build configuration details
+      def create_project_buildtype(project_id, buildtype)
+        response = post("projects/#{project_id}/buildTypes", :content_type => :text) do |req|
+          req.body = buildtype
+        end
+      end
+
       # List of parameters defined on a project
       #
       # @param (see #project)
