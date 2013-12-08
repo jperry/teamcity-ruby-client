@@ -1,11 +1,15 @@
-## Next Release
+## 1.2.0 (Dec 7, 2013)
 
-* Features
-   * Added ```.set_buildtype_setting```, provides the ability to set build configuration settings [@jeffersongirao]
-   * Added ```.create_buildtype```, provides ability to create a new build configuration [@jeffersongirao]
-
-* Bug Fixes
-   * ```.create_vcs_root``` did not work for svn [@jeffersongirao]
+* BuildType: Added ```.set_buildtype_setting```, provides the ability to set build configuration settings [@jeffersongirao]
+* BuildType: Added ```.create_buildtype```, provides the ability to create a new build configuration [@jeffersongirao]
+* BuildType: Added ```.create_build_trigger```, provides the ability to create build configuration trigger [@jeffersongirao], [@nskboy]
+* BuildType: Added ```.set_buildtype_setting```, adds ability to set build configuration settings [@jeffersongirao]
+* BuildType: Added ```.create_build_step```, provides the ability to create a build step in a build configuration [@jeffersongirao]
+* Project: Added ```.set_parent_project``` and ```.parent_project``` for setting and getting parent project. (TeamCity8 only) [@jeffersongirao]
+* Bug: Fix ```.create_vcs_root``` to work for svn [@jeffersongirao]
+* Cleanup: Remove dependency on xmlbuilder and linguistics [@jeffersongirao]
+* Testing: Upgrade to rspec 2.14.1 and added guard-rspec gem
+* Documentation: Added *rest_api_version* tag for specify teamcity api compatibility
 
 ## 1.1.0 (Nov 1, 2013)
 
