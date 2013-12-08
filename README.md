@@ -177,6 +177,7 @@ the client against as well as the gem and ruby versions.
 2. Create a topic branch.
 3. Implement your feature or bug fix.
 4. Add documentation for your feature or bug fix.
+    * Please use the *@rest_api_version* tag to specify if a method is only compatible with a specific version of the rest api
 5. Run ```rake doc:yard```. If your changes are not 100% documented, go back to step 4.
 6. Add specs for your feature or bug fix.
 7. If the rspec test is making a request use VCR to record the response, see the other examples.
