@@ -43,6 +43,13 @@ describe 'BuildTypes' do
       end
     end
 
+    describe '.buildtype_branches' do
+      it 'should fetch vcs branches the vcs root is configured to use' do
+        buildtype_id = 'BuildTypeTests_GetBuildTypeConfigTests'
+        @tc.buildtype_branches(buildtype_id).first.name.should  eq('refs/heads/master')
+      end
+    end
+
     describe '.buildtype_state' do
       it 'should fetch the state of the buildtype' do
         build_type = @tc.buildtypes[0]

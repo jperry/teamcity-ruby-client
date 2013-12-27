@@ -1,3 +1,8 @@
+## Next Release
+
+* BuildType: Added ```.buildtype_branches```, provides the ability to
+  get a listing of branches the build is configured to build.
+
 ## 1.2.0 (Dec 7, 2013)
 
 * BuildType: Added ```.set_buildtype_setting```, provides the ability to set build configuration settings [@jeffersongirao]

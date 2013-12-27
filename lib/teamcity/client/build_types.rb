@@ -32,6 +32,16 @@ module TeamCity
         end
       end
 
+      # Get a listing of vcs branches
+      #
+      # @param buildtype_id [String]
+      # @return [Array<Hashie::Mash>]
+      def buildtype_branches(buildtype_id)
+        path = "buildTypes/#{buildtype_id}/branches"
+        response = get(path, :accept => :json, :content_type => :json)
+        response.branch
+      end
+
       # Get whether the build is paused or not
       #
       # @param options [Hash] option keys, :id => buildtype_id
