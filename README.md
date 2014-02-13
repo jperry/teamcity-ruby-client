@@ -19,7 +19,7 @@ Or install it yourself as:
 
 ## API Usage Examples
 
-* Tested on TeamCity 7.X and 8.X
+* Tested on TeamCity 7.X and 8.0.X
 * Most of the api calls return either an array of Hashie::Mash objects or a single Hashie::Mash object which allows you to send messages to retreive an attribute easily.
 * See [api docs](http://rubydoc.info/gems/teamcity-ruby-client/TeamCity/Client) or [specs](spec/teamcity/client) for additional examples and usage
 
