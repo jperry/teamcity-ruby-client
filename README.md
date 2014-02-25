@@ -1,5 +1,5 @@
 # The TeamCity Ruby Gem [![Gem Version](https://badge.fury.io/rb/teamcity-ruby-client.png)](http://badge.fury.io/rb/teamcity-ruby-client)
-[![Build Status](https://secure.travis-ci.org/jperry/teamcity-ruby-client.png?branch=master)](http://travis-ci.org/jperry/teamcity-ruby-client) [![Code Climate](https://codeclimate.com/github/jperry/teamcity-ruby-client.png)](https://codeclimate.com/github/jperry/teamcity-ruby-client) [![Dependency Status](https://gemnasium.com/jperry/teamcity-ruby-client.png)](https://gemnasium.com/jperry/teamcity-ruby-client)
+[![Build Status](https://travis-ci.org/jperry/teamcity-ruby-client.png?branch=master)](https://travis-ci.org/jperry/teamcity-ruby-client.png?branch=master) [![Code Climate](https://codeclimate.com/github/jperry/teamcity-ruby-client.png)](https://codeclimate.com/github/jperry/teamcity-ruby-client) [![Dependency Status](https://gemnasium.com/jperry/teamcity-ruby-client.png)](https://gemnasium.com/jperry/teamcity-ruby-client)
 
 Ruby wrapper for the TeamCity Rest API
 
