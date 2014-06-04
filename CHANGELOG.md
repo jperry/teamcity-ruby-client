@@ -4,7 +4,8 @@
   get a listing of branches the build is configured to build.
 
 * Dependencies
-    * faraday 0.8.5 -> 0.9.0 upgrade (fixed some methods to keep consistent return values)
+    * faraday 0.8.5 -> 0.9.0 (fixed some methods to keep consistent return values)
+    * hashie 2.0.0 -> 3.0.0
 
 ## 1.2.0 (Dec 7, 2013)
 
