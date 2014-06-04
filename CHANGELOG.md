@@ -1,3 +1,8 @@
+## 1.3.1 (Jun 4, 20014)
+
+* Dependencies
+    * Loosen up hashie version constraint to >= 2.0
+
 ## 1.3.0 (Jun 4, 2014)
 
 * BuildType: Added ```.buildtype_branches```, provides the ability to
