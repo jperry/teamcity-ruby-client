@@ -100,6 +100,7 @@ module TeamCity
       def delete_project_parameter(project_id, parameter_name)
         path = "projects/#{project_id}/parameters/#{parameter_name}"
         delete(path, :accept => :text)
+        return nil
       end
 
       # Set a project parameter (Create or Update)

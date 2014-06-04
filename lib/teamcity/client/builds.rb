@@ -74,6 +74,7 @@ module TeamCity
         put(path, :accept => :text, :content_type => :text) do |req|
           req.body = comment
         end
+        return nil
       end
 
       # HTTP DELETE

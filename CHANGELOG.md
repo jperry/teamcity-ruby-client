@@ -1,7 +1,14 @@
-## Next Release
+## 1.3.0 (Jun 4, 2014)
 
 * BuildType: Added ```.buildtype_branches```, provides the ability to
   get a listing of branches the build is configured to build.
+
+* Dependencies
+    * faraday 0.8.5 -> 0.9.0 (fixed some methods to keep consistent return values)
+    * hashie 2.0.0 -> 3.0.0
+
+* Development
+    * Changed .rvmrc file to universal .ruby-version and .ruby-gemset files
 
 ## 1.2.0 (Dec 7, 2013)
 

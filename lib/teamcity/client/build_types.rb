@@ -154,6 +154,7 @@ module TeamCity
       def delete_buildtype_parameter(buildtype_id, parameter_name)
         path = "buildTypes/#{buildtype_id}/parameters/#{parameter_name}"
         delete(path, :accept => :text, :content_type => :text)
+        return nil
       end
 
       # Create a buildtype agent requirement (Create)
