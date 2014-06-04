@@ -27,7 +27,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('yard', '~> 0.8.5.2')
   gem.add_development_dependency('redcarpet', '~> 2.2.2')
   gem.add_development_dependency('guard-rspec', '~> 4.0.2')
-  gem.add_runtime_dependency('faraday', '~> 0.8.5')
+  gem.add_runtime_dependency('faraday', '~> 0.9.0')
   gem.add_runtime_dependency('faraday_middleware', '~> 0.9.0')
   gem.add_runtime_dependency('hashie',  '~> 2.0.0')
 end
