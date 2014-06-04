@@ -7,6 +7,9 @@
     * faraday 0.8.5 -> 0.9.0 (fixed some methods to keep consistent return values)
     * hashie 2.0.0 -> 3.0.0
 
+* Development
+    * Changed .rvmrc file to universal .ruby-version and .ruby-gemset files
+
 ## 1.2.0 (Dec 7, 2013)
 
 * BuildType: Added ```.set_buildtype_setting```, provides the ability to set build configuration settings [@jeffersongirao]
