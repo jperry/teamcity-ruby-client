@@ -93,7 +93,7 @@ module TeamCity
       def copy_project(source_project_id, target_project_name, options={})
         attributes = {
           :name => target_project_name
-        }
+        }.merge(options)
 
         payload = { 'sourceProject' => { locator: source_project_id } }.merge(attributes)
 
