@@ -63,6 +63,24 @@ module TeamCity
         end
       end
 
+      # Create project
+      #
+      # @param target_project_name [String] name of the project you want to create
+      # @param parent_project_id [String] id of the project you wish to create
+      # @param options [Hash] create project options
+      # @return [Hashie::Mash] project details
+      def create_sub_project(target_project_name, parent_project_id, options={})
+        attributes = {
+            :name => target_project_name
+        }.merge(options)
+
+        payload = { 'parentProject' => { locator: parent_project_id } }.merge(attributes)
+
+        post("projects", :content_type => :json, :accept => :json) do |req|
+          req.body = payload.to_json
+        end
+      end
+
       # Copy another project
       #
       # @param source_project_id [String] id of the project you wish to copy
