@@ -32,6 +32,28 @@ module TeamCity
         end
       end
 
+      # Create a Build Configuration (TC 8.1)
+      #
+      # @param project_id [String] id of the project you are adding the build configuration
+      # @param name [String] name of the buildtype you wish to create
+      # @param options [Hash] options for the buildtype you wish to create
+      # @yield [Hash] properties to set, view the official documentation for supported properties
+      # @return [Hashie::Mash] of build configuration details
+      def create_buildtype_ex(project_id, name, options={}, &block)
+        if block_given?
+          yield(options)
+        end
+        attributes = {
+            :name => name,
+            :project_id => project_id,
+            :project => { :id => project_id }
+        }.merge(options)
+
+        post("buildTypes", :content_type => :json) do |req|
+          req.body = attributes.to_json
+        end
+      end
+
       # Get a listing of vcs branches
       #
       # @param buildtype_id [String]
