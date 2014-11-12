@@ -81,6 +81,13 @@ module TeamCity
         response['investigation']
       end
 
+      # List of build types
+      #
+      # @return [Array<Hashie::Mash>, nil] of buildtypes or nil if no buildtypes exist
+      def buildTemplates
+        get("buildTypes/#{locator({'templateFlag'=>'true'})}")
+      end
+
       # Get template associated with build configuration
       #
       # @param (see #buildtype)
