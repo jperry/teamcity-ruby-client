@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8111/guestAuth/app/rest/buildTypes/templateFlag:true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=C6F6953353D52FA986E9EE0A1BC6CF75; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 15 Nov 2014 23:36:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"ProjectToTestBuildTypes_TestTemplate","name":"testTemplate","templateFlag":true,"projectName":"ProjectToTestBuildTypes","projectId":"ProjectToTestBuildTypes","href":"/guestAuth/app/rest/buildTypes/id:ProjectToTestBuildTypes_TestTemplate","project":{"id":"ProjectToTestBuildTypes","name":"ProjectToTestBuildTypes","parentProjectId":"_Root","href":"/guestAuth/app/rest/projects/id:ProjectToTestBuildTypes","webUrl":"http://localhost:8111/project.html?projectId=ProjectToTestBuildTypes"},"vcs-root-entries":{"vcs-root-entry":[]},"settings":{"count":15,"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules","value":""},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]},"parameters":{"count":0,"href":"/app/rest/buildTypes/id:ProjectToTestBuildTypes_TestTemplate/parameters","property":[]},"steps":{"step":[]},"features":{"feature":[]},"triggers":{"trigger":[]},"snapshot-dependencies":{"snapshot-dependency":[]},"artifact-dependencies":{"artifact-dependency":[]},"agent-requirements":{"agent-requirement":[]}}'
+    http_version: 
+  recorded_at: Sat, 15 Nov 2014 23:36:55 GMT
+recorded_with: VCR 2.4.0

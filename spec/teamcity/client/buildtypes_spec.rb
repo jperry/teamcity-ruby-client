@@ -80,6 +80,10 @@ describe 'BuildTypes' do
       it 'should return nil if the buildtype is not associated with a template' do
         @tc.buildtype_template(id: 'BuildTypeTests_BuildTypeWithNoTemplate').should be_nil
       end
+
+      it 'should return a list of defined templates' do
+        @tc.buildTemplates.should_not be_nil
+      end
     end
 
     [
@@ -229,6 +233,22 @@ describe 'BuildTypes' do
         @tc.create_project(project_id)
         response = @tc.create_buildtype(project_id, buildtype_name)
         response.id.should eq(buildtype_id)
+      end
+    end
+
+    describe '.create_buildtype' do
+      it 'should create a build type with options' do
+        project_id = 'ProjectToTestBuildTypes'
+        buildtype_name = 'PostCreateBuildType'
+        buildtype_id = "myBuildType_#{buildtype_name}"
+        field_value = 'description-set_buildtype_field'
+
+        @tc.create_project(project_id)
+        response = @tc.create_buildtype_ex(project_id, buildtype_name, :id=>buildtype_id) do |properties|
+          properties['description']=field_value
+        end
+        response.id.should eq(buildtype_id)
+        response.description.should eq(field_value)
       end
     end
 

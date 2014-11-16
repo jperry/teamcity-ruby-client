@@ -34,7 +34,7 @@ module TeamCity
 
       # Create a Build Configuration (TC 8.1)
       #
-      # @param project_id [String] id of the project you are adding the build configuration
+      # @param project_id [String] id of the project you are adding the build configuration to
       # @param name [String] name of the buildtype you wish to create
       # @param options [Hash] options for the buildtype you wish to create
       # @yield [Hash] properties to set, view the official documentation for supported properties
