@@ -106,7 +106,7 @@ module TeamCity
       # List of build types
       #
       # @return [Array<Hashie::Mash>, nil] of buildtypes or nil if no buildtypes exist
-      def buildTemplates
+      def build_templates
         get("buildTypes/#{locator({'templateFlag'=>'true'})}")
       end
 

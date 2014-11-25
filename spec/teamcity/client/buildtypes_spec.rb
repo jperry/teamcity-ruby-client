@@ -82,7 +82,7 @@ describe 'BuildTypes' do
       end
 
       it 'should return a list of defined templates' do
-        @tc.buildTemplates.should_not be_nil
+        @tc.build_templates.should_not be_nil
       end
     end
 
