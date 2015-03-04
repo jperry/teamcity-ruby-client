@@ -1,0 +1,179 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=006265B3606DE5A1A023237D33A4309C; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 04 Mar 2015 20:50:42 GMT
+    body:
+      encoding: UTF-8
+      string: '{"count":2,"project":[{"id":"_Root","name":"<Root project>","description":"Contains
+        all other projects","href":"/httpAuth/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},{"id":"TestProject","name":"Test
+        project","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:TestProject","webUrl":"http://localhost:8111/project.html?projectId=TestProject"}]}'
+    http_version: 
+  recorded_at: Wed, 04 Mar 2015 20:50:42 GMT
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots
+    body:
+      encoding: UTF-8
+      string: '{"name":"PutSetCheckIntervalField","vcsName":"jetbrains.git","projectLocator":"TestProject","properties":{"property":[{"name":"branch","value":"master"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"},{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"ignoreKnownHosts","value":true}]}}'
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=B50DFB505842D20CF1A45B58B65EF603; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 04 Mar 2015 20:50:42 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"TestProject_PutSetCheckIntervalField","name":"PutSetCheckIntervalField","vcsName":"jetbrains.git","status":"NOT_MONITORED","lastChecked":"20150305T090509+1300","href":"/httpAuth/app/rest/vcs-roots/id:TestProject_PutSetCheckIntervalField","project":{"id":"TestProject","name":"Test
+        project","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:TestProject","webUrl":"http://localhost:8111/project.html?projectId=TestProject"},"properties":{"property":[{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"}]},"vcsRootInstances":{"href":"/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:TestProject_PutSetCheckIntervalField)"}}'
+    http_version: 
+  recorded_at: Wed, 04 Mar 2015 20:50:42 GMT
+- request:
+    method: put
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots/id:TestProject_PutSetCheckIntervalField/modificationCheckInterval
+    body:
+      encoding: US-ASCII
+      string: '86400'
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - text/plain
+      Content-Type:
+      - text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=45616313FB613A3B80A211FFDFB53C86; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - text/plain
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 04 Mar 2015 20:50:42 GMT
+    body:
+      encoding: UTF-8
+      string: '86400'
+    http_version: 
+  recorded_at: Wed, 04 Mar 2015 20:50:42 GMT
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/vcs-roots/id:TestProject_PutSetCheckIntervalField
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=14D8C430D47AE4F57F9CA7E239841239; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 04 Mar 2015 20:50:42 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"TestProject_PutSetCheckIntervalField","name":"PutSetCheckIntervalField","vcsName":"jetbrains.git","modificationCheckInterval":86400,"status":"NOT_MONITORED","lastChecked":"20150305T090509+1300","href":"/httpAuth/app/rest/vcs-roots/id:TestProject_PutSetCheckIntervalField","project":{"id":"TestProject","name":"Test
+        project","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:TestProject","webUrl":"http://localhost:8111/project.html?projectId=TestProject"},"properties":{"property":[{"name":"authMethod","value":"PRIVATE_KEY_DEFAULT"},{"name":"branch","value":"master"},{"name":"ignoreKnownHosts","value":"true"},{"name":"url","value":"git@github.com:jperry/teamcity-ruby-client.git"}]},"vcsRootInstances":{"href":"/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:TestProject_PutSetCheckIntervalField)"}}'
+    http_version: 
+  recorded_at: Wed, 04 Mar 2015 20:50:42 GMT
+recorded_with: VCR 2.4.0
