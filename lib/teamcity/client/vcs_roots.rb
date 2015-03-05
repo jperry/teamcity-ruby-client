@@ -48,6 +48,23 @@ module TeamCity
           req.body = builder.to_request_body
         end
       end
+
+      # Set a VCS root field
+      #
+      # @example Set a VCS roots name
+      #   TeamCity.set_vcs_root_field('vcs1', 'name', 'new-name')
+      #
+      # @param vcs_root_id [String] the VCS root id
+      # @param field_name [String] the field name: 'name', 'shared', 'project'
+      # @param field_value [String] the value to set the field to
+      # @return [String] vcs_root_field_value that was set
+      def set_vcs_root_field(vcs_root_id, field_name, field_value)
+        path = "vcs-roots/id:#{vcs_root_id}/#{field_name}"
+        put(path, :content_type => :text, :accept => :text) do |req|
+          req.body = field_value
+        end
+      end
+
     end
   end
 end

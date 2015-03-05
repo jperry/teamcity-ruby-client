@@ -55,4 +55,32 @@ describe 'VCSRoots' do
       end
     end
   end
+
+  describe 'PUT', :vcr do
+
+    describe '.set_vcs_root_field' do
+      it 'should set a vcs modification check interval' do
+        vcs_root_name = 'PutSetCheckIntervalField'
+        project = @tc.projects[1]
+        @tc.create_vcs_root(vcs_name: vcs_root_name,
+                            vcs_type: 'git',
+                            project_id:  project.id) do |properties|
+          properties['branch'] = 'master'
+          properties['url'] = 'git@github.com:jperry/teamcity-ruby-client.git'
+          properties['authMethod'] = 'PRIVATE_KEY_DEFAULT'
+          properties['ignoreKnownHosts'] = true
+        end
+
+        vcs_root_id = project.id + "_" + vcs_root_name
+
+        field_value = 86400
+        @tc.set_vcs_root_field(vcs_root_id,
+                               'modificationCheckInterval',
+                               field_value.to_s).should eq(field_value.to_s)
+
+        vcs = @tc.vcs_root_details(vcs_root_id)
+        vcs.modificationCheckInterval.should eq(field_value)
+      end
+    end
+  end
 end
