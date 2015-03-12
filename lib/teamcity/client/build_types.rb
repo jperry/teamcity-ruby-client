@@ -276,6 +276,17 @@ module TeamCity
         end
       end
 
+      # Delete Build Step
+      #
+      # @param buildtype_id [String] :buildtype_id to create the step under
+      # @param step_id [String] the id of the build step
+      # @return [nil]
+      def delete_build_step(buildtype_id, step_id)
+        path = "buildTypes/#{buildtype_id}/steps/#{step_id}"
+        delete(path, :accept => :text, :content_type => :text)
+        nil
+      end
+
       # Create Build Trigger
       #
       # @param buildtype_id [String] :buildtype_id to create the trigger under
