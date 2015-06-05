@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/testOccurrences?locator=build:2614725,id:143
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 May 2015 22:32:12 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=F89102AA500A7AC983E696C767939060; Path=/; Secure; HttpOnly
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"count":1,"href":"https://ci.appfolio.net/app/rest/testOccurrences?locator=build%3A2614725%2Cid%3A143","testOccurrence":[{"id":"id:143,build:(id:2614725)","name":"AccountExtrasTest:
+        test_account_extras__help_and_training__content","status":"SUCCESS","duration":2230,"href":"/httpAuth/app/rest/testOccurrences/id:143,build:(id:2614725)"}],"default":false}'
+    http_version:
+  recorded_at: Wed, 20 May 2015 22:31:27 GMT
+recorded_with: VCR 2.4.0
