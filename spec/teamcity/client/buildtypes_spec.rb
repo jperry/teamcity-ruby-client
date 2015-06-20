@@ -261,6 +261,20 @@ describe 'BuildTypes' do
       end
     end
 
+    describe '.delete_build_step' do
+      it 'should delete a build step given a build type id and build step id' do
+          step_to_delete = 'Unit Test Step to Delete'
+          @tc.create_build_step(@buildtype_id, step_to_delete, type: 'Maven') do |properties|
+            properties['goals'] = 'verify'
+            properties['mavenSelection'] = 'mavenSelection:default'
+            properties['pomLocation'] = 'pom.xml'
+          end
+          s = @tc.buildtype_steps(id: @buildtype_id).detect { | step | step['name'].eql? step_to_delete }
+          @tc.delete_build_step(@buildtype_id, s['id']).should be_nil
+          @tc.buildtype_steps(id: @buildtype_id).detect { | step | step['name'].eql? step_to_delete }.should be_nil
+      end
+    end
+
     describe '.create_build_trigger' do
       it 'should create a build trigger for a given build type' do
         response = @tc.create_build_trigger(@buildtype_id, type: 'vcsTrigger') do |properties|
