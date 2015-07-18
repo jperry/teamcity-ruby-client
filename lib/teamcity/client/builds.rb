@@ -43,6 +43,17 @@ module TeamCity
         response['property']
       end
 
+      # Get build statistics for recent builds of a build type
+      #
+      # @param build_type_id
+      # @param count
+      # @return [Array<Hashie::Mash>]
+      def build_statistics_for_build_type(build_type_id, count=nil)
+        url = "builds/?locator=buildType:(id:#{build_type_id})&fields=build(id,number,branchName,status,buildType(id,name,projectName),statistics(property(name,value)))&count=#{count}"
+        response = get(url)
+        response['build']
+      end
+
       # Tells you whether or not a build is pinned
       #
       # @param id [String] build to check if it is pinned
