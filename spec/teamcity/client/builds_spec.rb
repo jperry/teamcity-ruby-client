@@ -81,6 +81,12 @@ describe 'Builds' do
         results = @tc.build_statistics(build.id)
         results.should have_at_least(1).items
       end
+
+      it 'should return statistics for a build type' do
+        build = @tc.builds.first
+        results = @tc.build_statistics_for_build_type(build.buildTypeId)
+        results.should have_at_least(1).items
+      end
     end
 
     describe '.build_artifacts' do

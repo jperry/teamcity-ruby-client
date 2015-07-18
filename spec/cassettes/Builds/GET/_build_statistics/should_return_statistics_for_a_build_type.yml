@@ -1,0 +1,179 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 17 Jul 2015 23:36:25 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=63AEA2B477797149BA6984E65227B770; Path=/; Secure; HttpOnly
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: ! '{"count":6,"build":[{"id":36,"number":"4","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T101733-0400","href":"/httpAuth/app/rest/builds/id:36","webUrl":"http://localhost:8111/viewLog.html?buildId=36&buildTypeId=BuildTests_GetBuildTests"},{"id":35,"number":"3","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100159-0400","href":"/httpAuth/app/rest/builds/id:35","webUrl":"http://localhost:8111/viewLog.html?buildId=35&buildTypeId=BuildTests_GetBuildTests"},{"id":34,"number":"2","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100151-0400","href":"/httpAuth/app/rest/builds/id:34","webUrl":"http://localhost:8111/viewLog.html?buildId=34&buildTypeId=BuildTests_GetBuildTests"},{"id":33,"number":"1","status":"SUCCESS","buildTypeId":"BuildTests_GetBuildTests","startDate":"20130814T100134-0400","href":"/httpAuth/app/rest/builds/id:33","webUrl":"http://localhost:8111/viewLog.html?buildId=33&buildTypeId=BuildTests_GetBuildTests"},{"id":32,"number":"2","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073131-0400","href":"/httpAuth/app/rest/builds/id:32","webUrl":"http://localhost:8111/viewLog.html?buildId=32&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"},{"id":31,"number":"1","status":"FAILURE","buildTypeId":"BuildTypeTests_GetBuildTypeWithInvestigations","startDate":"20130814T073100-0400","href":"/httpAuth/app/rest/builds/id:31","webUrl":"http://localhost:8111/viewLog.html?buildId=31&buildTypeId=BuildTypeTests_GetBuildTypeWithInvestigations"}]}'
+    http_version: 
+  recorded_at: Fri, 17 Jul 2015 23:36:05 GMT
+- request:
+    method: get
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/builds/?count=&fields=build(id,number,branchName,status,buildType(id,name,projectName),statistics(property(name,value)))&locator=buildType:(id:BuildTests_GetBuildTests)
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 17 Jul 2015 23:36:25 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=DAD662FF983F17D88B8404C8FA8C1E59; Path=/; Secure; HttpOnly
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{
+                   "build": [
+                       {
+                           "branchName": "master",
+                           "buildType": {
+                               "id": "BuildTests_GetBuildTests",
+                               "name": "Build Step 1",
+                               "projectName": "BUild Project"
+                           },
+                           "id": 1,
+                           "number": "24de331bd8ab2862b38acf12b90f9c73f51f67c6",
+                           "statistics": {
+                               "property": [
+                                   {
+                                       "name": "ArtifactsResolvingTime",
+                                       "value": "483"
+                                   },
+                                   {
+                                       "name": "ArtifactsSize",
+                                       "value": "1866640"
+                                   },
+                                   {
+                                       "name": "BuildArtifactsPublishingTime",
+                                       "value": "2607"
+                                   },
+                                   {
+                                       "name": "BuildCheckoutTime",
+                                       "value": "2865"
+                                   },
+                                   {
+                                       "name": "BuildDuration",
+                                       "value": "756740"
+                                   },
+                                   {
+                                       "name": "BuildDurationNetTime",
+                                       "value": "750785"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:artifactsPublishing",
+                                       "value": "2707"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:buildFinishing",
+                                       "value": "37"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:buildStepApmBundle_ApmGitClean_0",
+                                       "value": "244"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:buildStepApmBundle_SetupPropertyAssets_0",
+                                       "value": "366"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:buildStepRUNNER_417",
+                                       "value": "749414"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:firstStepPreparation",
+                                       "value": "565"
+                                   },
+                                   {
+                                       "name": "buildStageDuration:sourcesUpdate",
+                                       "value": "3305"
+                                   },
+                                   {
+                                       "name": "BuildTestStatus",
+                                       "value": "1"
+                                   },
+                                   {
+                                       "name": "SuccessRate",
+                                       "value": "1"
+                                   },
+                                   {
+                                       "name": "TimeSpentInQueue",
+                                       "value": "1266953"
+                                   },
+                                   {
+                                       "name": "VisibleArtifactsSize",
+                                       "value": "1068231"
+                                   }
+                               ]
+                           },
+                           "status": "SUCCESS"
+                       }
+                   ]
+               }'
+    http_version: 
+  recorded_at: Fri, 17 Jul 2015 23:36:06 GMT
+recorded_with: VCR 2.4.0
