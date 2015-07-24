@@ -12,5 +12,6 @@ module TeamCity
     include TeamCity::Client::Common
     include TeamCity::Client::VCSRoots
     include TeamCity::Client::Tests
+    include TeamCity::Client::BuildQueue
   end
 end
