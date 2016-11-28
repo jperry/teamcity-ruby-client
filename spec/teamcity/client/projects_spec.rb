@@ -105,6 +105,17 @@ describe 'Projects' do
       end
     end
 
+    describe '.create_sub_project' do
+      it 'should create a sub project' do
+        parent = @tc.create_project('ParentProject')
+        response = @tc.create_sub_project('SubProject', parent.id, :id => 'SubProjectManualSetID' )
+
+        response.name.should eq('SubProject')
+        response.id.should eq('SubProjectManualSetID')
+        response.parentProject.id.should eq(parent.id)
+      end
+    end
+
     describe '.copy_project' do
       it 'should copy a project' do
         @tc.create_project('PostProjectToBeCopied')
@@ -116,6 +127,19 @@ describe 'Projects' do
           :copyAllAssociatedSettings => true
         )
         response.name.should eq(copied_project_name)
+      end
+
+      it 'should copy a project and set the attributes' do
+        @tc.create_project('PostProjectToBeCopied')
+        source_project = @tc.project(id: 'PostProjectToBeCopied')
+        copied_project_name = 'PostCopyProject'
+        response = @tc.copy_project(
+            source_project.id,
+            copied_project_name,
+            :copyAllAssociatedSettings => true,
+            :id => 'CopiedProjectId'
+        )
+        response.id.should eq('CopiedProjectId')
       end
     end
   end

@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: UTF-8
+      string: ProjectToTestBuildTypes
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=7FEF7E4D9455C150AE3DA7AEB8ABBD69; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 15 Nov 2014 22:25:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"ProjectToTestBuildTypes","name":"ProjectToTestBuildTypes","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:ProjectToTestBuildTypes","webUrl":"http://localhost:8111/project.html?projectId=ProjectToTestBuildTypes","parentProject":{"id":"_Root","name":"<Root
+        project>","description":"Contains all other projects","href":"/httpAuth/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"parameters":{"count":0,"href":"/app/rest/projects/id:ProjectToTestBuildTypes/parameters","property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:ProjectToTestBuildTypes)"},"projects":{"count":0}}'
+    http_version: 
+  recorded_at: Sat, 15 Nov 2014 22:25:40 GMT
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/buildTypes
+    body:
+      encoding: UTF-8
+      string: '{"name":"PostCreateBuildType","project_id":"ProjectToTestBuildTypes","project":{"id":"ProjectToTestBuildTypes"},"id":"myBuildType_PostCreateBuildType","description":"description-set_buildtype_field"}'
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=5C36BF2F09943C5F43B3D63E8F53B3EE; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 15 Nov 2014 22:25:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"myBuildType_PostCreateBuildType","name":"PostCreateBuildType","description":"description-set_buildtype_field","projectName":"ProjectToTestBuildTypes","projectId":"ProjectToTestBuildTypes","href":"/httpAuth/app/rest/buildTypes/id:myBuildType_PostCreateBuildType","webUrl":"http://localhost:8111/viewType.html?buildTypeId=myBuildType_PostCreateBuildType","project":{"id":"ProjectToTestBuildTypes","name":"ProjectToTestBuildTypes","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:ProjectToTestBuildTypes","webUrl":"http://localhost:8111/project.html?projectId=ProjectToTestBuildTypes"},"vcs-root-entries":{"vcs-root-entry":[]},"settings":{"count":16,"property":[{"name":"allowExternalStatus","value":"false"},{"name":"artifactRules","value":""},{"name":"buildNumberCounter","value":"1"},{"name":"buildNumberPattern","value":"%build.counter%"},{"name":"checkoutDirectory"},{"name":"checkoutMode","value":"ON_SERVER"},{"name":"cleanBuild","value":"false"},{"name":"enableHangingBuildsDetection","value":"true"},{"name":"executionTimeoutMin","value":"0"},{"name":"maximumNumberOfBuilds","value":"0"},{"name":"shouldFailBuildIfTestsFailed","value":"true"},{"name":"shouldFailBuildOnAnyErrorMessage","value":"false"},{"name":"shouldFailBuildOnBadExitCode","value":"true"},{"name":"shouldFailBuildOnOOMEOrCrash","value":"true"},{"name":"showDependenciesChanges","value":"false"},{"name":"vcsLabelingBranchFilter","value":"+:<default>"}]},"parameters":{"count":0,"href":"/app/rest/buildTypes/id:myBuildType_PostCreateBuildType/parameters","property":[]},"steps":{"step":[]},"features":{"feature":[]},"triggers":{"trigger":[]},"snapshot-dependencies":{"snapshot-dependency":[]},"artifact-dependencies":{"artifact-dependency":[]},"agent-requirements":{"agent-requirement":[]},"builds":{"href":"/httpAuth/app/rest/buildTypes/id:myBuildType_PostCreateBuildType/builds/"}}'
+    http_version: 
+  recorded_at: Sat, 15 Nov 2014 22:25:40 GMT
+recorded_with: VCR 2.4.0

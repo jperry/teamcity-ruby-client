@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: UTF-8
+      string: ParentProject
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - text/plain
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=EBD50D57ECE28A30332EA846FF5AEF2D; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 15 Nov 2014 23:54:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"ParentProject","name":"ParentProject","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:ParentProject","webUrl":"http://localhost:8111/project.html?projectId=ParentProject","parentProject":{"id":"_Root","name":"<Root
+        project>","description":"Contains all other projects","href":"/httpAuth/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"parameters":{"count":0,"href":"/app/rest/projects/id:ParentProject/parameters","property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:ParentProject)"},"projects":{"count":0}}'
+    http_version: 
+  recorded_at: Sat, 15 Nov 2014 23:54:48 GMT
+- request:
+    method: post
+    uri: http://teamcity-ruby-client:teamcity@localhost:8111/httpAuth/app/rest/projects
+    body:
+      encoding: UTF-8
+      string: '{"parentProject":{"locator":"ParentProject"},"name":"SubProject","id":"SubProjectManualSetID"}'
+    headers:
+      User-Agent:
+      - TeamCity Ruby Client 1.3.1
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Set-Cookie:
+      - RememberMe=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly
+      - TCSESSIONID=D79963003B0BD9416BD92344BA5271C5; Path=/; HttpOnly
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache
+      - no-store
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 15 Nov 2014 23:54:48 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"SubProjectManualSetID","name":"SubProject","parentProjectId":"ParentProject","href":"/httpAuth/app/rest/projects/id:SubProjectManualSetID","webUrl":"http://localhost:8111/project.html?projectId=SubProjectManualSetID","parentProject":{"id":"ParentProject","name":"ParentProject","parentProjectId":"_Root","href":"/httpAuth/app/rest/projects/id:ParentProject","webUrl":"http://localhost:8111/project.html?projectId=ParentProject"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"parameters":{"count":0,"href":"/app/rest/projects/id:SubProjectManualSetID/parameters","property":[]},"vcsRoots":{"href":"/httpAuth/app/rest/vcs-roots?locator=project:(id:SubProjectManualSetID)"},"projects":{"count":0}}'
+    http_version: 
+  recorded_at: Sat, 15 Nov 2014 23:54:48 GMT
+recorded_with: VCR 2.4.0
